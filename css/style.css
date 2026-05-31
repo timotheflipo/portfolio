@@ -124,11 +124,10 @@ ul { list-style: none; }
   transition: background-color var(--t-med), box-shadow var(--t-med), backdrop-filter var(--t-med);
 }
 .site-header.scrolled {
-  /* Au scroll : léger fond pour rester lisible sur toutes les sections */
-  background-color: rgba(241, 241, 236, 0.78);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+  background-color: rgba(241, 241, 236, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
 }
 
 /* Logo */
