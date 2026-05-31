@@ -260,17 +260,10 @@ ul { list-style: none; }
 }
 .hero-inner {
   text-align: center;
-  max-width: 820px; /* max-width du contenu général (sous-titre, boutons) */
+  /* Hero-inner est large pour que le titre tienne sur 2 lignes.
+     Le sous-titre et les boutons ont leur propre max-width centrée. */
+  max-width: 1600px;
   width: 100%;
-}
-
-/* Le titre est plus large que le reste du contenu —
-   il sort du max-width de hero-inner pour ne pas forcer le retour à la ligne */
-.hero-title {
-  width: calc(100vw - 4rem); /* pleine largeur de la fenêtre moins le padding du hero */
-  max-width: 1400px;         /* cap sur très grands écrans */
-  margin-left: auto;
-  margin-right: auto;
 }
 .hero-eyebrow {
   font-size: 0.75rem;
@@ -283,7 +276,10 @@ ul { list-style: none; }
 }
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 4.5vw, 4.25rem); /* ≈ 68px sur grand écran */
+  /* 4.2vw assure que la ligne la plus longue ne dépasse pas le container.
+     Le cap 4.25rem ≈ 68px ne s'active qu'à partir de ~1620px de large,
+     où le container (1556px) est assez large pour contenir le texte. */
+  font-size: clamp(1rem, 4.2vw, 4.25rem);
   line-height: 1.25;
   color: var(--dark);
   margin-bottom: 1.5rem;
