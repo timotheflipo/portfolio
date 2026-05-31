@@ -346,13 +346,14 @@ ul { list-style: none; }
    ============================================ */
 .notion-section {
   background-color: var(--bg);
-  padding: 6rem 0;
+  /* Section plus haute pour donner de l'air au mockup */
+  padding: 5rem 0 8rem;
 }
 .notion-header {
   text-align: center;
-  /* Élargi pour que les deux lignes du titre tiennent chacune sur une ligne visuelle */
   max-width: 1100px;
-  margin: 0 auto 5rem;
+  /* Moins de marge basse = titre remonté visuellement */
+  margin: 0 auto 3.5rem;
   padding: 0 2rem;
 }
 .notion-header h2 { margin-bottom: 1rem; }
@@ -360,10 +361,11 @@ ul { list-style: none; }
 
 .notion-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  /* Colonne image plus large, colonne texte plus étroite */
+  grid-template-columns: 1.25fr 1fr;
+  gap: 3rem;
   align-items: center;
-  max-width: var(--max-w);
+  max-width: 1300px; /* déborde légèrement du max-w pour que l'image soit plus grande */
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -376,13 +378,13 @@ ul { list-style: none; }
 }
 .notion-mockup-img {
   width: 100%;
-  max-width: 520px;
+  max-width: 780px; /* beaucoup plus grand */
   height: auto;
   display: block;
   margin: 0 auto;
-  /* Légère ombre pour détacher le mockup du fond */
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.10));
+  /* L'ombre est déjà dans le PNG — pas besoin de CSS drop-shadow */
 }
+
 .laptop {
   width: 100%;
   max-width: 460px;
@@ -456,7 +458,7 @@ ul { list-style: none; }
 }
 
 /* Notion blocks */
-.notion-blocks { display: flex; flex-direction: column; gap: 1.75rem; }
+.notion-blocks { display: flex; flex-direction: column; gap: 1.75rem; padding-left: 1.5rem; }
 .notion-block { display: flex; gap: 1rem; align-items: flex-start; }
 .notion-num {
   width: 26px; height: 26px; min-width: 26px;
