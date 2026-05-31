@@ -280,8 +280,8 @@ ul { list-style: none; }
   animation: fadeUp 0.8s ease 0.2s forwards;
 }
 .hero-title {
-  font-family: var(--font-display);
-  font-weight: 800;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 900; /* Black */
   /* 4.2vw assure que la ligne la plus longue ne dépasse pas le container.
      Le cap 4.25rem ≈ 68px ne s'active qu'à partir de ~1620px de large,
      où le container (1556px) est assez large pour contenir le texte. */
