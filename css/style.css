@@ -119,9 +119,9 @@ ul { list-style: none; }
   justify-content: space-between;
   padding: 0 2rem;
   /* Fond semi-transparent permanent — effet verre dépoli léger */
-  background-color: rgba(241, 241, 236, 0.25);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background-color: rgba(241, 241, 236, 0.08);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   transition: background-color var(--t-med), box-shadow var(--t-med), backdrop-filter var(--t-med);
 }
 .site-header.scrolled {
