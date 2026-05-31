@@ -326,7 +326,7 @@ function initHeroParallax() {
     const heroH     = hero.offsetHeight;
 
     // progress : 0 en haut → 1 quand le scroll dépasse 60 % de la hauteur du hero
-    const raw      = scrollY / (heroH * 0.60);
+    const raw      = scrollY / (heroH * 1.0);
     const progress = Math.min(Math.max(raw, 0), 1);
 
     // Amplitude : 110 vw sur desktop garantit la sortie complète du cadre.
