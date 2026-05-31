@@ -576,21 +576,22 @@ ul { list-style: none; }
   border-radius: var(--r-lg);
   padding: 1.5rem;
   cursor: pointer;
-  /* Ombre de base = effet flottant même au repos */
+  /* Légèrement réduit au repos → la croissance au hover est clairement visible */
+  transform: scale(0.95);
   box-shadow:
     0 2px 8px rgba(0,0,0,0.06),
     0 6px 20px rgba(0,0,0,0.05);
   transition:
     background-color 0.25s ease,
-    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.3s ease;
   text-decoration: none;
   display: block;
-  /* Prépare le GPU pour une animation fluide */
   will-change: transform, box-shadow;
 }
 .proj-card:hover {
-  transform: translateY(-8px) scale(1.05);
+  /* Retour à taille normale + léger dépassement = croissance perceptible */
+  transform: translateY(-5px) scale(1.02);
   box-shadow:
     0 8px 24px rgba(0,0,0,0.10),
     0 20px 48px rgba(0,0,0,0.08);
