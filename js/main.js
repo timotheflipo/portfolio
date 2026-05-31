@@ -159,13 +159,15 @@ function buildThematiques(container) {
 
     const cardsHTML = theme.cards.map(card => `
       <a class="proj-card reveal" href="${card.link}" style="--hover-bg: ${theme.hoverColor}">
-        <div class="proj-card-top">
-          <h3>${card.title}</h3>
-          <span class="proj-arrow">↗</span>
-        </div>
-        <p>${card.description}</p>
-        <div class="proj-tags">
-          ${card.tags.map(t => `<span class="proj-tag">${t}</span>`).join('')}
+        <div class="proj-card-inner">
+          <div class="proj-card-top">
+            <h3>${card.title}</h3>
+            <span class="proj-arrow">↗</span>
+          </div>
+          <p>${card.description}</p>
+          <div class="proj-tags">
+            ${card.tags.map(t => `<span class="proj-tag">${t}</span>`).join('')}
+          </div>
         </div>
       </a>
     `).join('');
