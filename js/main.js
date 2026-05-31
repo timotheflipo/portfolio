@@ -175,7 +175,7 @@ function buildThematiques(container) {
     section.innerHTML = `
       <div class="theme-inner">
         <div class="theme-visual reveal-l">
-          <div class="theme-visual-bg" ${theme.image ? `style="background-image:url('${theme.image}')"` : ''}></div>
+          <div class="theme-visual-bg" ${theme.image ? `style="background-image:url('${theme.image}'); background-position:${theme.bgPosition || 'center'};"` : ''}></div>
           ${theme.image ? '' : `<div class="theme-visual-placeholder">Image à ajouter</div>`}
           <div class="theme-overlay">
             <div class="theme-encart" style="background-color: ${theme.encartColor}">
