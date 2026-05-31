@@ -580,13 +580,7 @@ ul { list-style: none; }
 .proj-card-wrap:hover {
   transform: scale(1.0);
 }
-.proj-card-wrap:hover .proj-card {
-  box-shadow:
-    0 8px 24px rgba(0,0,0,0.10),
-    0 20px 48px rgba(0,0,0,0.08);
-}
-
-/* Carte : couleur, ombre de base, reveal — pas de scale ici */
+/* Carte : ombre + contour coloré au hover via box-shadow inset */
 .proj-card {
   background-color: var(--white);
   border-radius: var(--r-lg);
@@ -595,9 +589,16 @@ ul { list-style: none; }
   box-shadow:
     0 2px 8px rgba(0,0,0,0.06),
     0 6px 20px rgba(0,0,0,0.05);
-  transition: background-color 0.25s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.25s ease;
   text-decoration: none;
   display: block;
+}
+.proj-card-wrap:hover .proj-card {
+  /* Contour coloré (inset = pas de layout shift) + ombre renforcée */
+  box-shadow:
+    inset 0 0 0 1.5px var(--accent-color),
+    0 8px 24px rgba(0,0,0,0.10),
+    0 20px 48px rgba(0,0,0,0.08);
 }
 .proj-card-top {
   display: flex;

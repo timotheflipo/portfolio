@@ -159,7 +159,7 @@ function buildThematiques(container) {
 
     const cardsHTML = theme.cards.map(card => `
       <div class="proj-card-wrap">
-        <a class="proj-card reveal" href="${card.link}" style="--hover-bg: ${theme.hoverColor}">
+        <a class="proj-card reveal" href="${card.link}" style="--accent-color: ${theme.encartColor}">
           <div class="proj-card-top">
             <h3>${card.title}</h3>
             <span class="proj-arrow">↗</span>
@@ -196,12 +196,7 @@ function buildThematiques(container) {
     container.appendChild(section);
   });
 
-  // Hover color dynamique sur les cartes
-  document.querySelectorAll('.proj-card').forEach(card => {
-    const hoverBg = card.style.getPropertyValue('--hover-bg');
-    card.addEventListener('mouseenter', () => { card.style.backgroundColor = hoverBg; });
-    card.addEventListener('mouseleave', () => { card.style.backgroundColor = ''; });
-  });
+  // Le contour coloré au hover est géré en CSS via --accent-color (box-shadow inset)
 }
 
 // ============================================
