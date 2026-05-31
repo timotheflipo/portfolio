@@ -118,14 +118,17 @@ ul { list-style: none; }
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
-  /* Fond semi-transparent permanent — effet verre dépoli léger */
-  background-color: rgba(241, 241, 236, 0.08);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  /* Complètement transparent — le blur seul crée l'effet verre dépoli.
+     La couleur de la section en dessous (violet, teal, gris…) apparaît
+     à travers le header, floue, sans être masquée par un fond coloré. */
+  background-color: transparent;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition: background-color var(--t-med), box-shadow var(--t-med), backdrop-filter var(--t-med);
 }
 .site-header.scrolled {
-  background-color: rgba(241, 241, 236, 0.82);
+  /* Au scroll : léger fond pour rester lisible sur toutes les sections */
+  background-color: rgba(241, 241, 236, 0.78);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 1px 0 rgba(0,0,0,0.06);
