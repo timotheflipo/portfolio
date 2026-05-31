@@ -274,11 +274,27 @@ ul { list-style: none; }
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 5vw, 4rem);
-  line-height: 1.15;
+  line-height: 1.25;
   color: var(--dark);
   margin-bottom: 1.5rem;
   opacity: 0;
   animation: fadeUp 0.8s ease 0.4s forwards;
+  /* overflow visible pour que les lignes puissent sortir du cadre */
+  overflow: visible;
+}
+
+/* Lignes du titre — animation scroll */
+.hero-line {
+  display: block;
+  will-change: transform;
+}
+
+/* Réduction de l'effet pour les utilisateurs sensibles */
+@media (prefers-reduced-motion: reduce) {
+  .hero-line {
+    will-change: auto;
+    transform: none !important;
+  }
 }
 .hero-sub {
   font-size: 1rem;

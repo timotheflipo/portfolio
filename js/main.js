@@ -308,6 +308,61 @@ function buildCompetences(container) {
 }
 
 // ============================================
+// HERO PARALLAX — lignes du titre au scroll
+// ============================================
+function initHeroParallax() {
+  // Respect de la préférence système "réduire les animations"
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const line1 = document.querySelector('.hero-line-1');
+  const line2 = document.querySelector('.hero-line-2');
+  const hero  = document.querySelector('.hero');
+  if (!line1 || !line2 || !hero) return;
+
+  let ticking = false;
+
+  function update() {
+    const scrollY   = window.scrollY;
+    const heroH     = hero.offsetHeight;
+
+    // progress : 0 en haut → 1 quand le scroll dépasse 60 % de la hauteur du hero
+    const raw      = scrollY / (heroH * 0.60);
+    const progress = Math.min(Math.max(raw, 0), 1);
+
+    // Amplitude : 110 vw sur desktop garantit la sortie complète du cadre.
+    // Sur mobile (< 600 px) on réduit à 55 vw pour garder une lecture propre.
+    const isMobile = window.innerWidth < 600;
+    const maxVw    = isMobile ? 55 : 110;
+
+    const offset = progress * maxVw;
+
+    line1.style.transform = `translateX(${offset}vw)`;
+    line2.style.transform = `translateX(-${offset}vw)`;
+
+    ticking = false;
+  }
+
+  // Scroll — passive pour ne pas bloquer le thread principal
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Recalcul si la fenêtre est redimensionnée
+  window.addEventListener('resize', () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Appel initial (au cas où la page est déjà scrollée au chargement)
+  update();
+}
+
+// ============================================
 // SCROLL REVEAL (Intersection Observer)
 // ============================================
 function initReveal() {
@@ -353,6 +408,7 @@ function initPageTransition() {
 document.addEventListener('DOMContentLoaded', () => {
   buildNav();
   initPageTransition();
+  initHeroParallax();
 
   // Index
   const themeContainer = document.getElementById('themes-container');
