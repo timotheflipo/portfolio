@@ -118,12 +118,9 @@ ul { list-style: none; }
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
-  /* Complètement transparent — le blur seul crée l'effet verre dépoli.
-     La couleur de la section en dessous (violet, teal, gris…) apparaît
-     à travers le header, floue, sans être masquée par un fond coloré. */
   background-color: transparent;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   transition: background-color var(--t-med), box-shadow var(--t-med), backdrop-filter var(--t-med);
 }
 .site-header.scrolled {
