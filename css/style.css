@@ -374,6 +374,15 @@ ul { list-style: none; }
   justify-content: center;
   align-items: center;
 }
+.notion-mockup-img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  /* Légère ombre pour détacher le mockup du fond */
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.10));
+}
 .laptop {
   width: 100%;
   max-width: 460px;
