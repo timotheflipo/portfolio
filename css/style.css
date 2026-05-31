@@ -118,12 +118,16 @@ ul { list-style: none; }
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
-  transition: background-color var(--t-med), box-shadow var(--t-med);
+  /* Fond semi-transparent permanent — effet verre dépoli léger */
+  background-color: rgba(241, 241, 236, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background-color var(--t-med), box-shadow var(--t-med), backdrop-filter var(--t-med);
 }
 .site-header.scrolled {
-  background-color: rgba(241, 241, 236, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(241, 241, 236, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 1px 0 rgba(0,0,0,0.06);
 }
 
@@ -347,7 +351,8 @@ ul { list-style: none; }
 }
 .notion-header {
   text-align: center;
-  max-width: 680px;
+  /* Élargi pour que les deux lignes du titre tiennent chacune sur une ligne visuelle */
+  max-width: 1100px;
   margin: 0 auto 5rem;
   padding: 0 2rem;
 }
