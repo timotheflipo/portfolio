@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Parcours scolaire et professionnel de Timothé Flipo — Timeline de formations et expériences.">
+  <title>Parcours — Timothé Flipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header injecté par main.js -->
+
+  <main>
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+      <h1>Parcours</h1>
+      <p>
+        Mon chemin scolaire et professionnel, des formations qui m'ont construit
+        aux expériences qui m'ont appris à agir.
+      </p>
+      <div class="page-divider"></div>
+    </div>
+
+    <!-- TIMELINE -->
+    <section class="timeline-section">
+      <div class="timeline-wrap">
+
+        <!-- Légende -->
+        <div class="timeline-legend reveal">
+          <div class="legend-item">
+            <div class="legend-dot scolaire"></div>
+            <span>Parcours scolaire</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot pro"></div>
+            <span>Expérience professionnelle</span>
+          </div>
+        </div>
+
+        <!-- Axe timeline — injecté par buildTimeline() dans main.js -->
+        <div class="timeline-axis" id="timeline-axis">
+          <div class="timeline-line-center"></div>
+          <!-- Les éléments seront injectés ici -->
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <div class="footer-logo-mark">TF</div>
+      <span class="footer-name">Timothé Flipo</span>
+    </div>
+    <span class="footer-copy">© 2026 — Portfolio BUT GEA · Parcours GEMA</span>
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="competences.html">Compétences</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

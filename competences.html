@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Les 5 compétences BUT GEA de Timothé Flipo — Analyser, Décider, Piloter, Entreprendre, Développer.">
+  <title>Compétences — Timothé Flipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header injecté par main.js -->
+
+  <main>
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+      <h1>Compétences</h1>
+      <p>
+        Les 5 compétences du référentiel BUT GEA, illustrées par mes projets
+        et mes expériences en situation réelle.
+      </p>
+      <div class="page-divider"></div>
+    </div>
+
+    <!-- COMPÉTENCES GRID -->
+    <section class="competences-section">
+      <p class="competences-intro reveal">
+        Cliquez sur une compétence pour découvrir les projets associés.
+        Chaque carte représente une compétence travaillée tout au long de mon parcours.
+      </p>
+
+      <!-- Injecté par buildCompetences() dans main.js -->
+      <div class="comp-grid" id="comp-grid"></div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <div class="footer-logo-mark">TF</div>
+      <span class="footer-name">Timothé Flipo</span>
+    </div>
+    <span class="footer-copy">© 2026 — Portfolio BUT GEA · Parcours GEMA</span>
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="parcours.html">Parcours</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

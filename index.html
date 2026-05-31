@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio de Timothé Flipo — Étudiant BUT GEA Parcours GEMA, alternant chez Roole, futur master Management Stratégique à Paris-Saclay.">
+  <title>Timothé Flipo — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =========================================
+       SECTION 1 — HERO
+       ========================================= -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Portfolio · BUT GEA · Parcours GEMA</p>
+      <h1 class="hero-title">
+        Créatif et curieux par nature,<br>
+        méthodique et organisé dans l'action
+      </h1>
+      <p class="hero-sub">
+        Je suis <strong>Timothé Flipo</strong>, 20 ans, en troisième année de BUT GEA parcours GEMA,
+        actuellement en alternance chez <strong>Roole</strong> et prochainement en master
+        Management Stratégique et Changement à l'<strong>Université Paris-Saclay</strong>.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-dark"
+           href="https://drive.google.com/file/d/1ViNlOX1TIQGyhfPD3OKuMDHuxHsTGBOj/view?usp=share_link"
+           target="_blank" rel="noopener">
+          Mon CV ↗
+        </a>
+        <a class="btn btn-outline" href="contact.html">Me contacter</a>
+      </div>
+      <div class="scroll-hint">
+        <div class="scroll-line"></div>
+        <span>Découvrir</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       SECTION 2 — NOTION / SECOND CERVEAU
+       ========================================= -->
+  <section class="notion-section" id="notion">
+    <div class="notion-header reveal">
+      <h2 class="title-lg">
+        Avant de parler projets et compétences,<br>
+        découvrez ma manière de travailler
+      </h2>
+      <p>
+        Mon second cerveau Notion — un espace personnel pour organiser mes idées,
+        mes connaissances et mes projets.
+      </p>
+    </div>
+
+    <div class="notion-grid">
+      <!-- Laptop mockup gauche -->
+      <div class="laptop-wrap reveal-l">
+        <div class="laptop">
+          <div class="laptop-lid">
+            <div class="laptop-camera-dot"></div>
+            <div class="laptop-screen" id="laptop-screen">
+              <!--
+                Pour ajouter l'image Notion :
+                Remplacer le bloc .laptop-placeholder par :
+                <img src="images/notion-screenshot.png" alt="Capture Notion">
+              -->
+              <div class="laptop-placeholder">
+                <span class="laptop-placeholder-logo">N</span>
+                <span class="laptop-placeholder-text">Image Notion à ajouter</span>
+              </div>
+            </div>
+          </div>
+          <div class="laptop-base"></div>
+          <div class="laptop-foot"></div>
+        </div>
+      </div>
+
+      <!-- Blocs texte droite -->
+      <div class="notion-blocks reveal-r" id="notion-blocks">
+        <!-- Injecté par buildNotionBlocks() dans main.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       SECTIONS 3-4-5 — THÉMATIQUES
+       Injectées dynamiquement depuis thematiquesData (js/data.js)
+       ========================================= -->
+  <div id="themes-container"></div>
+
+  <!-- =========================================
+       SECTION 6 — FAQ RECRUTEUR
+       ========================================= -->
+  <section class="faq-section" id="faq">
+    <div class="faq-header reveal">
+      <h2 class="title-lg">Questions fréquentes</h2>
+      <p>Ce que vous voudriez peut-être savoir avant de me contacter.</p>
+    </div>
+    <div class="faq-list" id="faq-list">
+      <!-- Injecté par buildFAQ() dans main.js -->
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <div class="footer-logo-mark">TF</div>
+      <span class="footer-name">Timothé Flipo</span>
+    </div>
+    <span class="footer-copy">© 2026 — Portfolio BUT GEA · Parcours GEMA</span>
+    <div class="footer-links">
+      <a href="parcours.html">Parcours</a>
+      <a href="competences.html">Compétences</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
