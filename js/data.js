@@ -105,7 +105,7 @@ const thematiquesData = [
     title: "Titre de la troisième thématique à compléter",
     tags: ["Entreprendre", "Créer", "Innover"],
     image: "images/section5_presentation.jpg",
-    bgPosition: "center 18%", // centre sur les visages + contexte présentation
+    bgPosition: "center 68%", // centre sur les visages + micro
     imageAlt: "Présentation de projet — Timothé Flipo au micro",
     cards: [
       {
