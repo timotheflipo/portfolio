@@ -158,8 +158,8 @@ function buildThematiques(container) {
       : `<div class="theme-visual-placeholder">Image à ajouter</div>`;
 
     const cardsHTML = theme.cards.map(card => `
-      <a class="proj-card reveal" href="${card.link}" style="--hover-bg: ${theme.hoverColor}">
-        <div class="proj-card-inner">
+      <div class="proj-card-wrap">
+        <a class="proj-card reveal" href="${card.link}" style="--hover-bg: ${theme.hoverColor}">
           <div class="proj-card-top">
             <h3>${card.title}</h3>
             <span class="proj-arrow">↗</span>
@@ -168,8 +168,8 @@ function buildThematiques(container) {
           <div class="proj-tags">
             ${card.tags.map(t => `<span class="proj-tag">${t}</span>`).join('')}
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
     `).join('');
 
     section.innerHTML = `

@@ -571,35 +571,33 @@ ul { list-style: none; }
   margin-bottom: 0.5rem;
 }
 
-.proj-card {
-  background-color: var(--white);
-  border-radius: var(--r-lg);
-  padding: 0; /* padding déplacé sur .proj-card-inner */
-  cursor: pointer;
-  box-shadow:
-    0 2px 8px rgba(0,0,0,0.06),
-    0 6px 20px rgba(0,0,0,0.05);
-  transition: background-color 0.25s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  text-decoration: none;
-  display: block;
-  overflow: hidden; /* clip le inner qui déborde légèrement */
+/* Wrapper : gère le scale sans conflit avec .reveal sur la carte */
+.proj-card-wrap {
+  transform: scale(0.92);
+  transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
 }
-.proj-card:hover {
+.proj-card-wrap:hover {
+  transform: scale(1.0);
+}
+.proj-card-wrap:hover .proj-card {
   box-shadow:
     0 8px 24px rgba(0,0,0,0.10),
     0 20px 48px rgba(0,0,0,0.08);
 }
 
-/* Le scale est ici, sans conflit avec la classe .reveal du parent */
-.proj-card-inner {
+/* Carte : couleur, ombre de base, reveal — pas de scale ici */
+.proj-card {
+  background-color: var(--white);
+  border-radius: var(--r-lg);
   padding: 1.5rem;
-  transform: scale(0.93);
-  transform-origin: center center;
-  transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
-  will-change: transform;
-}
-.proj-card:hover .proj-card-inner {
-  transform: scale(1.0);
+  cursor: pointer;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.06),
+    0 6px 20px rgba(0,0,0,0.05);
+  transition: background-color 0.25s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  display: block;
 }
 .proj-card-top {
   display: flex;
