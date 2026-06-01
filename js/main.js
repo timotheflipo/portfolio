@@ -141,8 +141,12 @@ function buildFAQ(container) {
 // ============================================
 // SECTIONS THÉMATIQUES (index.html sections 3-5)
 // ============================================
+// Registre des projets (rempli au build) — indexé par data-reg sur les tags
+const projectsRegistry = [];
+
 function buildThematiques(container) {
   if (!container || typeof thematiquesData === 'undefined') return;
+  projectsRegistry.length = 0;
 
   thematiquesData.forEach(theme => {
     const section = document.createElement('section');
@@ -153,24 +157,34 @@ function buildThematiques(container) {
     const encartTextClass = theme.encartTextColor === 'white' ? 'color: white' : `color: ${theme.encartTextColor}`;
     const tagStyle = `background: ${theme.tagBg}; color: ${theme.encartTextColor}`;
 
-    const imgHTML = theme.image
-      ? `<img src="${theme.image}" alt="${theme.imageAlt}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">`
-      : `<div class="theme-visual-placeholder">Image à ajouter</div>`;
+    const cardsHTML = theme.cards.map(card => {
+      // Enregistre le projet pour la pop-up
+      const regIndex = projectsRegistry.length;
+      projectsRegistry.push({
+        name: card.popupName || card.title,
+        accent: theme.encartColor,
+        details: card.competencyDetails || []
+      });
 
-    const cardsHTML = theme.cards.map(card => `
-      <div class="proj-card-wrap">
-        <a class="proj-card reveal" href="${card.link}" style="--accent-color: ${theme.encartColor}">
-          <div class="proj-card-top">
-            <h3>${card.title}</h3>
-            <span class="proj-arrow">↗</span>
-          </div>
-          <p>${card.description}</p>
-          <div class="proj-tags">
-            ${card.tags.map(t => `<span class="proj-tag">${t}</span>`).join('')}
-          </div>
-        </a>
-      </div>
-    `).join('');
+      const hasDetails = (card.competencyDetails || []).length > 0;
+      const tagsHTML = card.tags.map(t =>
+        hasDetails
+          ? `<button type="button" class="proj-tag proj-tag-clickable" data-reg="${regIndex}">${t}</button>`
+          : `<span class="proj-tag">${t}</span>`
+      ).join('');
+
+      return `
+        <div class="proj-card-wrap">
+          <a class="proj-card reveal" href="${card.link}" style="--accent-color: ${theme.encartColor}">
+            <div class="proj-card-top">
+              <h3>${card.title}</h3>
+              <span class="proj-arrow">↗</span>
+            </div>
+            <p>${card.description}</p>
+            <div class="proj-tags">${tagsHTML}</div>
+          </a>
+        </div>`;
+    }).join('');
 
     // reversed : cartes à gauche, visuel à droite
     const rev = theme.reversed;
@@ -199,7 +213,69 @@ function buildThematiques(container) {
     container.appendChild(section);
   });
 
-  // Le contour coloré au hover est géré en CSS via --accent-color (box-shadow inset)
+  // Délégation : clic sur un tag de compétence → ouvre la pop-up du projet
+  container.addEventListener('click', e => {
+    const tag = e.target.closest('.proj-tag-clickable');
+    if (!tag) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const project = projectsRegistry[+tag.dataset.reg];
+    if (project) openCompetencyModal(project);
+  });
+}
+
+// ============================================
+// POP-UP COMPÉTENCES
+// ============================================
+function getCompetencyModal() {
+  let overlay = document.getElementById('comp-modal');
+  if (overlay) return overlay;
+
+  overlay = document.createElement('div');
+  overlay.className = 'comp-modal-overlay';
+  overlay.id = 'comp-modal';
+  overlay.innerHTML = `
+    <div class="comp-modal" role="dialog" aria-modal="true" aria-labelledby="comp-modal-eyebrow">
+      <button class="comp-modal-close" aria-label="Fermer la fenêtre">&times;</button>
+      <div class="comp-modal-header">
+        <span class="comp-modal-eyebrow" id="comp-modal-eyebrow">Compétences mobilisées</span>
+        <h3 class="comp-modal-project"></h3>
+      </div>
+      <div class="comp-modal-body"></div>
+    </div>`;
+  document.body.appendChild(overlay);
+
+  const closeModal = () => {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+  overlay.querySelector('.comp-modal-close').addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
+
+  return overlay;
+}
+
+function openCompetencyModal(project) {
+  const overlay = getCompetencyModal();
+  overlay.querySelector('.comp-modal-project').textContent = 'Projet · ' + project.name;
+
+  overlay.querySelector('.comp-modal-body').innerHTML = project.details.map(d => `
+    <div class="comp-detail">
+      <div class="comp-detail-head">
+        <span class="comp-detail-dot"></span>
+        <h4>${d.name}</h4>
+        <span class="comp-detail-level">${d.level}</span>
+      </div>
+      <p class="comp-detail-desc">${d.description}</p>
+      <p class="comp-detail-example"><span class="comp-detail-ex-label">Exemple</span> ${d.example}</p>
+    </div>
+  `).join('');
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 
 // ============================================

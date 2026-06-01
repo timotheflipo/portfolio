@@ -46,19 +46,37 @@ const thematiquesData = [
         title: "les BOZE : optimiser et fluidifier un processus interne",
         description: "Quand une mission répétitive prend plus de temps qu'elle ne le devrait, c'est souvent qu'un processus mérite d'être repensé. J'ai donc utilisé Notion pour rendre la préparation des réunions BOZE plus fluide, plus fiable et plus lisible.",
         tags: ["Analyser", "Décider", "Piloter"],
-        link: "#"
+        link: "#",
+        popupName: "les BOZE",
+        competencyDetails: [
+          { name: "Analyser", level: "Niveau 3", description: "Conseiller pour améliorer les processus.", example: "Identification des pertes de temps et des informations dispersées." },
+          { name: "Décider", level: "Niveau 3", description: "Concourir à la prise de décision.", example: "Réorganisation de l'espace Notion pour fiabiliser le suivi." },
+          { name: "Piloter", level: "Niveau 3", description: "Améliorer les relations entre les parties prenantes.", example: "Coordination des sujets, intervenants et directions régionales." }
+        ]
       },
       {
         title: "Maia Village : accompagner la transition numérique",
         description: "Mettre en place un outil digital ne garantit pas qu'il sera bien adopté. Ce projet m'a appris à penser la transition numérique dans son ensemble, du besoin de départ jusqu'à l'accompagnement au changement.",
         tags: ["Analyser", "Décider", "Piloter"],
-        link: "#"
+        link: "#",
+        popupName: "Maia Village",
+        competencyDetails: [
+          { name: "Analyser", level: "Niveau 3", description: "Intégrer les enjeux de l'organisation et proposer des améliorations.", example: "Analyse des besoins des crèches et des familles, rédaction du cahier des charges." },
+          { name: "Décider", level: "Niveau 3", description: "Concourir à la prise de décision selon les contraintes identifiées.", example: "Comparaison des prestataires et choix de l'outil adapté." },
+          { name: "Piloter", level: "Niveau 3", description: "Améliorer la communication en lien avec la stratégie.", example: "Création des supports, formations et accompagnement au changement." }
+        ]
       },
       {
         title: "Hôtel-restaurant sous tension, du diagnostic au plan d'action",
         description: "Quand les difficultés s'accumulent dans une organisation, il devient vite difficile de savoir par où commencer. Ce travail m'a appris à relier les dysfonctionnements entre eux pour construire un plan d'action progressif et cohérent.",
         tags: ["Analyser", "Décider", "Développer"],
-        link: "#"
+        link: "#",
+        popupName: "Hôtel-restaurant",
+        competencyDetails: [
+          { name: "Analyser", level: "Niveau 3", description: "Intégrer les enjeux de l'organisation et proposer des améliorations.", example: "Diagnostic global de l'établissement et des dysfonctionnements RH et opérationnels." },
+          { name: "Décider", level: "Niveau 3", description: "Concourir à la prise de décision selon les contraintes identifiées.", example: "Construction d'un plan d'action progressif." },
+          { name: "Développer", level: "Niveau 3", description: "Déterminer les axes principaux d'une politique RH.", example: "Recommandations sur le bien-être, le climat social et la prévention." }
+        ]
       }
     ]
   },
@@ -78,13 +96,26 @@ const thematiquesData = [
         title: "Bons plans régionaux : transformer des données dispersées en outil de pilotage",
         description: "Quand les données existent mais ne permettent pas vraiment de décider, il faut les restructurer. J'ai conçu en autonomie un tableau de bord Excel automatisé pour transformer des chiffres dispersés en outil de pilotage.",
         tags: ["Analyser", "Décider", "Développer"],
-        link: "#"
+        link: "#",
+        popupName: "Bons plans régionaux",
+        competencyDetails: [
+          { name: "Analyser", level: "Niveau 3", description: "Proposer des améliorations des processus.", example: "Restructuration de données dispersées en information exploitable." },
+          { name: "Décider", level: "Niveau 3", description: "Exploiter les données et décider selon les contraintes.", example: "Tableau de bord Excel et matrice maintenir / pousser / optimiser." },
+          { name: "Développer", level: "Niveau 3", description: "Concevoir une démarche de marketing opérationnel adaptée.", example: "Priorisation des bons plans régionaux." }
+        ]
       },
       {
         title: "Piloter une transformation numérique par les KPI",
         description: "Je ne me suis pas contenté d'analyser la situation et de proposer des pistes de transformation numérique. J'ai choisi d'aller plus loin en construisant sur Notion un véritable outil de pilotage fonctionnel.",
         tags: ["Analyser", "Décider", "Piloter", "Développer"],
-        link: "#"
+        link: "#",
+        popupName: "Transformation numérique par les KPI",
+        competencyDetails: [
+          { name: "Analyser", level: "Niveau 3", description: "Intégrer les enjeux de l'organisation et proposer des améliorations.", example: "Diagnostic DIMM chez Roole et définition de trois chantiers de transformation." },
+          { name: "Décider", level: "Niveau 3", description: "Améliorer le système d'information et exploiter les données.", example: "Tableau de bord Notion, KPI et suivi des irritants terrain." },
+          { name: "Piloter", level: "Niveau 3", description: "Mener un projet collaboratif.", example: "Suivi des chantiers et du déploiement." },
+          { name: "Développer", level: "Niveau 3", description: "Concevoir une démarche de marketing opérationnel adaptée.", example: "Kit vendeur et logique de certification." }
+        ]
       }
     ]
   },
@@ -106,19 +137,38 @@ const thematiquesData = [
         title: "Breathe&Go : concevoir de A à Z une solution innovante",
         description: "De l'idée de départ au prototype final, découvrez comment j'ai mené en équipe un projet entrepreneurial à forte valeur, récompensé par le prix de l'innovation et le prix entrepreneurial face aux dix équipes présentes de notre IUT.",
         tags: ["Piloter", "Entreprendre", "Développer"],
-        link: "#"
+        link: "#",
+        popupName: "Breathe&Go",
+        competencyDetails: [
+          { name: "Entreprendre", level: "Niveau 3", description: "Tester la viabilité d'un business model, le défendre et le confronter au terrain.", example: "Business plan, pitch devant l'amphithéâtre, questionnaires quantitatifs et qualitatifs." },
+          { name: "Piloter", level: "Niveau 3", description: "Mener un projet collaboratif.", example: "Espace Notion partagé pour coordonner l'équipe." },
+          { name: "Développer", level: "Niveau 3", description: "Concevoir une stratégie de communication avec les outils adaptés.", example: "Réseaux sociaux et livret investisseurs." }
+        ]
       },
       {
         title: "Tables rondes Roole : renforcer l'impact d'un événement professionnel",
         description: "Du cadrage des thématiques à la création des supports d'invitation, jusqu'à la construction d'une présentation projetée devant 80 personnes, ce projet m'a appris à piloter un événement professionnel sur plusieurs fronts.",
         tags: ["Analyser", "Décider", "Piloter", "Développer"],
-        link: "#"
+        link: "#",
+        popupName: "Tables rondes Roole",
+        competencyDetails: [
+          { name: "Analyser", level: "Niveau 3", description: "Intégrer les enjeux et contraintes de l'organisation.", example: "Analyse des besoins et contraintes de Roole." },
+          { name: "Décider", level: "Niveau 3", description: "Concourir à la prise de décision selon les contraintes.", example: "Choix du format événementiel." },
+          { name: "Piloter", level: "Niveau 3", description: "Mener un projet collaboratif.", example: "Invitations, formulaires et suivi sur Excel." },
+          { name: "Développer", level: "Niveau 3", description: "Concevoir une stratégie de communication et de marketing opérationnel.", example: "Mails ciblés, support PowerPoint et format pour crédibiliser Roole." }
+        ]
       },
       {
         title: "Fashion Day : piloter un projet événementiel avec une identité forte",
         description: "Logo, affiches, flyers, espace Notion, cahier des charges, coordination avec des créateurs et mannequins… Avec Fashion Day, j'ai appris à faire avancer un projet créatif en combinant direction artistique, organisation et travail d'équipe.",
         tags: ["Piloter", "Entreprendre", "Développer"],
-        link: "#"
+        link: "#",
+        popupName: "Fashion Day",
+        competencyDetails: [
+          { name: "Piloter", level: "Niveau 3", description: "Animer une équipe et mener un projet collaboratif.", example: "Sprints, répartition des tâches et coordination créateurs / mannequins." },
+          { name: "Entreprendre", level: "Niveau 3", description: "Confronter son projet à l'expérience de terrain.", example: "Cahier des charges et organisation réelle de l'événement." },
+          { name: "Développer", level: "Niveau 3", description: "Concevoir une stratégie de communication et de marketing opérationnel.", example: "Logo, affiches, flyers, réseaux et promotion de l'événement." }
+        ]
       }
     ]
   }
