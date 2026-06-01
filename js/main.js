@@ -172,9 +172,12 @@ function buildThematiques(container) {
       </div>
     `).join('');
 
+    // reversed : cartes à gauche, visuel à droite
+    const rev = theme.reversed;
+
     section.innerHTML = `
-      <div class="theme-inner">
-        <div class="theme-visual reveal-l">
+      <div class="theme-inner${rev ? ' reversed' : ''}">
+        <div class="theme-visual ${rev ? 'reveal-r' : 'reveal-l'}">
           <div class="theme-visual-bg" ${theme.image ? `style="background-image:url('${theme.image}'); background-position:${theme.bgPosition || 'center'};"` : ''}></div>
           ${theme.image ? '' : `<div class="theme-visual-placeholder">Image à ajouter</div>`}
           <div class="theme-overlay">
@@ -186,7 +189,7 @@ function buildThematiques(container) {
             </div>
           </div>
         </div>
-        <div class="theme-cards reveal-r">
+        <div class="theme-cards ${rev ? 'reveal-l' : 'reveal-r'}">
           <p class="theme-cards-title">Projets associés</p>
           ${cardsHTML}
         </div>

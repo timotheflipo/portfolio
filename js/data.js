@@ -35,6 +35,7 @@ const thematiquesData = [
     encartTextColor: "white",
     hoverColor: "#c2a9ef",
     tagBg: "rgba(255,255,255,0.2)",
+    reversed: true, // cartes à gauche, visuel à droite
     title: "Repérer des dysfonctionnements et construire des solutions",
     tags: ["Analyser", "Décider", "Développer"],
     // Pour ajouter une image : remplacer null par le chemin → "images/theme1.jpg"
@@ -101,6 +102,7 @@ const thematiquesData = [
     encartTextColor: "#1c1c1a",
     hoverColor: "#fae588",
     tagBg: "rgba(28,28,26,0.1)",
+    reversed: true, // cartes à gauche, visuel à droite
     // TITRE À COMPLÉTER
     title: "Titre de la troisième thématique à compléter",
     tags: ["Entreprendre", "Créer", "Innover"],

@@ -505,6 +505,17 @@ ul { list-style: none; }
   grid-template-columns: 1.1fr 1fr;
   min-height: 78vh;
 }
+/* Sections inversées : cartes à gauche, visuel à droite */
+.theme-inner.reversed {
+  grid-template-columns: 1fr 1.1fr;
+}
+.theme-inner.reversed .theme-visual { order: 2; }
+.theme-inner.reversed .theme-cards  { order: 1; }
+/* Sur mobile : visuel toujours en premier */
+@media (max-width: 860px) {
+  .theme-inner.reversed .theme-visual { order: 1; }
+  .theme-inner.reversed .theme-cards  { order: 2; }
+}
 
 /* Left visual */
 .theme-visual {
