@@ -487,6 +487,63 @@ function initPageTransition() {
 }
 
 // ============================================
+// SCROLL WORDS — titre section Notion mot par mot
+// ============================================
+function initScrollWords() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const header = document.querySelector('.notion-header');
+  if (!header) return;
+  const h2 = header.querySelector('h2');
+  if (!h2) return;
+
+  // Découpe le innerHTML en tokens : mots ou <br> — wrap chaque mot dans un <span>
+  const tokens = h2.innerHTML.split(/(<br\s*\/?>)/i);
+  h2.innerHTML = tokens.map(token => {
+    if (/<br/i.test(token)) return token; // garde le <br>
+    return token.replace(/(\S+)/g, '<span class="sw">$1</span>');
+  }).join('');
+
+  const words = [...h2.querySelectorAll('.sw')];
+  const n = words.length;
+  if (n === 0) return;
+
+  // État initial : tous les mots en gris clair
+  words.forEach(w => { w.style.color = 'var(--light-gray)'; });
+
+  let ticking = false;
+
+  function update() {
+    const rect = header.getBoundingClientRect();
+    const vh   = window.innerHeight;
+
+    // progress 0 → quand le haut du header touche le bas du viewport
+    // progress 1 → quand le haut du header atteint 25 % du viewport depuis le haut
+    const raw      = (vh - rect.top) / (vh * 0.75);
+    const progress = Math.min(Math.max(raw, 0), 1);
+
+    // Nombre de mots qui doivent être noirs
+    const activeCount = Math.round(progress * n);
+
+    words.forEach((w, i) => {
+      w.style.color = i < activeCount ? 'var(--dark)' : 'var(--light-gray)';
+    });
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+
+  update(); // état initial (si la page est déjà scrollée au chargement)
+}
+
+// ============================================
 // INIT
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -500,6 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const notionContainer = document.getElementById('notion-blocks');
   if (notionContainer) buildNotionBlocks(notionContainer);
+  initScrollWords(); // mot par mot au scroll sur le titre Notion
 
   const faqContainer = document.getElementById('faq-list');
   if (faqContainer) buildFAQ(faqContainer);
