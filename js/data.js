@@ -35,6 +35,8 @@ const thematiquesData = [
     encartTextColor: "white",
     hoverColor: "#c2a9ef",
     tagBg: "rgba(255,255,255,0.2)",
+    accentOnWhite: "#6d4fb0",   // version foncée lisible sur fond blanc (popup + label)
+    accentTagText: "#ffffff",   // couleur du texte des tags au hover
     reversed: true, // cartes à gauche, visuel à droite
     title: "Repérer des dysfonctionnements et construire des solutions",
     tags: ["Analyser", "Décider", "Développer"],
@@ -87,6 +89,8 @@ const thematiquesData = [
     encartTextColor: "white",
     hoverColor: "#c3dedd",
     tagBg: "rgba(255,255,255,0.25)",
+    accentOnWhite: "#2a7080",   // version foncée lisible sur fond blanc
+    accentTagText: "#ffffff",
     title: "Titre de la deuxième thématique à compléter",
     tags: ["Piloter", "Coordonner", "Suivre"],
     image: null,
@@ -126,6 +130,8 @@ const thematiquesData = [
     encartTextColor: "#1c1c1a",
     hoverColor: "#fae588",
     tagBg: "rgba(28,28,26,0.1)",
+    accentOnWhite: "#8a6a00",   // doré foncé lisible sur fond blanc
+    accentTagText: "#1c1c1a",   // texte sombre sur fond jaune
     reversed: true,
     title: "Titre de la troisième thématique à compléter",
     tags: ["Entreprendre", "Créer", "Innover"],

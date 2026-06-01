@@ -161,15 +161,19 @@ function buildThematiques(container) {
       // Enregistre le projet pour la pop-up
       const regIndex = projectsRegistry.length;
       projectsRegistry.push({
-        name: card.popupName || card.title,
-        accent: theme.encartColor,
-        details: card.competencyDetails || []
+        name:         card.popupName || card.title,
+        accent:       theme.encartColor,
+        accentOnWhite: theme.accentOnWhite || '#6d4fb0',
+        accentTagText: theme.accentTagText || '#ffffff',
+        details:      card.competencyDetails || []
       });
 
       const hasDetails = (card.competencyDetails || []).length > 0;
       const tagsHTML = card.tags.map(t =>
         hasDetails
-          ? `<button type="button" class="proj-tag proj-tag-clickable" data-reg="${regIndex}">${t}</button>`
+          ? `<button type="button" class="proj-tag proj-tag-clickable"
+               data-reg="${regIndex}"
+               style="--tag-hover-bg:${theme.encartColor};--tag-hover-text:${theme.accentTagText || '#fff'}">${t}</button>`
           : `<span class="proj-tag">${t}</span>`
       ).join('');
 
@@ -260,6 +264,10 @@ function getCompetencyModal() {
 
 function openCompetencyModal(project) {
   const overlay = getCompetencyModal();
+  const modal = overlay.querySelector('.comp-modal');
+  // Injecte les couleurs d'accent du thème (décoratif + texte lisible)
+  modal.style.setProperty('--modal-accent',      project.accent);
+  modal.style.setProperty('--modal-accent-text', project.accentOnWhite);
   overlay.querySelector('.comp-modal-project').textContent = 'Projet · ' + project.name;
 
   overlay.querySelector('.comp-modal-body').innerHTML = project.details.map(d => `

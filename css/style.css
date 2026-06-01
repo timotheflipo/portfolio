@@ -657,9 +657,9 @@ ul { list-style: none; }
 }
 .proj-tag-clickable:hover {
   transform: scale(1.12);
-  background-color: var(--purple-accent);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(172, 136, 232, 0.45);
+  background-color: var(--tag-hover-bg, var(--purple-accent));
+  color: var(--tag-hover-text, #fff);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
 }
 .proj-tag-clickable:focus-visible {
   outline: 2px solid var(--purple-accent);
