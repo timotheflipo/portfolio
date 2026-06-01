@@ -43,21 +43,21 @@ const thematiquesData = [
     imageAlt: "Image thématique 1",
     cards: [
       {
-        title: "Projet à compléter",
-        description: "Description du projet. Ce texte sera remplacé par le vrai contenu lorsque vous ajouterez vos projets.",
-        tags: ["Gestion", "Analyse"],
+        title: "les BOZE : optimiser et fluidifier un processus interne",
+        description: "Quand une mission répétitive prend plus de temps qu'elle ne le devrait, c'est souvent qu'un processus mérite d'être repensé. J'ai donc utilisé Notion pour rendre la préparation des réunions BOZE plus fluide, plus fiable et plus lisible.",
+        tags: ["Analyser", "Décider", "Piloter"],
         link: "#"
       },
       {
-        title: "Projet à compléter",
-        description: "Description du projet. Ce texte sera remplacé par le vrai contenu lorsque vous ajouterez vos projets.",
-        tags: ["Diagnostic", "Solutions"],
+        title: "Maia Village : accompagner la transition numérique",
+        description: "Mettre en place un outil digital ne garantit pas qu'il sera bien adopté. Ce projet m'a appris à penser la transition numérique dans son ensemble, du besoin de départ jusqu'à l'accompagnement au changement.",
+        tags: ["Analyser", "Décider", "Piloter"],
         link: "#"
       },
       {
-        title: "Projet à compléter",
-        description: "Description du projet. Ce texte sera remplacé par le vrai contenu lorsque vous ajouterez vos projets.",
-        tags: ["Amélioration", "Process"],
+        title: "Hôtel-restaurant sous tension, du diagnostic au plan d'action",
+        description: "Quand les difficultés s'accumulent dans une organisation, il devient vite difficile de savoir par où commencer. Ce travail m'a appris à relier les dysfonctionnements entre eux pour construire un plan d'action progressif et cohérent.",
+        tags: ["Analyser", "Décider", "Développer"],
         link: "#"
       }
     ]
@@ -69,28 +69,21 @@ const thematiquesData = [
     encartTextColor: "white",
     hoverColor: "#c3dedd",
     tagBg: "rgba(255,255,255,0.25)",
-    // TITRE À COMPLÉTER — remplacer le placeholder ci-dessous
     title: "Titre de la deuxième thématique à compléter",
     tags: ["Piloter", "Coordonner", "Suivre"],
     image: null,
     imageAlt: "Image thématique 2",
     cards: [
       {
-        title: "Projet à compléter",
-        description: "Description du projet. Ce texte sera remplacé par le vrai contenu lorsque vous ajouterez vos projets.",
-        tags: ["Pilotage", "Coordination"],
+        title: "Bons plans régionaux : transformer des données dispersées en outil de pilotage",
+        description: "Quand les données existent mais ne permettent pas vraiment de décider, il faut les restructurer. J'ai conçu en autonomie un tableau de bord Excel automatisé pour transformer des chiffres dispersés en outil de pilotage.",
+        tags: ["Analyser", "Décider", "Développer"],
         link: "#"
       },
       {
-        title: "Projet à compléter",
-        description: "Description du projet. Ce texte sera remplacé par le vrai contenu lorsque vous ajouterez vos projets.",
-        tags: ["Suivi", "Reporting"],
-        link: "#"
-      },
-      {
-        title: "Projet à compléter",
-        description: "Description du projet. Ce texte sera remplacé par le vrai contenu lorsque vous ajouterez vos projets.",
-        tags: ["Organisation", "Méthode"],
+        title: "Piloter une transformation numérique par les KPI",
+        description: "Je ne me suis pas contenté d'analyser la situation et de proposer des pistes de transformation numérique. J'ai choisi d'aller plus loin en construisant sur Notion un véritable outil de pilotage fonctionnel.",
+        tags: ["Analyser", "Décider", "Piloter", "Développer"],
         link: "#"
       }
     ]
@@ -102,8 +95,7 @@ const thematiquesData = [
     encartTextColor: "#1c1c1a",
     hoverColor: "#fae588",
     tagBg: "rgba(28,28,26,0.1)",
-    reversed: true, // cartes à gauche, visuel à droite
-    // TITRE À COMPLÉTER
+    reversed: true,
     title: "Titre de la troisième thématique à compléter",
     tags: ["Entreprendre", "Créer", "Innover"],
     image: "images/section5_presentation.jpg",
@@ -111,21 +103,21 @@ const thematiquesData = [
     imageAlt: "Présentation de projet — Timothé Flipo au micro",
     cards: [
       {
-        title: "Projet à compléter",
-        description: "Description du projet. Ce texte sera remplacé par le vrai contenu lorsque vous ajouterez vos projets.",
-        tags: ["Initiative", "Création"],
+        title: "Breathe&Go : concevoir de A à Z une solution innovante",
+        description: "De l'idée de départ au prototype final, découvrez comment j'ai mené en équipe un projet entrepreneurial à forte valeur, récompensé par le prix de l'innovation et le prix entrepreneurial face aux dix équipes présentes de notre IUT.",
+        tags: ["Piloter", "Entreprendre", "Développer"],
         link: "#"
       },
       {
-        title: "Projet à compléter",
-        description: "Description du projet. Ce texte sera remplacé par le vrai contenu lorsque vous ajouterez vos projets.",
-        tags: ["Innovation", "Projet"],
+        title: "Tables rondes Roole : renforcer l'impact d'un événement professionnel",
+        description: "Du cadrage des thématiques à la création des supports d'invitation, jusqu'à la construction d'une présentation projetée devant 80 personnes, ce projet m'a appris à piloter un événement professionnel sur plusieurs fronts.",
+        tags: ["Analyser", "Décider", "Piloter", "Développer"],
         link: "#"
       },
       {
-        title: "Projet à compléter",
-        description: "Description du projet. Ce texte sera remplacé par le vrai contenu lorsque vous ajouterez vos projets.",
-        tags: ["Entrepreneuriat", "Développement"],
+        title: "Fashion Day : piloter un projet événementiel avec une identité forte",
+        description: "Logo, affiches, flyers, espace Notion, cahier des charges, coordination avec des créateurs et mannequins… Avec Fashion Day, j'ai appris à faire avancer un projet créatif en combinant direction artistique, organisation et travail d'équipe.",
+        tags: ["Piloter", "Entreprendre", "Développer"],
         link: "#"
       }
     ]
