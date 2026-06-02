@@ -383,14 +383,19 @@ ul { list-style: none; }
   display: flex;
   justify-content: center;
   align-items: center;
+  /* perspective injectée par JS pour l'effet 3D */
+  cursor: none; /* le curseur normal gêne l'effet tilt */
 }
 .notion-mockup-img {
   width: 100%;
-  max-width: 780px; /* beaucoup plus grand */
+  max-width: 780px;
   height: auto;
   display: block;
   margin: 0 auto;
-  /* L'ombre est déjà dans le PNG — pas besoin de CSS drop-shadow */
+  /* transform & filter gérés entièrement par JS (initNotionFloat) */
+  will-change: transform, filter;
+  transform-style: preserve-3d;
+  /* transition courte seulement hors-hover (retour doux) */
 }
 
 .laptop {

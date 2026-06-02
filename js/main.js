@@ -490,6 +490,85 @@ function initPageTransition() {
 }
 
 // ============================================
+// NOTION FLOAT — flottement + tilt 3D + parallax
+// ============================================
+function initNotionFloat() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const wrap = document.querySelector('.laptop-wrap');
+  const img  = wrap?.querySelector('.notion-mockup-img');
+  if (!wrap || !img) return;
+
+  // Perspective sur le parent pour que rotateX/Y aient un effet 3D réel
+  wrap.style.perspective       = '1100px';
+  wrap.style.perspectiveOrigin = 'center center';
+
+  // ── État ──────────────────────────────────────────────
+  let isHovering  = false;
+  let targetRotX  = 0, targetRotY = 0;
+  let currentRotX = 0, currentRotY = 0;
+  let scrollOffset = 0;
+  const startTime = performance.now();
+
+  // ── Parallax scroll ───────────────────────────────────
+  const section = document.querySelector('.notion-section');
+  function updateScroll() {
+    if (!section) return;
+    const rect = section.getBoundingClientRect();
+    const vh   = window.innerHeight;
+    const prog = (vh - rect.top) / (vh + rect.height);
+    scrollOffset = (prog - 0.5) * -55; // amplitude ±27px
+  }
+  window.addEventListener('scroll', updateScroll, { passive: true });
+  updateScroll();
+
+  // ── Tilt 3D sur hover ─────────────────────────────────
+  wrap.addEventListener('mouseenter', () => { isHovering = true; });
+  wrap.addEventListener('mouseleave', () => {
+    isHovering = false;
+    targetRotX = 0;
+    targetRotY = 0;
+  });
+  wrap.addEventListener('mousemove', e => {
+    const r = wrap.getBoundingClientRect();
+    const mx = (e.clientX - r.left) / r.width  - 0.5; // −0.5 → 0.5
+    const my = (e.clientY - r.top)  / r.height - 0.5;
+    targetRotX = -my * 16;  // max ±8°
+    targetRotY =  mx * 20;  // max ±10°
+  });
+
+  // ── Boucle d'animation ────────────────────────────────
+  function tick(now) {
+    // Flottement sinusoïdal continu
+    const floatY = Math.sin((now - startTime) / 2200) * 13;
+
+    // Lerp vers la cible (doux si hover, retour lent si pas hover)
+    const lerpSpeed = isHovering ? 0.12 : 0.06;
+    currentRotX += (targetRotX - currentRotX) * lerpSpeed;
+    currentRotY += (targetRotY - currentRotY) * lerpSpeed;
+
+    // Ombre dynamique : décalée selon l'inclinaison → renforce l'effet 3D
+    const shadowOffX    = currentRotY * -1.8;
+    const shadowOffY    = 18 - floatY * 0.6 + Math.abs(currentRotX) * 1.5;
+    const shadowBlur    = isHovering ? 75 : 55;
+    const shadowOpacity = isHovering ? 0.28 : 0.14;
+    const scaleVal      = isHovering ? 1.025 : 1;
+
+    img.style.transform = `
+      translateY(${scrollOffset + floatY}px)
+      rotateX(${currentRotX}deg)
+      rotateY(${currentRotY}deg)
+      scale(${scaleVal})
+    `;
+    img.style.filter =
+      `drop-shadow(${shadowOffX}px ${shadowOffY}px ${shadowBlur}px rgba(0,0,0,${shadowOpacity}))`;
+
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+// ============================================
 // SCROLL WORDS — titre section Notion mot par mot
 // ============================================
 function initScrollWords() {
@@ -560,7 +639,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const notionContainer = document.getElementById('notion-blocks');
   if (notionContainer) buildNotionBlocks(notionContainer);
-  initScrollWords(); // mot par mot au scroll sur le titre Notion
+  initScrollWords();   // mot par mot au scroll sur le titre Notion
+  initNotionFloat();   // flottement + tilt 3D + parallax sur le MacBook
 
   const faqContainer = document.getElementById('faq-list');
   if (faqContainer) buildFAQ(faqContainer);
