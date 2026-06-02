@@ -91,7 +91,7 @@ const thematiquesData = [
     tagBg: "rgba(255,255,255,0.25)",
     accentOnWhite: "#2a7080",   // version foncée lisible sur fond blanc
     accentTagText: "#ffffff",
-    title: "Titre de la deuxième thématique à compléter",
+    title: "Structurer l'action et outiller la décision",
     tags: ["Piloter", "Coordonner", "Suivre"],
     image: null,
     imageAlt: "Image thématique 2",
@@ -127,13 +127,13 @@ const thematiquesData = [
     id: "theme-3",
     bg: "#fcefb4",
     encartColor: "#f9dc5c",
-    encartTextColor: "#1c1c1a",
+    encartTextColor: "white",
     hoverColor: "#fae588",
-    tagBg: "rgba(28,28,26,0.1)",
-    accentOnWhite: "#8a6a00",   // doré foncé lisible sur fond blanc
-    accentTagText: "#1c1c1a",   // texte sombre sur fond jaune
+    tagBg: "rgba(255,255,255,0.25)",
+    accentOnWhite: "#8a6a00",
+    accentTagText: "#1c1c1a",
     reversed: true,
-    title: "Titre de la troisième thématique à compléter",
+    title: "Concevoir et faire avancer des projets créateurs de valeur",
     tags: ["Entreprendre", "Créer", "Innover"],
     image: "images/section5_presentation.jpg",
     bgPosition: "center center",
