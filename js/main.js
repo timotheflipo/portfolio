@@ -490,82 +490,53 @@ function initPageTransition() {
 }
 
 // ============================================
-// NOTION FLOAT — flottement + tilt 3D + parallax
+// NOTION SCROLL ROTATION — rotation Y pilotée par le scroll
 // ============================================
 function initNotionFloat() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const wrap = document.querySelector('.laptop-wrap');
   const img  = wrap?.querySelector('.notion-mockup-img');
-  if (!wrap || !img) return;
+  const section = document.querySelector('.notion-section');
+  if (!wrap || !img || !section) return;
 
-  // Perspective sur le parent pour que rotateX/Y aient un effet 3D réel
-  wrap.style.perspective       = '1100px';
+  // Perspective sur le parent pour le rendu 3D
+  wrap.style.perspective       = '1400px';
   wrap.style.perspectiveOrigin = 'center center';
 
-  // ── État ──────────────────────────────────────────────
-  let isHovering  = false;
-  let targetRotX  = 0, targetRotY = 0;
-  let currentRotX = 0, currentRotY = 0;
-  let scrollOffset = 0;
-  const startTime = performance.now();
+  let ticking = false;
 
-  // ── Parallax scroll ───────────────────────────────────
-  const section = document.querySelector('.notion-section');
-  function updateScroll() {
-    if (!section) return;
+  function update() {
     const rect = section.getBoundingClientRect();
     const vh   = window.innerHeight;
-    const prog = (vh - rect.top) / (vh + rect.height);
-    scrollOffset = (prog - 0.5) * -55; // amplitude ±27px
+
+    // progress : 0 quand la section entre par le bas, 1 quand elle sort par le haut
+    const raw      = (vh - rect.top) / (rect.height + vh);
+    const progress = Math.min(Math.max(raw, 0), 1);
+
+    // Rotation Y : 0° face au visiteur → −22° (tourne vers la gauche) au fil du scroll
+    // On centre sur 0.3 pour que l'ordi soit de face quand la section est visible
+    const rotY = (progress - 0.3) * -28;
+
+    // Ombre qui se décale légèrement avec la rotation (effet de profondeur)
+    const shadowX   = rotY * 1.0;
+    const shadowBlur= 55;
+
+    img.style.transform = `rotateY(${rotY}deg)`;
+    img.style.filter    = `drop-shadow(${shadowX}px 28px ${shadowBlur}px rgba(0,0,0,0.14))`;
+
+    ticking = false;
   }
-  window.addEventListener('scroll', updateScroll, { passive: true });
-  updateScroll();
 
-  // ── Tilt 3D sur hover ─────────────────────────────────
-  wrap.addEventListener('mouseenter', () => { isHovering = true; });
-  wrap.addEventListener('mouseleave', () => {
-    isHovering = false;
-    targetRotX = 0;
-    targetRotY = 0;
-  });
-  wrap.addEventListener('mousemove', e => {
-    const r = wrap.getBoundingClientRect();
-    const mx = (e.clientX - r.left) / r.width  - 0.5; // −0.5 → 0.5
-    const my = (e.clientY - r.top)  / r.height - 0.5;
-    targetRotX = -my * 16;  // max ±8°
-    targetRotY =  mx * 20;  // max ±10°
-  });
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
 
-  // ── Boucle d'animation ────────────────────────────────
-  function tick(now) {
-    // Flottement sinusoïdal continu
-    const floatY = Math.sin((now - startTime) / 2200) * 13;
+  window.addEventListener('resize', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
 
-    // Lerp vers la cible (doux si hover, retour lent si pas hover)
-    const lerpSpeed = isHovering ? 0.12 : 0.06;
-    currentRotX += (targetRotX - currentRotX) * lerpSpeed;
-    currentRotY += (targetRotY - currentRotY) * lerpSpeed;
-
-    // Ombre dynamique : décalée selon l'inclinaison → renforce l'effet 3D
-    const shadowOffX    = currentRotY * -1.8;
-    const shadowOffY    = 18 - floatY * 0.6 + Math.abs(currentRotX) * 1.5;
-    const shadowBlur    = isHovering ? 75 : 55;
-    const shadowOpacity = isHovering ? 0.28 : 0.14;
-    const scaleVal      = isHovering ? 1.025 : 1;
-
-    img.style.transform = `
-      translateY(${scrollOffset + floatY}px)
-      rotateX(${currentRotX}deg)
-      rotateY(${currentRotY}deg)
-      scale(${scaleVal})
-    `;
-    img.style.filter =
-      `drop-shadow(${shadowOffX}px ${shadowOffY}px ${shadowBlur}px rgba(0,0,0,${shadowOpacity}))`;
-
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
+  update(); // état initial
 }
 
 // ============================================
