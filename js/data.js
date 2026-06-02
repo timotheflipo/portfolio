@@ -136,7 +136,7 @@ const thematiquesData = [
     title: "Concevoir et faire avancer des projets créateurs de valeur",
     tags: ["Entreprendre", "Créer", "Innover"],
     image: "images/section5_v2.jpg",
-    bgPosition: "center center",
+    bgPosition: "center 18%",
     imageAlt: "Présentation de projet — Timothé Flipo au micro",
     cards: [
       {
