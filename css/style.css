@@ -523,11 +523,34 @@ ul { list-style: none; }
 }
 
 /* Left visual */
+/* Bloc visuel : padding = fond coloré visible autour du cadre */
 .theme-visual {
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* l'ombre du cadre peut déborder */
   min-height: 480px;
+  padding: 2.5rem;
+  display: flex;
+  align-items: stretch;
 }
+
+/* Cadre arrondi qui contient photo + encart */
+.theme-visual-frame {
+  position: relative;
+  flex: 1;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow:
+    0 4px 16px rgba(0,0,0,0.08),
+    0 20px 56px rgba(0,0,0,0.16);
+  min-height: 380px;
+  transition: box-shadow var(--t-med);
+}
+.theme-visual-frame:hover {
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.10),
+    0 28px 72px rgba(0,0,0,0.20);
+}
+
 .theme-visual-bg {
   position: absolute;
   inset: 0;
@@ -535,7 +558,19 @@ ul { list-style: none; }
   background-position: center;
   transition: transform 0.8s ease;
 }
-.theme-section:hover .theme-visual-bg { transform: scale(1.03); }
+.theme-visual-frame:hover .theme-visual-bg { transform: scale(1.04); }
+
+/* Dégradé au bas du cadre pour lisibilité de l'encart */
+.theme-visual-frame.has-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 65%;
+  background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .theme-visual-placeholder {
   position: absolute;
   inset: 0;
@@ -548,19 +583,25 @@ ul { list-style: none; }
   color: rgba(0,0,0,0.3);
   background: linear-gradient(135deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.08) 100%);
 }
+
+/* Encart en bas à l'intérieur du cadre */
 .theme-overlay {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  padding: 2rem;
+  padding: 1.5rem;
+  z-index: 2;
 }
 .theme-encart {
-  border-radius: var(--r-lg);
-  padding: 1.75rem;
+  border-radius: var(--r-md);
+  padding: 1.4rem 1.6rem;
+  /* légère transparence pour voir la photo à travers sur les sections avec image */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 .theme-encart h2 {
-  font-size: clamp(1.1rem, 2.2vw, 1.7rem);
+  font-size: clamp(1rem, 2vw, 1.55rem);
   line-height: 1.3;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 .tags-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag {
@@ -1393,7 +1434,8 @@ ul { list-style: none; }
   .notion-grid { grid-template-columns: 1fr; }
   .notion-blocks { padding-left: 0; }
   .theme-inner { grid-template-columns: 1fr; }
-  .theme-visual { min-height: 320px; }
+  .theme-visual { min-height: 320px; padding: 1.5rem; }
+  .theme-visual-frame { min-height: 260px; border-radius: 20px; }
   .theme-cards { padding: 2.5rem 2rem; }
   .contact-layout { grid-template-columns: 1fr; }
   .tl-item { grid-template-columns: 1fr; position: relative; }

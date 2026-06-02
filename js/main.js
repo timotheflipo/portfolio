@@ -196,13 +196,16 @@ function buildThematiques(container) {
     section.innerHTML = `
       <div class="theme-inner${rev ? ' reversed' : ''}">
         <div class="theme-visual ${rev ? 'reveal-r' : 'reveal-l'}">
-          <div class="theme-visual-bg" ${theme.image ? `style="background-image:url('${theme.image}'); background-position:${theme.bgPosition || 'center'};"` : ''}></div>
-          ${theme.image ? '' : `<div class="theme-visual-placeholder">Image à ajouter</div>`}
-          <div class="theme-overlay">
-            <div class="theme-encart" style="background-color: ${theme.encartColor}">
-              <h2 style="${encartTextClass}">${theme.title}</h2>
-              <div class="tags-row">
-                ${theme.tags.map(t => `<span class="tag" style="${tagStyle}">${t}</span>`).join('')}
+          <!-- Cadre arrondi qui contient photo + encart -->
+          <div class="theme-visual-frame${theme.image ? ' has-image' : ''}">
+            <div class="theme-visual-bg" ${theme.image ? `style="background-image:url('${theme.image}'); background-position:${theme.bgPosition || 'center'};"` : ''}></div>
+            ${theme.image ? '' : `<div class="theme-visual-placeholder">Image à ajouter</div>`}
+            <div class="theme-overlay">
+              <div class="theme-encart" style="background-color: ${theme.encartColor}">
+                <h2 style="${encartTextClass}">${theme.title}</h2>
+                <div class="tags-row">
+                  ${theme.tags.map(t => `<span class="tag" style="${tagStyle}">${t}</span>`).join('')}
+                </div>
               </div>
             </div>
           </div>
