@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio",
+      "runtimeExecutable": "perl",
+      "runtimeArgs": ["/Users/tim/Documents/Cours/BUT GEA 3/PORTFOLIO/Claude/server.pl"],
+      "port": 3456
+    }
+  ]
+}
