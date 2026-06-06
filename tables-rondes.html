@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tables rondes Roole : renforcer l'impact d'un événement professionnel — Timothé Flipo.">
+  <title>Tables rondes Roole — Timothé Flipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,700;1,700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=48">
+  <style>
+
+    /* ---- Hero ---- */
+    .proj-hero {
+      padding: calc(var(--header-h) + 5rem) 2rem 4rem;
+      background-color: var(--bg);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .proj-hero-inner { max-width: 860px; margin: 0 auto; }
+    .proj-breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; color: var(--light-gray);
+      margin-bottom: 1.75rem; text-transform: uppercase;
+      letter-spacing: 0.1em; font-weight: 600;
+    }
+    .proj-breadcrumb a { color: var(--light-gray); transition: color .2s; }
+    .proj-breadcrumb a:hover { color: var(--accent); }
+    .proj-breadcrumb-sep { opacity: 0.4; }
+    .proj-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--accent); font-weight: 700; margin-bottom: 1rem;
+    }
+    .proj-eyebrow::before {
+      content: ''; display: block; width: 18px; height: 1.5px;
+      background-color: var(--accent); opacity: 0.6;
+    }
+    .proj-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: clamp(1.6rem, 3.5vw, 2.7rem); line-height: 1.2;
+      color: var(--dark); margin-bottom: 1rem;
+    }
+    .proj-subtitle {
+      font-size: 0.92rem; color: var(--gray); line-height: 1.75;
+      max-width: 600px; margin-bottom: 1.75rem;
+    }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .context-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 16px; border-radius: 50px;
+      font-size: 0.72rem; font-weight: 700;
+      background-color: var(--dark); color: var(--white);
+    }
+    .proj-tag-hero {
+      padding: 5px 14px; border-radius: 50px; font-size: 0.68rem;
+      font-weight: 700; letter-spacing: 0.04em;
+      background-color: var(--accent-muted); color: var(--accent-dark);
+      border: 1px solid var(--accent-border);
+    }
+    .badge-sep { width: 1px; height: 20px; background-color: rgba(0,0,0,0.1); }
+
+    /* ---- Contenu ---- */
+    .proj-content { padding: 5rem 2rem 8rem; }
+    .proj-content-inner {
+      max-width: 860px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 5rem;
+    }
+    .section-label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.62rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--accent);
+      font-weight: 700; margin-bottom: 0.6rem;
+    }
+    .section-label::after { content: ''; width: 32px; height: 1px; background-color: var(--accent); opacity: 0.35; }
+    .section-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: 1.2rem; color: var(--dark); margin-bottom: 1.5rem; line-height: 1.3;
+    }
+
+    /* ---- 4 phases événementielles ---- */
+    .phases-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+    }
+    .phase-card {
+      background-color: var(--white); border-radius: var(--r-lg);
+      border: 1px solid var(--card-border); overflow: hidden;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .phase-card:hover { box-shadow: var(--shadow-sm); transform: translateY(-3px); }
+    .phase-card-top {
+      padding: 1.25rem 1.25rem 1rem;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+    .phase-num {
+      font-size: 0.58rem; font-weight: 800; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+    }
+    .phase-card h4 { font-size: 0.85rem; font-weight: 800; color: var(--dark); line-height: 1.35; }
+    .phase-card-bottom { padding: 1rem 1.25rem; }
+    .phase-card p { font-size: 0.76rem; color: var(--gray); line-height: 1.65; }
+    .phase-output {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 0.75rem; font-size: 0.62rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--accent-dark);
+    }
+    .phase-output::before {
+      content: ''; display: block; width: 5px; height: 5px;
+      border-radius: 50%; background-color: var(--accent); flex-shrink: 0;
+    }
+
+    /* ---- Focus PowerPoint (synthèse) ---- */
+    .ppt-card {
+      background-color: var(--dark); border-radius: var(--r-xl);
+      padding: 2.5rem; display: flex; flex-direction: column; gap: 2rem;
+    }
+    .ppt-header { }
+    .ppt-label {
+      font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--accent); margin-bottom: 8px;
+    }
+    .ppt-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: clamp(1rem, 2.2vw, 1.3rem); color: var(--white); line-height: 1.3;
+    }
+    .ppt-synthesis {
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      gap: 1.5rem; align-items: center;
+    }
+    .ppt-sources { }
+    .ppt-col-label {
+      font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; margin-bottom: 10px;
+    }
+    .ppt-sources .ppt-col-label { color: rgba(255,255,255,0.38); }
+    .ppt-output-col .ppt-col-label { color: var(--accent); }
+    .ppt-source-item {
+      display: flex; gap: 0.6rem; align-items: flex-start;
+      font-size: 0.78rem; color: rgba(255,255,255,0.52);
+      line-height: 1.5; margin-bottom: 0.6rem;
+    }
+    .ppt-source-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background-color: rgba(255,255,255,0.25); flex-shrink: 0; margin-top: 6px;
+    }
+    .ppt-arrow-wrap {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .ppt-arrow-icon { font-size: 1.4rem; color: var(--accent); }
+    .ppt-arrow-label {
+      font-size: 0.56rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: rgba(255,255,255,0.2);
+    }
+    .ppt-output-items { display: flex; flex-direction: column; gap: 0.6rem; }
+    .ppt-output-item {
+      display: flex; gap: 0.75rem; align-items: flex-start;
+      padding: 0.7rem 1rem; border-radius: var(--r-md);
+      background-color: rgba(255,111,60,0.12);
+      border: 1px solid rgba(255,111,60,0.2);
+    }
+    .ppt-output-item-icon { font-size: 0.85rem; flex-shrink: 0; }
+    .ppt-output-item span { font-size: 0.78rem; color: rgba(255,255,255,0.78); line-height: 1.5; }
+    .ppt-metric {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 1rem 1.25rem; border-radius: var(--r-md);
+      background-color: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .ppt-metric-num {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 2rem; color: var(--accent); line-height: 1; flex-shrink: 0;
+    }
+    .ppt-metric-text { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+    /* ---- Initiative : nouveau format ---- */
+    .initiative {
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: start;
+    }
+    .initiative-left {
+      background-color: var(--white); border-radius: var(--r-xl);
+      padding: 2rem; border: 1px solid var(--card-border);
+    }
+    .initiative-badge {
+      display: inline-block; margin-bottom: 1rem;
+      padding: 4px 14px; border-radius: 50px; font-size: 0.62rem; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background-color: var(--accent-muted); color: var(--accent-dark);
+      border: 1px solid var(--accent-border);
+    }
+    .initiative-left h4 { font-size: 0.95rem; font-weight: 800; color: var(--dark); margin-bottom: 0.75rem; line-height: 1.35; }
+    .initiative-left p { font-size: 0.82rem; color: var(--gray); line-height: 1.75; }
+    .initiative-steps { display: flex; flex-direction: column; gap: 0.6rem; }
+    .initiative-step {
+      display: flex; gap: 0.75rem; align-items: flex-start;
+      padding: 0.85rem 1rem; border-radius: var(--r-md);
+      background-color: var(--white); border: 1px solid var(--card-border);
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .initiative-step:hover { box-shadow: var(--shadow-sm); border-color: var(--accent-border); }
+    .initiative-step-num {
+      width: 22px; height: 22px; min-width: 22px; border-radius: 50%;
+      background-color: var(--accent-muted); border: 1px solid var(--accent-border);
+      color: var(--accent-dark); display: flex; align-items: center; justify-content: center;
+      font-size: 0.62rem; font-weight: 800; flex-shrink: 0;
+    }
+    .initiative-step-body h5 { font-size: 0.8rem; font-weight: 700; color: var(--dark); margin-bottom: 2px; }
+    .initiative-step-body p { font-size: 0.75rem; color: var(--gray); line-height: 1.55; }
+
+    /* ---- Progression ---- */
+    .shift-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    }
+    .shift-col { }
+    .shift-col-label {
+      font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 0.75rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .shift-col-label::before {
+      content: ''; display: block; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    }
+    .shift-col-label.before { color: var(--light-gray); }
+    .shift-col-label.before::before { background-color: var(--light-gray); }
+    .shift-col-label.after { color: var(--accent); }
+    .shift-col-label.after::before { background-color: var(--accent); }
+    .shift-item {
+      background-color: var(--white); border-radius: var(--r-md);
+      padding: 1rem 1.1rem; border: 1px solid var(--card-border);
+      margin-bottom: 0.6rem; transition: box-shadow .2s;
+    }
+    .shift-item:last-child { margin-bottom: 0; }
+    .shift-item:hover { box-shadow: var(--shadow-sm); }
+    .shift-item.after { border-color: var(--accent-border); background-color: var(--accent-muted); }
+    .shift-item strong {
+      display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 3px;
+    }
+    .shift-item.after strong { color: var(--accent-dark); }
+    .shift-item p { font-size: 0.78rem; color: var(--gray); line-height: 1.6; }
+
+    /* ---- Skills light ---- */
+    .skills-light { padding-top: 3rem; border-top: 1px solid rgba(0,0,0,0.07); }
+    .skills-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem; }
+    .skill-light-card {
+      background-color: var(--white); border-radius: var(--r-md);
+      padding: 1.1rem; border: 1px solid var(--card-border);
+      transition: box-shadow .25s, border-color .25s;
+    }
+    .skill-light-card:hover { box-shadow: var(--shadow-sm); border-color: var(--accent-border); }
+    .skill-light-name {
+      font-size: 0.72rem; font-weight: 800; color: var(--accent);
+      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px;
+    }
+    .skill-light-desc { font-size: 0.75rem; color: var(--gray); line-height: 1.62; }
+
+    /* ---- Back ---- */
+    .proj-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; font-weight: 600; color: var(--gray);
+      text-decoration: none; transition: color .2s;
+    }
+    .proj-back:hover { color: var(--accent); }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 860px) {
+      .phases-grid { grid-template-columns: repeat(2, 1fr); }
+      .ppt-synthesis { grid-template-columns: 1fr; }
+      .ppt-arrow-wrap { flex-direction: row; }
+      .ppt-arrow-icon { transform: rotate(90deg); }
+      .initiative { grid-template-columns: 1fr; }
+      .shift-grid { grid-template-columns: 1fr; }
+      .skills-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .phases-grid { grid-template-columns: 1fr; }
+      .skills-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="proj-hero">
+    <div class="proj-hero-inner">
+      <div class="proj-breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span class="proj-breadcrumb-sep">›</span>
+        <span>Tables rondes Roole</span>
+      </div>
+      <div class="proj-eyebrow">Roole · Alternance 2024–2026</div>
+      <h1 class="proj-title">Tables rondes Roole :<br>renforcer l'impact d'un événement professionnel</h1>
+      <p class="proj-subtitle">Du cadrage des thématiques à la présentation projetée devant 80 personnes — piloter un événement professionnel sur plusieurs fronts à la fois.</p>
+      <div class="hero-badges">
+        <span class="context-badge">🎤 80 personnes</span>
+        <span class="badge-sep"></span>
+        <span class="proj-tag-hero">Analyser</span>
+        <span class="proj-tag-hero">Décider</span>
+        <span class="proj-tag-hero">Piloter</span>
+        <span class="proj-tag-hero">Développer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENU -->
+  <div class="proj-content">
+    <div class="proj-content-inner">
+
+      <!-- 4 phases -->
+      <div>
+        <div class="section-label">Parcours événementiel</div>
+        <h2 class="section-title">Quatre phases, du cadrage à l'impact</h2>
+        <div class="phases-grid">
+          <div class="phase-card">
+            <div class="phase-card-top">
+              <div class="phase-num">Phase 01</div>
+              <h4>Cadrage des thématiques</h4>
+            </div>
+            <div class="phase-card-bottom">
+              <p>Définition des sujets à aborder, formulation des angles et choix du format — ce qui conditionne directement l'impact de l'événement.</p>
+              <div class="phase-output">Thématiques & angles définis</div>
+            </div>
+          </div>
+          <div class="phase-card">
+            <div class="phase-card-top">
+              <div class="phase-num">Phase 02</div>
+              <h4>Coordination des invitations</h4>
+            </div>
+            <div class="phase-card-bottom">
+              <p>Suivi des inscriptions via Forms et Excel, adaptation des mails selon les publics ciblés pour des messages plus clairs et plus engageants.</p>
+              <div class="phase-output">Invitations & suivi des inscrits</div>
+            </div>
+          </div>
+          <div class="phase-card">
+            <div class="phase-card-top">
+              <div class="phase-num">Phase 03</div>
+              <h4>Construction du support</h4>
+            </div>
+            <div class="phase-card-bottom">
+              <p>Structuration du PowerPoint à partir de données d'enquête (Roole / institut de sondage) et de recherches personnelles sur les enjeux de mobilité.</p>
+              <div class="phase-output">PowerPoint projeté devant 80 pers.</div>
+            </div>
+          </div>
+          <div class="phase-card">
+            <div class="phase-card-top">
+              <div class="phase-num">Phase 04</div>
+              <h4>Proposition de nouveau format</h4>
+            </div>
+            <div class="phase-card-bottom">
+              <p>Analyse des besoins, des contraintes et recherche de formats alternatifs pour renforcer l'impact et crédibiliser Roole dans le milieu de la mobilité.</p>
+              <div class="phase-output">Recommandation de format</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Focus PowerPoint -->
+      <div class="ppt-card">
+        <div class="ppt-header">
+          <div class="ppt-label">Livrable clé · Compétence centrale</div>
+          <div class="ppt-title">Transformer des informations dispersées en support professionnel</div>
+        </div>
+        <div class="ppt-synthesis">
+          <div class="ppt-sources">
+            <div class="ppt-col-label">Sources mobilisées</div>
+            <div class="ppt-source-item">
+              <div class="ppt-source-dot"></div>
+              Enquête Roole conduite avec un institut de sondage — données quantitatives sur les enjeux de mobilité.
+            </div>
+            <div class="ppt-source-item">
+              <div class="ppt-source-dot"></div>
+              Recherches personnelles sur les tendances et problématiques sectorielles.
+            </div>
+            <div class="ppt-source-item">
+              <div class="ppt-source-dot"></div>
+              Contraintes de l'événement (public, objectifs, positionnement de Roole).
+            </div>
+          </div>
+          <div class="ppt-arrow-wrap">
+            <div class="ppt-arrow-icon">→</div>
+            <div class="ppt-arrow-label">Synthèse</div>
+          </div>
+          <div class="ppt-output-col">
+            <div class="ppt-col-label">Ce que j'ai produit</div>
+            <div class="ppt-output-items">
+              <div class="ppt-output-item">
+                <div class="ppt-output-item-icon">📊</div>
+                <span>Structure claire et hiérarchisée du support de présentation</span>
+              </div>
+              <div class="ppt-output-item">
+                <div class="ppt-output-item-icon">🎯</div>
+                <span>Messages adaptés à un public professionnel de la mobilité</span>
+              </div>
+              <div class="ppt-output-item">
+                <div class="ppt-output-item-icon">✨</div>
+                <span>Support projeté devant 80 personnes lors de l'événement</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Initiative : nouveau format -->
+      <div>
+        <div class="section-label">Initiative</div>
+        <h2 class="section-title">Proposer un nouveau format pour renforcer l'impact</h2>
+        <div class="initiative">
+          <div class="initiative-left">
+            <div class="initiative-badge">Contribution proactive</div>
+            <h4>Aller au-delà de l'exécution pour questionner le format</h4>
+            <p>Chargé d'analyser comment rendre les tables rondes plus impactantes, j'ai adopté une démarche structurée pour identifier le format le plus adapté aux objectifs et aux moyens de Roole.</p>
+          </div>
+          <div class="initiative-steps">
+            <div class="initiative-step">
+              <div class="initiative-step-num">1</div>
+              <div class="initiative-step-body">
+                <h5>Analyse des besoins et contraintes</h5>
+                <p>Objectifs de Roole, contraintes techniques, budgétaires et organisationnelles comme point de départ.</p>
+              </div>
+            </div>
+            <div class="initiative-step">
+              <div class="initiative-step-num">2</div>
+              <div class="initiative-step-body">
+                <h5>Recherches sur les formats existants</h5>
+                <p>Exploration de différents types d'événements professionnels pour identifier les approches les plus pertinentes.</p>
+              </div>
+            </div>
+            <div class="initiative-step">
+              <div class="initiative-step-num">3</div>
+              <div class="initiative-step-body">
+                <h5>Recommandation fondée</h5>
+                <p>Sélection du format le mieux aligné avec les objectifs, les moyens disponibles et le positionnement de Roole dans la mobilité.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progression -->
+      <div>
+        <div class="section-label">Montée en compétence</div>
+        <h2 class="section-title">De l'exécution à la contribution active</h2>
+        <div class="shift-grid">
+          <div class="shift-col">
+            <div class="shift-col-label before">Logique d'exécution</div>
+            <div class="shift-item">
+              <strong>Appliquer des instructions</strong>
+              <p>Réaliser les tâches définies par d'autres, sans nécessairement questionner le fond ou proposer des alternatives.</p>
+            </div>
+            <div class="shift-item">
+              <strong>Adapter sans anticiper</strong>
+              <p>Réagir aux demandes ponctuelles plutôt que d'anticiper les besoins du projet dans sa globalité.</p>
+            </div>
+          </div>
+          <div class="shift-col">
+            <div class="shift-col-label after">Contribution active</div>
+            <div class="shift-item after">
+              <strong>Organiser et synthétiser l'information</strong>
+              <p>Transformer des données dispersées en support structuré, professionnel et directement utilisable à fort enjeu.</p>
+            </div>
+            <div class="shift-item after">
+              <strong>Proposer et argumenter</strong>
+              <p>Analyser les besoins, mener des recherches et recommander un format fondé — dépasser la simple demande initiale.</p>
+            </div>
+            <div class="shift-item after">
+              <strong>Adapter le message au public</strong>
+              <p>Rédiger des communications différenciées selon les profils ciblés pour un engagement plus fort.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="skills-light">
+        <div class="section-label">Compétences mobilisées</div>
+        <div class="skills-row">
+          <div class="skill-light-card">
+            <div class="skill-light-name">Analyser</div>
+            <div class="skill-light-desc">Analyser les besoins et contraintes de Roole pour orienter le cadrage et la proposition de format.</div>
+          </div>
+          <div class="skill-light-card">
+            <div class="skill-light-name">Décider</div>
+            <div class="skill-light-desc">Choisir le format événementiel et les messages les mieux adaptés aux objectifs et aux publics ciblés.</div>
+          </div>
+          <div class="skill-light-card">
+            <div class="skill-light-name">Piloter</div>
+            <div class="skill-light-desc">Coordonner invitations, suivi Excel/Forms et préparation du support sur l'ensemble du projet.</div>
+          </div>
+          <div class="skill-light-card">
+            <div class="skill-light-name">Développer</div>
+            <div class="skill-light-desc">Concevoir une communication ciblée et un support professionnel pour valoriser Roole dans le milieu de la mobilité.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Retour -->
+      <a href="index.html" class="proj-back">← Retour au portfolio</a>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <div class="footer-logo-mark">TF</div>
+      <span class="footer-name">Timothé Flipo</span>
+    </div>
+    <span class="footer-copy">© 2026 — Portfolio BUT GEA · Parcours GEMA</span>
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="parcours.html">Parcours</a>
+      <a href="competences.html">Compétences</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="js/data.js?v=48"></script>
+  <script src="js/main.js?v=48"></script>
+</body>
+</html>

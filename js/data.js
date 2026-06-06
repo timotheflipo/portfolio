@@ -155,7 +155,7 @@ const thematiquesData = [
         title: "Tables rondes Roole : renforcer l'impact d'un événement professionnel",
         description: "Du cadrage des thématiques à la création des supports d'invitation, jusqu'à la construction d'une présentation projetée devant 80 personnes, ce projet m'a appris à piloter un événement professionnel sur plusieurs fronts.",
         tags: ["Analyser", "Décider", "Piloter", "Développer"],
-        link: "#",
+        link: "tables-rondes.html",
         popupName: "Tables rondes Roole",
         competencyDetails: [
           { name: "Analyser", level: "Niveau 3", description: "Intégrer les enjeux et contraintes de l'organisation.", example: "Analyse des besoins et contraintes de Roole." },
