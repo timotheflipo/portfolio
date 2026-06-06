@@ -112,7 +112,7 @@ const thematiquesData = [
         title: "Piloter une transformation numérique par les KPI",
         description: "Je ne me suis pas contenté d'analyser la situation et de proposer des pistes de transformation numérique. J'ai choisi d'aller plus loin en construisant sur Notion un véritable outil de pilotage fonctionnel.",
         tags: ["Analyser", "Décider", "Piloter", "Développer"],
-        link: "#",
+        link: "transfo-numerique.html",
         popupName: "Transformation numérique par les KPI",
         competencyDetails: [
           { name: "Analyser", level: "Niveau 3", description: "Intégrer les enjeux de l'organisation et proposer des améliorations.", example: "Diagnostic DIMM chez Roole et définition de trois chantiers de transformation." },

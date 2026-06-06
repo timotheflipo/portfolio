@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Piloter une transformation numérique par les KPI — Projet de Timothé Flipo chez Roole.">
+  <title>Transformation numérique — Timothé Flipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,700;1,700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=48">
+  <style>
+
+    /* ---- Hero ---- */
+    .proj-hero {
+      padding: calc(var(--header-h) + 5rem) 2rem 4rem;
+      background-color: var(--bg);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .proj-hero-inner { max-width: 860px; margin: 0 auto; }
+    .proj-breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; color: var(--light-gray);
+      margin-bottom: 1.75rem; text-transform: uppercase;
+      letter-spacing: 0.1em; font-weight: 600;
+    }
+    .proj-breadcrumb a { color: var(--light-gray); transition: color .2s; }
+    .proj-breadcrumb a:hover { color: var(--accent); }
+    .proj-breadcrumb-sep { opacity: 0.4; }
+    .proj-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--accent); font-weight: 700; margin-bottom: 1rem;
+    }
+    .proj-eyebrow::before {
+      content: ''; display: block; width: 18px; height: 1.5px;
+      background-color: var(--accent); opacity: 0.6;
+    }
+    .proj-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: clamp(1.6rem, 3.5vw, 2.7rem); line-height: 1.2;
+      color: var(--dark); margin-bottom: 1rem;
+    }
+    .proj-subtitle {
+      font-size: 0.92rem; color: var(--gray); line-height: 1.75;
+      max-width: 620px; margin-bottom: 1.75rem;
+    }
+    .proj-tags-hero { display: flex; flex-wrap: wrap; gap: 8px; }
+    .proj-tag-hero {
+      padding: 5px 14px; border-radius: 50px; font-size: 0.68rem;
+      font-weight: 700; letter-spacing: 0.04em;
+      background-color: var(--accent-muted); color: var(--accent-dark);
+      border: 1px solid var(--accent-border);
+    }
+
+    /* ---- Contenu ---- */
+    .proj-content { padding: 5rem 2rem 8rem; }
+    .proj-content-inner {
+      max-width: 860px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 5rem;
+    }
+    .section-label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.62rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--accent);
+      font-weight: 700; margin-bottom: 0.6rem;
+    }
+    .section-label::after { content: ''; width: 32px; height: 1px; background-color: var(--accent); opacity: 0.35; }
+    .section-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: 1.2rem; color: var(--dark); margin-bottom: 1.5rem; line-height: 1.3;
+    }
+
+    /* ---- Diagnostic DIMM ---- */
+    .dimm-header {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+    }
+    .dimm-badge {
+      padding: 4px 14px; border-radius: 50px; font-size: 0.64rem; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background-color: var(--dark); color: var(--white);
+    }
+    .dimm-subtitle {
+      font-size: 0.82rem; color: var(--gray);
+    }
+    .frictions {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    }
+    .friction-card {
+      background-color: var(--white); border-radius: var(--r-lg);
+      padding: 1.4rem; border: 1px solid var(--card-border);
+      border-top: 3px solid var(--accent);
+      transition: box-shadow .25s, transform .25s;
+    }
+    .friction-card:hover { box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+    .friction-label {
+      font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--accent); margin-bottom: 8px;
+    }
+    .friction-card h4 { font-size: 0.85rem; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
+    .friction-card p { font-size: 0.78rem; color: var(--gray); line-height: 1.62; }
+
+    /* ---- 3 Chantiers ---- */
+    .chantiers {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    }
+    .chantier {
+      background-color: var(--white); border-radius: var(--r-xl);
+      padding: 2rem 1.5rem; border: 1px solid var(--card-border);
+      display: flex; flex-direction: column; gap: 0;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .chantier:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .chantier-num {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 3rem; line-height: 1; color: var(--accent);
+      opacity: 0.18; margin-bottom: 0.5rem;
+      letter-spacing: -0.03em;
+    }
+    .chantier h4 {
+      font-size: 0.92rem; font-weight: 800; color: var(--dark);
+      margin-bottom: 0.75rem; line-height: 1.35;
+    }
+    .chantier p {
+      font-size: 0.78rem; color: var(--gray); line-height: 1.68; flex: 1;
+      margin-bottom: 1rem;
+    }
+    .chantier-tag {
+      display: inline-block; padding: 3px 11px; border-radius: 50px;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em;
+      background-color: var(--accent-muted); color: var(--accent-dark);
+      border: 1px solid var(--accent-border);
+    }
+
+    /* ---- KPI + Executive summary ---- */
+    .deliverables {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .deliverable {
+      background-color: var(--white); border-radius: var(--r-lg);
+      padding: 1.5rem; border: 1px solid var(--card-border);
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: box-shadow .25s;
+    }
+    .deliverable:hover { box-shadow: var(--shadow-sm); }
+    .deliverable-icon {
+      width: 42px; height: 42px; min-width: 42px; border-radius: var(--r-md);
+      background-color: var(--accent-muted); border: 1px solid var(--accent-border);
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+    }
+    .deliverable h4 { font-size: 0.88rem; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
+    .deliverable p { font-size: 0.78rem; color: var(--gray); line-height: 1.62; }
+
+    /* ---- Banner "au-delà" ---- */
+    .beyond-banner {
+      background-color: var(--accent);
+      border-radius: var(--r-xl);
+      padding: 2.75rem 2.5rem;
+      display: flex; gap: 2rem; align-items: flex-start;
+    }
+    .beyond-icon {
+      font-size: 2rem; flex-shrink: 0; margin-top: 2px;
+      filter: grayscale(1) brightness(2);
+    }
+    .beyond-label {
+      font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.18em; color: rgba(255,255,255,0.7); margin-bottom: 8px;
+    }
+    .beyond-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: clamp(1rem, 2.2vw, 1.3rem); color: var(--white);
+      line-height: 1.3; margin-bottom: 0.75rem;
+    }
+    .beyond-sub {
+      font-size: 0.84rem; color: rgba(255,255,255,0.78); line-height: 1.72;
+    }
+
+    /* ---- Espaces Notion ---- */
+    .notion-spaces {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem;
+    }
+    .notion-space {
+      background-color: var(--white); border-radius: var(--r-md);
+      padding: 1.1rem; border: 1px solid var(--card-border); text-align: center;
+      transition: box-shadow .25s, border-color .25s;
+    }
+    .notion-space:hover { box-shadow: var(--shadow-sm); border-color: var(--accent-border); }
+    .notion-space-icon { font-size: 1.3rem; margin-bottom: 8px; display: block; }
+    .notion-space h5 { font-size: 0.72rem; font-weight: 700; color: var(--dark); line-height: 1.4; }
+
+    /* ---- Changement de posture ---- */
+    .posture-shift {
+      display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 0; align-items: center;
+    }
+    .posture-step {
+      background-color: var(--white); border-radius: var(--r-lg);
+      padding: 1.5rem; border: 1px solid var(--card-border); text-align: center;
+      transition: box-shadow .25s;
+    }
+    .posture-step:hover { box-shadow: var(--shadow-sm); }
+    .posture-step:last-child { background-color: var(--dark); border-color: var(--dark); }
+    .posture-step-num {
+      display: inline-block; font-size: 0.6rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .posture-step:last-child .posture-step-num { color: var(--accent); }
+    .posture-step h4 { font-size: 0.85rem; font-weight: 700; color: var(--dark); margin-bottom: 5px; line-height: 1.3; }
+    .posture-step p { font-size: 0.75rem; color: var(--gray); line-height: 1.6; }
+    .posture-step:last-child h4 { color: var(--white); }
+    .posture-step:last-child p { color: rgba(255,255,255,0.5); }
+    .posture-arrow { font-size: 1.1rem; color: var(--accent); opacity: 0.5; padding: 0 0.6rem; text-align: center; }
+
+    /* ---- Skills light ---- */
+    .skills-light { padding-top: 3rem; border-top: 1px solid rgba(0,0,0,0.07); }
+    .skills-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem; }
+    .skill-light-card {
+      background-color: var(--white); border-radius: var(--r-md);
+      padding: 1.1rem; border: 1px solid var(--card-border);
+      transition: box-shadow .25s, border-color .25s;
+    }
+    .skill-light-card:hover { box-shadow: var(--shadow-sm); border-color: var(--accent-border); }
+    .skill-light-name {
+      font-size: 0.72rem; font-weight: 800; color: var(--accent);
+      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px;
+    }
+    .skill-light-desc { font-size: 0.75rem; color: var(--gray); line-height: 1.62; }
+
+    /* ---- Back ---- */
+    .proj-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; font-weight: 600; color: var(--gray);
+      text-decoration: none; transition: color .2s;
+    }
+    .proj-back:hover { color: var(--accent); }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 860px) {
+      .frictions { grid-template-columns: 1fr; }
+      .chantiers { grid-template-columns: 1fr; }
+      .deliverables { grid-template-columns: 1fr; }
+      .notion-spaces { grid-template-columns: repeat(3, 1fr); }
+      .posture-shift { grid-template-columns: 1fr; gap: 0.75rem; }
+      .posture-arrow { transform: rotate(90deg); padding: 0; }
+      .skills-row { grid-template-columns: repeat(2, 1fr); }
+      .beyond-banner { flex-direction: column; gap: 1rem; }
+    }
+    @media (max-width: 500px) {
+      .notion-spaces { grid-template-columns: repeat(2, 1fr); }
+      .skills-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="proj-hero">
+    <div class="proj-hero-inner">
+      <div class="proj-breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span class="proj-breadcrumb-sep">›</span>
+        <span>Transformation numérique</span>
+      </div>
+      <div class="proj-eyebrow">Roole · Projet IUT / Alternance</div>
+      <h1 class="proj-title">Piloter une transformation numérique par les KPI</h1>
+      <p class="proj-subtitle">Analyser la maturité numérique de Roole via le modèle DIMM, construire une stratégie en trois chantiers, définir des KPI mesurables — et aller plus loin en créant un tableau de bord de pilotage sur Notion.</p>
+      <div class="proj-tags-hero">
+        <span class="proj-tag-hero">Analyser</span>
+        <span class="proj-tag-hero">Décider</span>
+        <span class="proj-tag-hero">Piloter</span>
+        <span class="proj-tag-hero">Développer</span>
+        <span class="proj-tag-hero">Notion</span>
+        <span class="proj-tag-hero">KPI</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENU -->
+  <div class="proj-content">
+    <div class="proj-content-inner">
+
+      <!-- Diagnostic DIMM -->
+      <div>
+        <div class="section-label">Point de départ</div>
+        <div class="dimm-header">
+          <h2 class="section-title" style="margin-bottom:0">Trois freins identifiés par le diagnostic DIMM</h2>
+          <span class="dimm-badge">Modèle DIMM</span>
+        </div>
+        <p style="font-size:0.85rem;color:var(--gray);line-height:1.75;margin-bottom:1.5rem;max-width:680px">
+          Les freins ne se situaient pas seulement au niveau de l'outil, mais dans son <strong style="color:var(--dark)">exécution sur le terrain</strong>.
+        </p>
+        <div class="frictions">
+          <div class="friction-card">
+            <div class="friction-label">Frein 01</div>
+            <h4>Pratiques hétérogènes</h4>
+            <p>Les usages variaient significativement d'une concession à l'autre, sans cohérence dans l'adoption des outils.</p>
+          </div>
+          <div class="friction-card">
+            <div class="friction-label">Frein 02</div>
+            <h4>Ressaisies nombreuses</h4>
+            <p>Les données devaient être saisies plusieurs fois dans des systèmes peu ou pas connectés entre eux.</p>
+          </div>
+          <div class="friction-card">
+            <div class="friction-label">Frein 03</div>
+            <h4>Appropriation variable</h4>
+            <p>Les outils existaient, mais leur maîtrise différait fortement selon les profils et les habitudes des utilisateurs.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 chantiers -->
+      <div>
+        <div class="section-label">Stratégie</div>
+        <h2 class="section-title">Trois chantiers prioritaires</h2>
+        <div class="chantiers">
+          <div class="chantier">
+            <div class="chantier-num">01</div>
+            <h4>Intégration DMS & simplification des saisies</h4>
+            <p>Réduire les ressaisies en améliorant les connexions entre les outils et en standardisant les pratiques sur le terrain.</p>
+            <span class="chantier-tag">Organisationnel</span>
+          </div>
+          <div class="chantier">
+            <div class="chantier-num">02</div>
+            <h4>Recentrer l'Espace Pro sur le pilotage</h4>
+            <p>Repositionner l'outil comme un vrai espace de conformité et de suivi de l'activité, pas seulement un accès documentaire.</p>
+            <span class="chantier-tag">Opérationnel</span>
+          </div>
+          <div class="chantier">
+            <div class="chantier-num">03</div>
+            <h4>Renforcer le levier humain</h4>
+            <p>Déployer un kit vendeur et une logique de certification pour structurer la montée en compétences et fiabiliser l'adoption.</p>
+            <span class="chantier-tag">Humain</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI + Executive summary -->
+      <div>
+        <div class="section-label">Livrables construits</div>
+        <h2 class="section-title">Rendre la stratégie lisible et mesurable</h2>
+        <div class="deliverables">
+          <div class="deliverable">
+            <div class="deliverable-icon">📊</div>
+            <div>
+              <h4>KPI précis et mesurables</h4>
+              <p>Définition d'indicateurs pour suivre à la fois l'avancement des chantiers et les effets des transformations proposées dans le temps.</p>
+            </div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-icon">📝</div>
+            <div>
+              <h4>Executive summary</h4>
+              <p>Synthèse du fil directeur du projet : contexte sectoriel, problèmes identifiés, plan d'action retenu et indicateurs de suivi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner "aller plus loin" -->
+      <div class="beyond-banner">
+        <div class="beyond-icon">⚡</div>
+        <div>
+          <div class="beyond-label">Initiative personnelle</div>
+          <h3 class="beyond-title">J'ai choisi d'aller plus loin que ce qui était demandé.</h3>
+          <p class="beyond-sub">Plutôt que de s'arrêter aux recommandations, j'ai construit un tableau de bord fonctionnel sur Notion pour rendre la stratégie opérable — relier les actions prévues, les points de vigilance et les effets attendus dans un même espace de pilotage.</p>
+        </div>
+      </div>
+
+      <!-- Espaces Notion -->
+      <div>
+        <div class="section-label">Tableau de bord Notion</div>
+        <h2 class="section-title">Cinq espaces complémentaires</h2>
+        <div class="notion-spaces">
+          <div class="notion-space">
+            <span class="notion-space-icon">🗂</span>
+            <h5>Suivi des chantiers</h5>
+          </div>
+          <div class="notion-space">
+            <span class="notion-space-icon">⚠️</span>
+            <h5>Irritants terrain</h5>
+          </div>
+          <div class="notion-space">
+            <span class="notion-space-icon">🗺</span>
+            <h5>Déploiement concessions</h5>
+          </div>
+          <div class="notion-space">
+            <span class="notion-space-icon">📚</span>
+            <h5>Formations vendeurs</h5>
+          </div>
+          <div class="notion-space">
+            <span class="notion-space-icon">↕️</span>
+            <h5>Comparaison avant / après</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Changement de posture -->
+      <div>
+        <div class="section-label">Ce que cela a changé</div>
+        <h2 class="section-title">Un changement de posture dans la conduite de projet</h2>
+        <div class="posture-shift">
+          <div class="posture-step">
+            <div class="posture-step-num">Avant</div>
+            <h4>Répondre à un besoin</h4>
+            <p>Formuler des recommandations à partir d'un diagnostic.</p>
+          </div>
+          <div class="posture-arrow">→</div>
+          <div class="posture-step">
+            <div class="posture-step-num">Pendant</div>
+            <h4>Organiser l'action</h4>
+            <p>Structurer un cadre de pilotage pour suivre l'avancement et faire remonter les difficultés.</p>
+          </div>
+          <div class="posture-arrow">→</div>
+          <div class="posture-step">
+            <div class="posture-step-num">Après</div>
+            <h4>Piloter et ajuster</h4>
+            <p>Penser un projet comme une action à suivre, mesurer et faire évoluer dans la durée.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compétences -->
+      <div class="skills-light">
+        <div class="section-label">Compétences mobilisées</div>
+        <div class="skills-row">
+          <div class="skill-light-card">
+            <div class="skill-light-name">Analyser</div>
+            <div class="skill-light-desc">Diagnostic DIMM chez Roole et identification des trois axes de transformation prioritaires.</div>
+          </div>
+          <div class="skill-light-card">
+            <div class="skill-light-name">Décider</div>
+            <div class="skill-light-desc">Tableau de bord Notion, KPI mesurables et suivi des irritants terrain pour orienter les décisions.</div>
+          </div>
+          <div class="skill-light-card">
+            <div class="skill-light-name">Piloter</div>
+            <div class="skill-light-desc">Suivi des chantiers, du déploiement dans les concessions et de l'avancement des formations.</div>
+          </div>
+          <div class="skill-light-card">
+            <div class="skill-light-name">Développer</div>
+            <div class="skill-light-desc">Kit vendeur et logique de certification pour structurer la montée en compétences des équipes terrain.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Retour -->
+      <a href="index.html" class="proj-back">← Retour au portfolio</a>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <div class="footer-logo-mark">TF</div>
+      <span class="footer-name">Timothé Flipo</span>
+    </div>
+    <span class="footer-copy">© 2026 — Portfolio BUT GEA · Parcours GEMA</span>
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="parcours.html">Parcours</a>
+      <a href="competences.html">Compétences</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="js/data.js?v=48"></script>
+  <script src="js/main.js?v=48"></script>
+</body>
+</html>
