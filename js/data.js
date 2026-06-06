@@ -143,7 +143,7 @@ const thematiquesData = [
         title: "Breathe&Go : concevoir de A à Z une solution innovante",
         description: "De l'idée de départ au prototype final, découvrez comment j'ai mené en équipe un projet entrepreneurial à forte valeur, récompensé par le prix de l'innovation et le prix entrepreneurial face aux dix équipes présentes de notre IUT.",
         tags: ["Piloter", "Entreprendre", "Développer"],
-        link: "#",
+        link: "breathe-go.html",
         popupName: "Breathe&Go",
         competencyDetails: [
           { name: "Entreprendre", level: "Niveau 3", description: "Tester la viabilité d'un business model, le défendre et le confronter au terrain.", example: "Business plan, pitch devant l'amphithéâtre, questionnaires quantitatifs et qualitatifs." },

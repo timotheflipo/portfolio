@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Breathe&Go : concevoir de A à Z une solution innovante — Projet de Timothé Flipo, IUT de Sceaux.">
+  <title>Breathe&amp;Go — Timothé Flipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,700;1,700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=48">
+  <style>
+
+    /* ---- Hero ---- */
+    .proj-hero {
+      padding: calc(var(--header-h) + 5rem) 2rem 4rem;
+      background-color: var(--bg);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .proj-hero-inner { max-width: 860px; margin: 0 auto; }
+    .proj-breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; color: var(--light-gray);
+      margin-bottom: 1.75rem; text-transform: uppercase;
+      letter-spacing: 0.1em; font-weight: 600;
+    }
+    .proj-breadcrumb a { color: var(--light-gray); transition: color .2s; }
+    .proj-breadcrumb a:hover { color: var(--accent); }
+    .proj-breadcrumb-sep { opacity: 0.4; }
+    .proj-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--accent); font-weight: 700; margin-bottom: 1rem;
+    }
+    .proj-eyebrow::before {
+      content: ''; display: block; width: 18px; height: 1.5px;
+      background-color: var(--accent); opacity: 0.6;
+    }
+    .proj-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.15;
+      color: var(--dark); margin-bottom: 1rem;
+    }
+    .proj-subtitle {
+      font-size: 0.92rem; color: var(--gray); line-height: 1.75;
+      max-width: 580px; margin-bottom: 1.75rem;
+    }
+    .hero-badges {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;
+    }
+    .award-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 16px; border-radius: 50px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.03em;
+      background-color: var(--dark); color: var(--white);
+    }
+    .proj-tag-hero {
+      padding: 5px 14px; border-radius: 50px; font-size: 0.68rem;
+      font-weight: 700; letter-spacing: 0.04em;
+      background-color: var(--accent-muted); color: var(--accent-dark);
+      border: 1px solid var(--accent-border);
+    }
+    .badge-sep { width: 1px; height: 20px; background-color: rgba(0,0,0,0.1); }
+
+    /* ---- Contenu ---- */
+    .proj-content { padding: 5rem 2rem 8rem; }
+    .proj-content-inner {
+      max-width: 860px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 5rem;
+    }
+    .section-label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.62rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--accent);
+      font-weight: 700; margin-bottom: 0.6rem;
+    }
+    .section-label::after { content: ''; width: 32px; height: 1px; background-color: var(--accent); opacity: 0.35; }
+    .section-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: 1.2rem; color: var(--dark); margin-bottom: 1.5rem; line-height: 1.3;
+    }
+
+    /* ---- Insight : problème → solution ---- */
+    .insight-card {
+      background-color: var(--dark);
+      border-radius: var(--r-xl);
+      padding: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .insight-side {}
+    .insight-label {
+      font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.18em; margin-bottom: 10px;
+    }
+    .insight-label.problem { color: rgba(255,255,255,0.4); }
+    .insight-label.solution { color: var(--accent); }
+    .insight-side h4 {
+      font-size: 1rem; font-weight: 800; line-height: 1.3; margin-bottom: 8px;
+    }
+    .insight-side.problem h4 { color: rgba(255,255,255,0.85); }
+    .insight-side.solution h4 { color: var(--white); }
+    .insight-side p { font-size: 0.8rem; line-height: 1.68; }
+    .insight-side.problem p { color: rgba(255,255,255,0.45); }
+    .insight-side.solution p { color: rgba(255,255,255,0.65); }
+    .insight-arrow {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      flex-shrink: 0;
+    }
+    .insight-arrow-icon { font-size: 1.5rem; color: var(--accent); }
+    .insight-arrow-label {
+      font-size: 0.58rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: rgba(255,255,255,0.25);
+    }
+
+    /* ---- Pull quote (mindset) ---- */
+    .pullquote {
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 2rem;
+      background-color: var(--white);
+      border-radius: 0 var(--r-md) var(--r-md) 0;
+      border-top: 1px solid var(--card-border);
+      border-right: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .pullquote p {
+      font-family: 'Libre Baskerville', serif; font-style: italic;
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem); color: var(--gray); line-height: 1.72;
+    }
+    .pullquote p em { font-style: normal; color: var(--accent-dark); font-weight: 700; }
+    .pullquote-source {
+      margin-top: 0.75rem; font-size: 0.72rem; color: var(--light-gray); font-weight: 600;
+    }
+
+    /* ---- 3 contributions (numérotées, horizontales) ---- */
+    .contributions { display: flex; flex-direction: column; gap: 1rem; }
+    .contribution {
+      background-color: var(--white); border-radius: var(--r-xl);
+      padding: 1.75rem 2rem; border: 1px solid var(--card-border);
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 2rem; align-items: start;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .contribution:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .contribution-num {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 3.5rem; line-height: 1; color: var(--accent); opacity: 0.15;
+      letter-spacing: -0.04em; padding-top: 2px; width: 60px; text-align: center;
+    }
+    .contribution-body {}
+    .contribution-body h4 { font-size: 1rem; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+    .contribution-body p { font-size: 0.82rem; color: var(--gray); line-height: 1.75; }
+    .contribution-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+    .ctag {
+      padding: 3px 11px; border-radius: 50px; font-size: 0.65rem; font-weight: 700;
+      background-color: var(--accent-muted); color: var(--accent-dark);
+      border: 1px solid var(--accent-border);
+    }
+
+    /* ---- Recognition strip ---- */
+    .recognition {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;
+    }
+    .rec-card {
+      border-radius: var(--r-xl); padding: 2rem; text-align: center;
+      border: 1px solid var(--card-border);
+      transition: box-shadow .25s, transform .25s;
+    }
+    .rec-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .rec-card.metric { background-color: var(--accent); }
+    .rec-card.award { background-color: var(--dark); }
+    .rec-icon { font-size: 1.6rem; display: block; margin-bottom: 10px; }
+    .rec-value {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 2.8rem; line-height: 1; margin-bottom: 6px;
+    }
+    .rec-card.metric .rec-value { color: var(--white); }
+    .rec-card.award .rec-value { color: var(--accent); font-size: 1.1rem; line-height: 1.3; }
+    .rec-label { font-size: 0.75rem; line-height: 1.5; }
+    .rec-card.metric .rec-label { color: rgba(255,255,255,0.72); }
+    .rec-card.award .rec-label { color: rgba(255,255,255,0.45); font-size: 0.68rem; }
+
+    /* ---- Progression (arc narratif central) ---- */
+    .progression { display: flex; flex-direction: column; gap: 1rem; }
+    .prog-card {
+      background-color: var(--white); border-radius: var(--r-xl);
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+      display: grid; grid-template-columns: 200px 1fr;
+      transition: box-shadow .25s;
+    }
+    .prog-card:hover { box-shadow: var(--shadow-md); }
+    .prog-left {
+      background-color: var(--dark); padding: 2rem 1.5rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .prog-role {
+      font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.16em; color: var(--accent); margin-bottom: 10px;
+    }
+    .prog-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 1rem; color: var(--white); line-height: 1.3;
+    }
+    .prog-badge {
+      display: inline-block; margin-top: 1.5rem;
+      padding: 4px 12px; border-radius: 50px;
+      font-size: 0.62rem; font-weight: 700;
+      background-color: rgba(255,111,60,0.18); color: var(--accent);
+      border: 1px solid rgba(255,111,60,0.28); align-self: flex-start;
+    }
+    .prog-right {
+      padding: 1.75rem 2rem;
+    }
+    .prog-right p {
+      font-size: 0.82rem; color: var(--gray); line-height: 1.78; margin-bottom: 1rem;
+    }
+    .prog-proof {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      padding: 0.75rem 1rem; border-radius: var(--r-md);
+      background-color: var(--bg); border: 1px solid var(--card-border);
+      font-size: 0.78rem; color: var(--dark); line-height: 1.55;
+    }
+    .prog-proof-icon { color: var(--accent); font-size: 0.85rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* ---- Skills light ---- */
+    .skills-light { padding-top: 3rem; border-top: 1px solid rgba(0,0,0,0.07); }
+    .skills-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+    .skill-light-card {
+      background-color: var(--white); border-radius: var(--r-md);
+      padding: 1.25rem; border: 1px solid var(--card-border);
+      transition: box-shadow .25s, border-color .25s;
+    }
+    .skill-light-card:hover { box-shadow: var(--shadow-sm); border-color: var(--accent-border); }
+    .skill-light-name {
+      font-size: 0.78rem; font-weight: 800; color: var(--accent);
+      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 7px;
+    }
+    .skill-light-desc { font-size: 0.78rem; color: var(--gray); line-height: 1.65; }
+
+    /* ---- Back ---- */
+    .proj-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; font-weight: 600; color: var(--gray);
+      text-decoration: none; transition: color .2s;
+    }
+    .proj-back:hover { color: var(--accent); }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 860px) {
+      .insight-card { grid-template-columns: 1fr; gap: 1.5rem; }
+      .insight-arrow { flex-direction: row; }
+      .insight-arrow-icon { transform: rotate(90deg); }
+      .recognition { grid-template-columns: 1fr; }
+      .prog-card { grid-template-columns: 1fr; }
+      .prog-left { padding: 1.5rem; }
+      .skills-row { grid-template-columns: 1fr; }
+      .contribution { grid-template-columns: 1fr; gap: 0.5rem; }
+      .contribution-num { font-size: 2.2rem; width: auto; text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="proj-hero">
+    <div class="proj-hero-inner">
+      <div class="proj-breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span class="proj-breadcrumb-sep">›</span>
+        <span>Breathe&amp;Go</span>
+      </div>
+      <div class="proj-eyebrow">Projet entrepreneurial · IUT de Sceaux</div>
+      <h1 class="proj-title">Breathe&amp;Go</h1>
+      <p class="proj-subtitle">Concevoir de A à Z une solution innovante contre l'alcool au volant — de l'idée initiale au prototype, jusqu'au pitch devant un amphithéâtre.</p>
+      <div class="hero-badges">
+        <span class="award-badge">🏆 Prix de l'innovation</span>
+        <span class="award-badge">🏆 Prix entrepreneurial</span>
+        <span class="badge-sep"></span>
+        <span class="proj-tag-hero">Entreprendre</span>
+        <span class="proj-tag-hero">Piloter</span>
+        <span class="proj-tag-hero">Développer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENU -->
+  <div class="proj-content">
+    <div class="proj-content-inner">
+
+      <!-- Insight card -->
+      <div>
+        <div class="section-label">Le point de départ</div>
+        <h2 class="section-title">Un problème réel, une solution concrète</h2>
+        <div class="insight-card">
+          <div class="insight-side problem">
+            <div class="insight-label problem">Le problème</div>
+            <h4>Les risques liés à l'alcool au volant chez les jeunes conducteurs</h4>
+            <p>Notamment lors des retours de soirée — un enjeu réel, vécu par un membre du groupe, pas un sujet choisi par commodité.</p>
+          </div>
+          <div class="insight-arrow">
+            <div class="insight-arrow-icon">→</div>
+            <div class="insight-arrow-label">Solution</div>
+          </div>
+          <div class="insight-side solution">
+            <div class="insight-label solution">La solution prototypée</div>
+            <h4>Un bloque-volant intégrant un éthylotest</h4>
+            <p>Un dispositif physique empêchant une personne alcoolisée de reprendre la route — imaginé, défendu, puis prototypé au fil du projet.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pull quote (mindset) -->
+      <div class="pullquote">
+        <p>« Une idée intéressante ne suffit pas. On a besoin d'être <em>challengé sans cesse</em> pour obtenir le meilleur résultat possible — les remarques qu'on perçoit comme négatives au départ sont finalement celles qui font progresser le projet. »</p>
+        <div class="pullquote-source">Ce que ce projet m'a appris sur la critique constructive</div>
+      </div>
+
+      <!-- 3 contributions -->
+      <div>
+        <div class="section-label">Ce que j'ai fait évoluer</div>
+        <h2 class="section-title">Trois rôles que j'ai pris dans le projet</h2>
+        <div class="contributions">
+          <div class="contribution">
+            <div class="contribution-num">01</div>
+            <div class="contribution-body">
+              <h4>Architecte de l'organisation</h4>
+              <p>J'ai structuré le projet en créant un espace Notion partagé regroupant les tâches, les échéances et les supports de suivi — pour mieux répartir le travail et garder une vision claire de l'avancement à chaque étape.</p>
+              <div class="contribution-tags">
+                <span class="ctag">Notion</span>
+                <span class="ctag">Gestion de projet</span>
+                <span class="ctag">Coordination d'équipe</span>
+              </div>
+            </div>
+          </div>
+          <div class="contribution">
+            <div class="contribution-num">02</div>
+            <div class="contribution-body">
+              <h4>Recherche, argumentaire et pitch</h4>
+              <p>J'ai contribué à la construction des questionnaires quantitatifs et qualitatifs, puis travaillé sur l'argumentaire pour la présentation du stand et le pitch final devant un amphithéâtre de plus d'une centaine de personnes.</p>
+              <div class="contribution-tags">
+                <span class="ctag">Questionnaires</span>
+                <span class="ctag">Pitch oral</span>
+                <span class="ctag">Conviction</span>
+              </div>
+            </div>
+          </div>
+          <div class="contribution">
+            <div class="contribution-num">03</div>
+            <div class="contribution-body">
+              <h4>Réseau, partenariats et business plan</h4>
+              <p>J'ai pris l'initiative de contacter l'association de prévention routière (partenariat obtenu), un professionnel de l'impression 3D et des enseignants en informatique — tout en contribuant à la construction du business plan pour évaluer la viabilité économique.</p>
+              <div class="contribution-tags">
+                <span class="ctag">Partenariat</span>
+                <span class="ctag">Business plan</span>
+                <span class="ctag">Livret investisseurs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recognition -->
+      <div>
+        <div class="section-label">Résultats & reconnaissance</div>
+        <h2 class="section-title">Un projet récompensé, une preuve concrète</h2>
+        <div class="recognition">
+          <div class="rec-card metric">
+            <span class="rec-icon">🎤</span>
+            <div class="rec-value">100+</div>
+            <div class="rec-label">personnes dans l'amphithéâtre<br>pour le pitch final</div>
+          </div>
+          <div class="rec-card award">
+            <span class="rec-icon">🏆</span>
+            <div class="rec-value">Prix de l'innovation</div>
+            <div class="rec-label">Face aux dix équipes de l'IUT</div>
+          </div>
+          <div class="rec-card award">
+            <span class="rec-icon">🏆</span>
+            <div class="rec-value">Prix entrepreneurial</div>
+            <div class="rec-label">Récompensant la démarche et la crédibilité du projet</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progression (arc central) -->
+      <div>
+        <div class="section-label">Montée en compétence</div>
+        <h2 class="section-title">Trois axes de progression durables</h2>
+        <div class="progression">
+          <div class="prog-card">
+            <div class="prog-left">
+              <div>
+                <div class="prog-role">Compétence 01</div>
+                <div class="prog-title">Organisation & architecture de projet</div>
+              </div>
+              <div class="prog-badge">Piloter</div>
+            </div>
+            <div class="prog-right">
+              <p>De membre d'un groupe de travail à <strong>architecte de la structure</strong> : planification des rendus, création des espaces Notion, coordination des tâches et maintien d'une vision d'ensemble au fil des semaines.</p>
+              <div class="prog-proof">
+                <span class="prog-proof-icon">↳</span>
+                Espace Notion partagé, plan des rendus, répartition des tâches et suivi de l'avancement sur l'ensemble du projet.
+              </div>
+            </div>
+          </div>
+          <div class="prog-card">
+            <div class="prog-left">
+              <div>
+                <div class="prog-role">Compétence 02</div>
+                <div class="prog-title">Conviction à l'oral et adaptation au public</div>
+              </div>
+              <div class="prog-badge">Entreprendre</div>
+            </div>
+            <div class="prog-right">
+              <p>Des premières soutenances aux présentations de stand, jusqu'au <strong>pitch final devant plus d'une centaine de personnes</strong> — apprendre à clarifier un message, défendre un projet et adapter son discours à chaque public.</p>
+              <div class="prog-proof">
+                <span class="prog-proof-icon">↳</span>
+                Pitch en amphithéâtre, présentation du stand, argumentaire commercial face à des professionnels.
+              </div>
+            </div>
+          </div>
+          <div class="prog-card">
+            <div class="prog-left">
+              <div>
+                <div class="prog-role">Compétence 03</div>
+                <div class="prog-title">Professionnalisation des rendus et de la posture</div>
+              </div>
+              <div class="prog-badge">Développer</div>
+            </div>
+            <div class="prog-right">
+              <p>Du simple rendu étudiant à des livrables à <strong>valeur professionnelle réelle</strong> — business plan, livret investisseurs, gestion des réseaux sociaux du projet, et démarche de partenariat initiée en autonomie.</p>
+              <div class="prog-proof">
+                <span class="prog-proof-icon">↳</span>
+                Business plan, livret investisseurs, réseaux sociaux Breathe&amp;Go, partenariat association prévention routière.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="skills-light">
+        <div class="section-label">Compétences mobilisées</div>
+        <div class="skills-row">
+          <div class="skill-light-card">
+            <div class="skill-light-name">Entreprendre</div>
+            <div class="skill-light-desc">Tester la viabilité d'un business model, le défendre et le confronter au terrain avec des questionnaires et un pitch structuré.</div>
+          </div>
+          <div class="skill-light-card">
+            <div class="skill-light-name">Piloter</div>
+            <div class="skill-light-desc">Mener un projet collaboratif de A à Z — organisation Notion, coordination d'équipe, gestion des échéances et des livrables.</div>
+          </div>
+          <div class="skill-light-card">
+            <div class="skill-light-name">Développer</div>
+            <div class="skill-light-desc">Concevoir une stratégie de communication : réseaux sociaux, livret investisseurs et partenariat avec la prévention routière.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Retour -->
+      <a href="index.html" class="proj-back">← Retour au portfolio</a>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <div class="footer-logo-mark">TF</div>
+      <span class="footer-name">Timothé Flipo</span>
+    </div>
+    <span class="footer-copy">© 2026 — Portfolio BUT GEA · Parcours GEMA</span>
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="parcours.html">Parcours</a>
+      <a href="competences.html">Compétences</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="js/data.js?v=48"></script>
+  <script src="js/main.js?v=48"></script>
+</body>
+</html>
