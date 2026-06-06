@@ -148,38 +148,28 @@ function buildThematiques(container) {
   if (!container || typeof thematiquesData === 'undefined') return;
   projectsRegistry.length = 0;
 
-  thematiquesData.forEach(theme => {
+  thematiquesData.forEach((theme, themeIdx) => {
     const section = document.createElement('section');
     section.className = 'theme-section';
     section.id = theme.id;
-    section.style.backgroundColor = theme.bg;
-
-    const encartTextClass = theme.encartTextColor === 'white' ? 'color: white' : `color: ${theme.encartTextColor}`;
-    const tagStyle = `background: ${theme.tagBg}; color: ${theme.encartTextColor}`;
 
     const cardsHTML = theme.cards.map(card => {
-      // Enregistre le projet pour la pop-up
       const regIndex = projectsRegistry.length;
       projectsRegistry.push({
-        name:         card.popupName || card.title,
-        accent:       theme.encartColor,
-        accentOnWhite: theme.accentOnWhite || '#6d4fb0',
-        accentTagText: theme.accentTagText || '#ffffff',
-        details:      card.competencyDetails || []
+        name:    card.popupName || card.title,
+        details: card.competencyDetails || []
       });
 
       const hasDetails = (card.competencyDetails || []).length > 0;
       const tagsHTML = card.tags.map(t =>
         hasDetails
-          ? `<button type="button" class="proj-tag proj-tag-clickable"
-               data-reg="${regIndex}"
-               style="--tag-hover-bg:${theme.encartColor};--tag-hover-text:${theme.accentTagText || '#fff'}">${t}</button>`
+          ? `<button type="button" class="proj-tag proj-tag-clickable" data-reg="${regIndex}">${t}</button>`
           : `<span class="proj-tag">${t}</span>`
       ).join('');
 
       return `
         <div class="proj-card-wrap">
-          <a class="proj-card reveal" href="${card.link}" style="--accent-color: ${theme.encartColor}">
+          <a class="proj-card reveal" href="${card.link}">
             <div class="proj-card-top">
               <h3>${card.title}</h3>
               <span class="proj-arrow">↗</span>
@@ -190,21 +180,21 @@ function buildThematiques(container) {
         </div>`;
     }).join('');
 
-    // reversed : cartes à gauche, visuel à droite
     const rev = theme.reversed;
+    const num = String(themeIdx + 1).padStart(2, '0');
 
     section.innerHTML = `
       <div class="theme-inner${rev ? ' reversed' : ''}">
         <div class="theme-visual ${rev ? 'reveal-r' : 'reveal-l'}">
-          <!-- Cadre arrondi qui contient photo + encart -->
           <div class="theme-visual-frame${theme.image ? ' has-image' : ''}">
             <div class="theme-visual-bg" ${theme.image ? `style="background-image:url('${theme.image}'); background-position:${theme.bgPosition || 'center'};"` : ''}></div>
-            ${theme.image ? '' : `<div class="theme-visual-placeholder">Image à ajouter</div>`}
+            ${theme.image ? '' : `<div class="theme-visual-placeholder"></div>`}
             <div class="theme-overlay">
-              <div class="theme-encart" style="background-color: ${theme.encartColor}">
-                <h2 style="${encartTextClass}">${theme.title}</h2>
+              <div class="theme-encart">
+                <span class="theme-encart-num">${num}</span>
+                <h2>${theme.title}</h2>
                 <div class="tags-row">
-                  ${theme.tags.map(t => `<span class="tag" style="${tagStyle}">${t}</span>`).join('')}
+                  ${theme.tags.map(t => `<span class="tag">${t}</span>`).join('')}
                 </div>
               </div>
             </div>
@@ -267,10 +257,6 @@ function getCompetencyModal() {
 
 function openCompetencyModal(project) {
   const overlay = getCompetencyModal();
-  const modal = overlay.querySelector('.comp-modal');
-  // Injecte les couleurs d'accent du thème (décoratif + texte lisible)
-  modal.style.setProperty('--modal-accent',      project.accent);
-  modal.style.setProperty('--modal-accent-text', project.accentOnWhite);
   overlay.querySelector('.comp-modal-project').textContent = 'Projet · ' + project.name;
 
   overlay.querySelector('.comp-modal-body').innerHTML = project.details.map(d => `
@@ -281,7 +267,7 @@ function openCompetencyModal(project) {
         <span class="comp-detail-level">${d.level}</span>
       </div>
       <p class="comp-detail-desc">${d.description}</p>
-      <p class="comp-detail-example"><span class="comp-detail-ex-label">Exemple</span> ${d.example}</p>
+      <p class="comp-detail-example"><span class="comp-detail-ex-label">Exemple ·</span> ${d.example}</p>
     </div>
   `).join('');
 
@@ -374,7 +360,7 @@ function buildCompetences(container) {
               <li>
                 <a class="comp-proj-item" href="${p.link}">
                   <span>${p.title}</span>
-                  <span style="color: var(--light-gray); font-size: 0.8rem;">→</span>
+                  <span class="comp-proj-arrow">→</span>
                 </a>
               </li>
             `).join('')}
