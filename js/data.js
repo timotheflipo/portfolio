@@ -100,7 +100,7 @@ const thematiquesData = [
         title: "Bons plans régionaux : transformer des données dispersées en outil de pilotage",
         description: "Quand les données existent mais ne permettent pas vraiment de décider, il faut les restructurer. J'ai conçu en autonomie un tableau de bord Excel automatisé pour transformer des chiffres dispersés en outil de pilotage.",
         tags: ["Analyser", "Décider", "Développer"],
-        link: "#",
+        link: "bons-plans.html",
         popupName: "Bons plans régionaux",
         competencyDetails: [
           { name: "Analyser", level: "Niveau 3", description: "Proposer des améliorations des processus.", example: "Restructuration de données dispersées en information exploitable." },
