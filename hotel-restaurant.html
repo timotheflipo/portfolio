@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hôtel-restaurant sous tension : du diagnostic au plan d'action — Projet de Timothé Flipo.">
+  <title>Hôtel-restaurant — Timothé Flipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,700;1,700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=48">
+  <style>
+
+    /* ---- Hero ---- */
+    .proj-hero {
+      padding: calc(var(--header-h) + 5rem) 2rem 4rem;
+      background-color: var(--bg);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .proj-hero-inner { max-width: 860px; margin: 0 auto; }
+
+    .proj-breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; color: var(--light-gray);
+      margin-bottom: 1.75rem; text-transform: uppercase;
+      letter-spacing: 0.1em; font-weight: 600;
+    }
+    .proj-breadcrumb a { color: var(--light-gray); transition: color .2s; }
+    .proj-breadcrumb a:hover { color: var(--accent); }
+    .proj-breadcrumb-sep { opacity: 0.4; }
+
+    .proj-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--accent); font-weight: 700; margin-bottom: 1rem;
+    }
+    .proj-eyebrow::before {
+      content: ''; display: block; width: 18px; height: 1.5px;
+      background-color: var(--accent); opacity: 0.6;
+    }
+    .proj-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: clamp(1.6rem, 3.5vw, 2.7rem); line-height: 1.2;
+      color: var(--dark); margin-bottom: 1rem;
+    }
+    .proj-subtitle {
+      font-size: 0.92rem; color: var(--gray); line-height: 1.75;
+      max-width: 600px; margin-bottom: 1.75rem;
+    }
+    .proj-tags-hero { display: flex; flex-wrap: wrap; gap: 8px; }
+    .proj-tag-hero {
+      padding: 5px 14px; border-radius: 50px; font-size: 0.68rem;
+      font-weight: 700; letter-spacing: 0.04em;
+      background-color: var(--accent-muted); color: var(--accent-dark);
+      border: 1px solid var(--accent-border);
+    }
+
+    /* ---- Verdict ---- */
+    .verdict {
+      background-color: var(--dark);
+      padding: 3rem 2rem;
+    }
+    .verdict-inner {
+      max-width: 860px; margin: 0 auto;
+      display: flex; align-items: center; gap: 2rem;
+    }
+    .verdict-bar {
+      width: 4px; min-width: 4px; align-self: stretch;
+      background-color: var(--accent); border-radius: 2px;
+    }
+    .verdict-text {
+      font-family: 'Libre Baskerville', serif; font-style: italic;
+      font-size: clamp(1rem, 2.2vw, 1.28rem);
+      color: rgba(255,255,255,0.88); line-height: 1.65;
+    }
+    .verdict-text em { font-style: normal; color: var(--accent); }
+
+    /* ---- Contenu ---- */
+    .proj-content { padding: 5rem 2rem 8rem; }
+    .proj-content-inner {
+      max-width: 860px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 4.5rem;
+    }
+
+    .section-label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.62rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--accent);
+      font-weight: 700; margin-bottom: 0.6rem;
+    }
+    .section-label::after {
+      content: ''; width: 32px; height: 1px;
+      background-color: var(--accent); opacity: 0.35;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: 1.2rem; color: var(--dark); margin-bottom: 1.5rem; line-height: 1.3;
+    }
+
+    /* ---- Grille diagnostic ---- */
+    .diag-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+    }
+    .diag-card {
+      background-color: var(--white); border-radius: var(--r-lg);
+      padding: 1.4rem 1.5rem; border: 1px solid var(--card-border);
+      position: relative; overflow: hidden;
+      transition: box-shadow .25s ease, transform .25s ease;
+    }
+    .diag-card:hover { box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+    .diag-card-top {
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 8px;
+    }
+    .diag-dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background-color: var(--accent); flex-shrink: 0;
+      box-shadow: 0 0 0 3px var(--accent-muted);
+    }
+    .diag-area {
+      font-size: 0.78rem; font-weight: 800; color: var(--dark);
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .diag-status {
+      margin-left: auto; font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--accent-dark); background-color: var(--accent-muted);
+      border: 1px solid var(--accent-border);
+      padding: 2px 9px; border-radius: 50px; white-space: nowrap;
+    }
+    .diag-card p {
+      font-size: 0.8rem; color: var(--gray); line-height: 1.65; padding-left: 1.45rem;
+    }
+
+    /* ---- Roadmap 3 phases ---- */
+    .phases-wrap { display: flex; flex-direction: column; gap: 0; }
+    .phase-item {
+      display: flex; gap: 1.5rem; align-items: stretch;
+    }
+    .phase-spine {
+      display: flex; flex-direction: column; align-items: center; width: 40px; flex-shrink: 0;
+    }
+    .phase-circle {
+      width: 40px; height: 40px; border-radius: 50%;
+      background-color: var(--white); border: 2px solid var(--accent);
+      color: var(--accent); display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; font-weight: 800; flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .phase-item:last-child .phase-circle {
+      background-color: var(--accent); color: var(--white);
+    }
+    .phase-line {
+      flex: 1; width: 2px; background: linear-gradient(to bottom, var(--accent-border), var(--muted));
+      margin: 4px 0;
+    }
+    .phase-item:last-child .phase-line { display: none; }
+    .phase-body {
+      background-color: var(--white); border-radius: var(--r-md);
+      padding: 1.2rem 1.4rem; border: 1px solid var(--card-border);
+      flex: 1; margin-bottom: 1rem;
+      transition: box-shadow .25s ease;
+    }
+    .phase-body:hover { box-shadow: var(--shadow-sm); }
+    .phase-label {
+      font-size: 0.62rem; font-weight: 700; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 4px;
+    }
+    .phase-body h4 { font-size: 0.9rem; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
+    .phase-body p { font-size: 0.8rem; color: var(--gray); line-height: 1.65; }
+
+    /* ---- Bilan : acquis / à approfondir ---- */
+    .bilan {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;
+    }
+    .bilan-col { }
+    .bilan-col-title {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 0.75rem;
+    }
+    .bilan-col-title.acquired { color: var(--dark); }
+    .bilan-col-title.progress { color: var(--accent); }
+
+    .bilan-item {
+      display: flex; gap: 0.75rem; align-items: flex-start;
+      padding: 0.9rem 1rem; border-radius: var(--r-md);
+      border: 1px solid var(--card-border);
+      background-color: var(--white); margin-bottom: 0.6rem;
+      font-size: 0.8rem; color: var(--gray); line-height: 1.6;
+    }
+    .bilan-item:last-child { margin-bottom: 0; }
+    .bilan-icon { font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+    .bilan-item strong { color: var(--dark); font-weight: 700; display: block; margin-bottom: 2px; font-size: 0.82rem; }
+
+    .bilan-item.progress-item {
+      border-color: var(--accent-border);
+      background-color: var(--accent-muted);
+    }
+    .bilan-item.progress-item strong { color: var(--accent-dark); }
+
+    /* ---- Compétences light ---- */
+    .skills-light { padding-top: 3rem; border-top: 1px solid rgba(0,0,0,0.07); }
+    .skills-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+    .skill-light-card {
+      background-color: var(--white); border-radius: var(--r-md);
+      padding: 1.25rem; border: 1px solid var(--card-border);
+      transition: box-shadow .25s ease, border-color .25s ease;
+    }
+    .skill-light-card:hover { box-shadow: var(--shadow-sm); border-color: var(--accent-border); }
+    .skill-light-name {
+      font-size: 0.78rem; font-weight: 800; color: var(--accent);
+      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 7px;
+    }
+    .skill-light-desc { font-size: 0.78rem; color: var(--gray); line-height: 1.65; }
+
+    /* ---- Back ---- */
+    .proj-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; font-weight: 600; color: var(--gray);
+      text-decoration: none; transition: color .2s;
+    }
+    .proj-back:hover { color: var(--accent); }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 700px) {
+      .diag-grid { grid-template-columns: 1fr; }
+      .bilan { grid-template-columns: 1fr; }
+      .skills-row { grid-template-columns: 1fr; }
+      .verdict-inner { flex-direction: column; gap: 1rem; }
+      .verdict-bar { width: 100%; min-width: unset; height: 3px; align-self: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="proj-hero">
+    <div class="proj-hero-inner">
+      <div class="proj-breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span class="proj-breadcrumb-sep">›</span>
+        <span>Hôtel-restaurant</span>
+      </div>
+      <div class="proj-eyebrow">Cas pratique · BUT GEA</div>
+      <h1 class="proj-title">Hôtel-restaurant sous tension :<br>du diagnostic au plan d'action</h1>
+      <p class="proj-subtitle">Diagnostiquer une organisation en difficulté, relier des dysfonctionnements qui s'alimentent entre eux, et construire un plan de redressement progressif et mesurable.</p>
+      <div class="proj-tags-hero">
+        <span class="proj-tag-hero">Analyser</span>
+        <span class="proj-tag-hero">Décider</span>
+        <span class="proj-tag-hero">Développer</span>
+        <span class="proj-tag-hero">Diagnostic RH</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERDICT -->
+  <div class="verdict">
+    <div class="verdict-inner">
+      <div class="verdict-bar"></div>
+      <p class="verdict-text">Ce ne sont pas des problèmes isolés — c'est un <em>déséquilibre global</em> dans le fonctionnement de l'établissement. RH, opérationnel, management : tout est lié.</p>
+    </div>
+  </div>
+
+  <!-- CONTENU -->
+  <div class="proj-content">
+    <div class="proj-content-inner">
+
+      <!-- Dysfonctionnements -->
+      <div>
+        <div class="section-label">Dysfonctionnements repérés</div>
+        <h2 class="section-title">Quatre zones de fragilité interconnectées</h2>
+        <div class="diag-grid">
+          <div class="diag-card">
+            <div class="diag-card-top">
+              <span class="diag-dot"></span>
+              <span class="diag-area">Ressources humaines</span>
+              <span class="diag-status">Prioritaire</span>
+            </div>
+            <p>Tensions d'équipe, problèmes de climat social et difficultés managériales à la source d'une partie des dysfonctionnements.</p>
+          </div>
+          <div class="diag-card">
+            <div class="diag-card-top">
+              <span class="diag-dot"></span>
+              <span class="diag-area">Organisation du travail</span>
+              <span class="diag-status">Identifié</span>
+            </div>
+            <p>Processus peu formalisés, répartition floue des rôles et inefficacités opérationnelles récurrentes.</p>
+          </div>
+          <div class="diag-card">
+            <div class="diag-card-top">
+              <span class="diag-dot"></span>
+              <span class="diag-area">Coordination des équipes</span>
+              <span class="diag-status">Identifié</span>
+            </div>
+            <p>Communication interne déficiente entre les équipes, générant des erreurs et un manque de cohérence dans l'exécution.</p>
+          </div>
+          <div class="diag-card">
+            <div class="diag-card-top">
+              <span class="diag-dot"></span>
+              <span class="diag-area">Pilotage de l'activité</span>
+              <span class="diag-status">Identifié</span>
+            </div>
+            <p>Peu d'indicateurs de suivi, décisions souvent réactives plutôt qu'anticipées.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan d'action : 3 phases -->
+      <div>
+        <div class="section-label">Plan de redressement</div>
+        <h2 class="section-title">Un plan progressif en trois axes</h2>
+        <div class="phases-wrap">
+          <div class="phase-item">
+            <div class="phase-spine">
+              <div class="phase-circle">1</div>
+              <div class="phase-line"></div>
+            </div>
+            <div class="phase-body">
+              <div class="phase-label">Axe prioritaire</div>
+              <h4>Bien-être au travail & climat social</h4>
+              <p>Réduire les tensions d'équipe, améliorer les conditions de travail et rétablir un environnement de confiance avant toute réorganisation opérationnelle.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-spine">
+              <div class="phase-circle">2</div>
+              <div class="phase-line"></div>
+            </div>
+            <div class="phase-body">
+              <div class="phase-label">Second temps</div>
+              <h4>Organisation & coordination opérationnelle</h4>
+              <p>Clarifier les rôles, formaliser les processus et améliorer la communication interne pour fluidifier l'activité au quotidien.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-spine">
+              <div class="phase-circle">3</div>
+              <div class="phase-line"></div>
+            </div>
+            <div class="phase-body">
+              <div class="phase-label">Consolidation</div>
+              <h4>Sécurité, hygiène & prévention des risques</h4>
+              <p>Intégrer les enjeux de conformité et de prévention avec des indicateurs de suivi pour mesurer les effets dans le temps.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bilan -->
+      <div>
+        <div class="section-label">Bilan personnel</div>
+        <h2 class="section-title">Ce que ce cas m'a appris</h2>
+        <div class="bilan">
+          <div class="bilan-col">
+            <div class="bilan-col-title acquired">Acquis</div>
+            <div class="bilan-item">
+              <span class="bilan-icon">✓</span>
+              <div><strong>Prioriser des actions de redressement</strong>Distinguer l'urgence du structurel et séquencer les actions dans un ordre cohérent.</div>
+            </div>
+            <div class="bilan-item">
+              <span class="bilan-icon">✓</span>
+              <div><strong>Relier des dysfonctionnements entre eux</strong>Ne pas analyser les problèmes en silos, mais comprendre les liens et interdépendances.</div>
+            </div>
+            <div class="bilan-item">
+              <span class="bilan-icon">✓</span>
+              <div><strong>Justifier des choix managériaux</strong>Argumenter un plan d'action en s'appuyant sur le diagnostic et les indicateurs de suivi.</div>
+            </div>
+          </div>
+          <div class="bilan-col">
+            <div class="bilan-col-title progress">À approfondir</div>
+            <div class="bilan-item progress-item">
+              <span class="bilan-icon">→</span>
+              <div><strong>Hiérarchiser plus finement</strong>Mieux pondérer les actions selon leur impact réel et leur faisabilité dans le contexte donné.</div>
+            </div>
+            <div class="bilan-item progress-item">
+              <span class="bilan-icon">→</span>
+              <div><strong>Mesurer les effets dans le temps</strong>Définir des indicateurs plus précis et construire un cadre de suivi rigoureux dès la conception.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compétences -->
+      <div class="skills-light">
+        <div class="section-label">Compétences mobilisées</div>
+        <div class="skills-row">
+          <div class="skill-light-card">
+            <div class="skill-light-name">Analyser</div>
+            <div class="skill-light-desc">Diagnostic global de l'établissement, identification des dysfonctionnements RH et opérationnels et compréhension de leurs interdépendances.</div>
+          </div>
+          <div class="skill-light-card">
+            <div class="skill-light-name">Décider</div>
+            <div class="skill-light-desc">Construction d'un plan d'action progressif et priorisation des axes d'intervention selon leur urgence et leur impact.</div>
+          </div>
+          <div class="skill-light-card">
+            <div class="skill-light-name">Développer</div>
+            <div class="skill-light-desc">Recommandations sur le bien-être, le climat social et la prévention, avec des indicateurs de suivi pour mesurer les effets dans le temps.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Retour -->
+      <a href="index.html" class="proj-back">← Retour au portfolio</a>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <div class="footer-logo-mark">TF</div>
+      <span class="footer-name">Timothé Flipo</span>
+    </div>
+    <span class="footer-copy">© 2026 — Portfolio BUT GEA · Parcours GEMA</span>
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="parcours.html">Parcours</a>
+      <a href="competences.html">Compétences</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="js/data.js?v=48"></script>
+  <script src="js/main.js?v=48"></script>
+</body>
+</html>

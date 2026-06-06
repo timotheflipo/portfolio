@@ -72,7 +72,7 @@ const thematiquesData = [
         title: "Hôtel-restaurant sous tension, du diagnostic au plan d'action",
         description: "Quand les difficultés s'accumulent dans une organisation, il devient vite difficile de savoir par où commencer. Ce travail m'a appris à relier les dysfonctionnements entre eux pour construire un plan d'action progressif et cohérent.",
         tags: ["Analyser", "Décider", "Développer"],
-        link: "#",
+        link: "hotel-restaurant.html",
         popupName: "Hôtel-restaurant",
         competencyDetails: [
           { name: "Analyser", level: "Niveau 3", description: "Intégrer les enjeux de l'organisation et proposer des améliorations.", example: "Diagnostic global de l'établissement et des dysfonctionnements RH et opérationnels." },
