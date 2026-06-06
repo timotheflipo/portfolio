@@ -168,7 +168,7 @@ const thematiquesData = [
         title: "Fashion Day : piloter un projet événementiel avec une identité forte",
         description: "Logo, affiches, flyers, espace Notion, cahier des charges, coordination avec des créateurs et mannequins… Avec Fashion Day, j'ai appris à faire avancer un projet créatif en combinant direction artistique, organisation et travail d'équipe.",
         tags: ["Piloter", "Entreprendre", "Développer"],
-        link: "#",
+        link: "fashion-day.html",
         popupName: "Fashion Day",
         competencyDetails: [
           { name: "Piloter", level: "Niveau 3", description: "Animer une équipe et mener un projet collaboratif.", example: "Sprints, répartition des tâches et coordination créateurs / mannequins." },

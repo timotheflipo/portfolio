@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fashion Day : piloter un projet événementiel avec une identité forte — Timothé Flipo, IUT de Sceaux.">
+  <title>Fashion Day — Timothé Flipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,700;1,700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=48">
+  <style>
+
+    /* ---- Hero ---- */
+    .proj-hero {
+      padding: calc(var(--header-h) + 5rem) 2rem 4rem;
+      background-color: var(--bg);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .proj-hero-inner { max-width: 860px; margin: 0 auto; }
+    .proj-breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; color: var(--light-gray);
+      margin-bottom: 1.75rem; text-transform: uppercase;
+      letter-spacing: 0.1em; font-weight: 600;
+    }
+    .proj-breadcrumb a { color: var(--light-gray); transition: color .2s; }
+    .proj-breadcrumb a:hover { color: var(--accent); }
+    .proj-breadcrumb-sep { opacity: 0.4; }
+    .proj-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--accent); font-weight: 700; margin-bottom: 1rem;
+    }
+    .proj-eyebrow::before {
+      content: ''; display: block; width: 18px; height: 1.5px;
+      background-color: var(--accent); opacity: 0.6;
+    }
+    .proj-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.15;
+      color: var(--dark); margin-bottom: 1rem;
+    }
+    .proj-subtitle {
+      font-size: 0.92rem; color: var(--gray); line-height: 1.75;
+      max-width: 600px; margin-bottom: 1.75rem;
+    }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .context-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 16px; border-radius: 50px;
+      font-size: 0.72rem; font-weight: 700;
+      background-color: var(--dark); color: var(--white);
+    }
+    .proj-tag-hero {
+      padding: 5px 14px; border-radius: 50px; font-size: 0.68rem;
+      font-weight: 700; letter-spacing: 0.04em;
+      background-color: var(--accent-muted); color: var(--accent-dark);
+      border: 1px solid var(--accent-border);
+    }
+    .badge-sep { width: 1px; height: 20px; background-color: rgba(0,0,0,0.1); }
+
+    /* ---- Contenu ---- */
+    .proj-content { padding: 5rem 2rem 8rem; }
+    .proj-content-inner {
+      max-width: 860px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 5rem;
+    }
+    .section-label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.62rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--accent);
+      font-weight: 700; margin-bottom: 0.6rem;
+    }
+    .section-label::after { content: ''; width: 32px; height: 1px; background-color: var(--accent); opacity: 0.35; }
+    .section-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: 1.2rem; color: var(--dark); margin-bottom: 1.5rem; line-height: 1.3;
+    }
+
+    /* ---- Direction artistique (vitrine) ---- */
+    .identity-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    }
+    .identity-card {
+      background-color: var(--white); border-radius: var(--r-lg);
+      border: 1px solid var(--card-border); overflow: hidden;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .identity-card:hover { box-shadow: var(--shadow-sm); transform: translateY(-3px); }
+    .identity-card-top {
+      padding: 1.5rem 1.25rem 1.1rem;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .identity-icon { font-size: 1.6rem; }
+    .identity-card h4 { font-size: 0.88rem; font-weight: 800; color: var(--dark); }
+    .identity-card-bottom {
+      padding: 0.9rem 1.25rem; border-top: 1px solid rgba(0,0,0,0.04);
+      background-color: var(--bg);
+    }
+    .identity-card p { font-size: 0.75rem; color: var(--gray); line-height: 1.62; }
+    /* Le dernier élément (CdC) est différent — plus structurel que créatif */
+    .identity-card.structured { border-color: var(--accent-border); }
+    .identity-card.structured .identity-card-bottom { background-color: var(--accent-muted); }
+
+    /* ---- Sprints ---- */
+    .sprint-intro {
+      font-size: 0.88rem; color: var(--gray); line-height: 1.78; margin-bottom: 1.5rem;
+      max-width: 640px;
+    }
+    .sprints {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem;
+    }
+    .sprint {
+      background-color: var(--white); border-radius: var(--r-md);
+      border: 1px solid var(--card-border); padding: 1.1rem 1.1rem;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .sprint:hover { box-shadow: var(--shadow-sm); border-color: var(--accent-border); }
+    .sprint-header {
+      display: flex; align-items: center; gap: 0.6rem; margin-bottom: 7px;
+    }
+    .sprint-num {
+      width: 22px; height: 22px; min-width: 22px; border-radius: 50%;
+      background-color: var(--accent); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; font-weight: 800; flex-shrink: 0;
+    }
+    .sprint h5 { font-size: 0.8rem; font-weight: 700; color: var(--dark); line-height: 1.3; }
+    .sprint p { font-size: 0.73rem; color: var(--gray); line-height: 1.6; padding-left: 1.7rem; }
+
+    /* ---- Collaborateurs extérieurs ---- */
+    .collaborators {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    }
+    .collab-card {
+      background-color: var(--white); border-radius: var(--r-xl);
+      padding: 2rem 1.5rem; border: 1px solid var(--card-border);
+      text-align: center; position: relative; overflow: hidden;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .collab-card:hover { box-shadow: var(--shadow-sm); transform: translateY(-3px); }
+    .collab-card::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+    .collab-emoji { font-size: 2rem; display: block; margin-bottom: 12px; }
+    .collab-card h4 { font-size: 0.88rem; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+    .collab-card p { font-size: 0.77rem; color: var(--gray); line-height: 1.62; }
+    .collab-tag {
+      display: inline-block; margin-top: 0.75rem;
+      padding: 3px 10px; border-radius: 50px; font-size: 0.62rem; font-weight: 700;
+      background-color: var(--accent-muted); color: var(--accent-dark);
+      border: 1px solid var(--accent-border);
+    }
+
+    /* ---- Outils ---- */
+    .tools-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .tool-card {
+      background-color: var(--white); border-radius: var(--r-lg);
+      padding: 1.4rem; border: 1px solid var(--card-border);
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: box-shadow .25s;
+    }
+    .tool-card:hover { box-shadow: var(--shadow-sm); }
+    .tool-icon {
+      width: 40px; height: 40px; min-width: 40px; border-radius: var(--r-md);
+      background-color: var(--accent-muted); border: 1px solid var(--accent-border);
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+    }
+    .tool-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
+    .tool-card p { font-size: 0.78rem; color: var(--gray); line-height: 1.65; }
+
+    /* ---- Progression : créatif → pilotage ---- */
+    .arc-card {
+      border-radius: var(--r-xl); overflow: hidden; border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-sm);
+    }
+    .arc-header {
+      background-color: var(--dark); padding: 1.5rem 2rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .arc-header-title {
+      font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--accent);
+    }
+    .arc-from-to {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .arc-pill {
+      padding: 5px 14px; border-radius: 50px; font-size: 0.72rem; font-weight: 700;
+    }
+    .arc-pill.from { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.55); }
+    .arc-pill.to { background-color: var(--accent); color: var(--white); }
+    .arc-arrow-small { color: var(--accent); font-size: 1rem; }
+    .arc-body {
+      display: grid; grid-template-columns: 1fr 1fr; background-color: var(--white);
+    }
+    .arc-col { padding: 2rem; }
+    .arc-col + .arc-col { border-left: 1px solid rgba(0,0,0,0.06); }
+    .arc-col-label {
+      font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .arc-col-label::before { content: ''; display: block; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .arc-col-label.creative { color: var(--light-gray); }
+    .arc-col-label.creative::before { background-color: var(--light-gray); }
+    .arc-col-label.structured { color: var(--accent); }
+    .arc-col-label.structured::before { background-color: var(--accent); }
+    .arc-item {
+      display: flex; gap: 0.6rem; align-items: flex-start;
+      font-size: 0.8rem; color: var(--gray); line-height: 1.6;
+      margin-bottom: 0.7rem; padding-bottom: 0.7rem;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+    .arc-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .arc-item strong { display: block; font-weight: 700; font-size: 0.82rem; color: var(--dark); margin-bottom: 2px; }
+    .arc-item.structured strong { color: var(--accent-dark); }
+    .arc-bullet { font-size: 0.6rem; color: var(--accent); margin-top: 5px; flex-shrink: 0; }
+
+    /* ---- Skills light ---- */
+    .skills-light { padding-top: 3rem; border-top: 1px solid rgba(0,0,0,0.07); }
+    .skills-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+    .skill-light-card {
+      background-color: var(--white); border-radius: var(--r-md);
+      padding: 1.25rem; border: 1px solid var(--card-border);
+      transition: box-shadow .25s, border-color .25s;
+    }
+    .skill-light-card:hover { box-shadow: var(--shadow-sm); border-color: var(--accent-border); }
+    .skill-light-name {
+      font-size: 0.78rem; font-weight: 800; color: var(--accent);
+      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 7px;
+    }
+    .skill-light-desc { font-size: 0.78rem; color: var(--gray); line-height: 1.65; }
+
+    /* ---- Back ---- */
+    .proj-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; font-weight: 600; color: var(--gray);
+      text-decoration: none; transition: color .2s;
+    }
+    .proj-back:hover { color: var(--accent); }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 860px) {
+      .identity-grid { grid-template-columns: repeat(2, 1fr); }
+      .sprints { grid-template-columns: repeat(2, 1fr); }
+      .collaborators { grid-template-columns: 1fr; }
+      .tools-row { grid-template-columns: 1fr; }
+      .arc-body { grid-template-columns: 1fr; }
+      .arc-col + .arc-col { border-left: none; border-top: 1px solid rgba(0,0,0,0.06); }
+      .skills-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 500px) {
+      .identity-grid { grid-template-columns: 1fr; }
+      .sprints { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="proj-hero">
+    <div class="proj-hero-inner">
+      <div class="proj-breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span class="proj-breadcrumb-sep">›</span>
+        <span>Fashion Day</span>
+      </div>
+      <div class="proj-eyebrow">Projet académique · IUT de Sceaux</div>
+      <h1 class="proj-title">Fashion Day</h1>
+      <p class="proj-subtitle">Organiser un défilé de mode pour valoriser des créateurs étudiants et des mannequins débutants — avec une direction artistique complète et une organisation pilotée en mode agile.</p>
+      <div class="hero-badges">
+        <span class="context-badge">🎨 Créatif & organisationnel</span>
+        <span class="badge-sep"></span>
+        <span class="proj-tag-hero">Piloter</span>
+        <span class="proj-tag-hero">Entreprendre</span>
+        <span class="proj-tag-hero">Développer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENU -->
+  <div class="proj-content">
+    <div class="proj-content-inner">
+
+      <!-- Direction artistique -->
+      <div>
+        <div class="section-label">Direction artistique</div>
+        <h2 class="section-title">Créer une identité visuelle cohérente sur tous les supports</h2>
+        <div class="identity-grid">
+          <div class="identity-card">
+            <div class="identity-card-top">
+              <div class="identity-icon">🎨</div>
+              <h4>Logo & identité</h4>
+            </div>
+            <div class="identity-card-bottom">
+              <p>Conception du logo et de la charte graphique pour poser une identité reconnaissable sur l'ensemble de l'événement.</p>
+            </div>
+          </div>
+          <div class="identity-card">
+            <div class="identity-card-top">
+              <div class="identity-icon">🖼</div>
+              <h4>Affiches & flyers</h4>
+            </div>
+            <div class="identity-card-bottom">
+              <p>Création des supports imprimés diffusés à l'IUT — cohérents avec la direction artistique globale du projet.</p>
+            </div>
+          </div>
+          <div class="identity-card">
+            <div class="identity-card-top">
+              <div class="identity-icon">📱</div>
+              <h4>Réseaux sociaux</h4>
+            </div>
+            <div class="identity-card-bottom">
+              <p>Déclinaison de l'identité visuelle pour les publications réseaux et la promotion de l'événement en ligne.</p>
+            </div>
+          </div>
+          <div class="identity-card">
+            <div class="identity-card-top">
+              <div class="identity-icon">📊</div>
+              <h4>Présentations Canva</h4>
+            </div>
+            <div class="identity-card-bottom">
+              <p>Supports de présentation adaptés aux différentes étapes du projet — bilans, pitchs, reporting.</p>
+            </div>
+          </div>
+          <div class="identity-card structured">
+            <div class="identity-card-top">
+              <div class="identity-icon">📋</div>
+              <h4>Cahier des charges</h4>
+            </div>
+            <div class="identity-card-bottom">
+              <p>Formalisation des objectifs, besoins, contraintes et critères de réussite — passage du créatif au structuré.</p>
+            </div>
+          </div>
+          <div class="identity-card structured">
+            <div class="identity-card-top">
+              <div class="identity-icon">🗂</div>
+              <h4>Espace Notion</h4>
+            </div>
+            <div class="identity-card-bottom">
+              <p>To-do, deadlines, répartition des tâches et suivi de l'avancement — même logique que sur Breathe&amp;Go.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mode agile / sprints -->
+      <div>
+        <div class="section-label">Organisation agile</div>
+        <h2 class="section-title">Travailler par sprints avec des deadlines précises</h2>
+        <p class="sprint-intro">Plutôt qu'un planning linéaire, nous avons fonctionné par étapes successives — chaque sprint correspondait à une livraison concrète, avec une deadline définie à l'avance pour mieux prioriser et ajuster en cours de route.</p>
+        <div class="sprints">
+          <div class="sprint">
+            <div class="sprint-header">
+              <div class="sprint-num">S1</div>
+              <h5>Lancement réseaux sociaux</h5>
+            </div>
+            <p>Mise en ligne des premiers contenus et ouverture des comptes de l'événement.</p>
+          </div>
+          <div class="sprint">
+            <div class="sprint-header">
+              <div class="sprint-num">S2</div>
+              <h5>Mails de diffusion</h5>
+            </div>
+            <p>Rédaction et envoi des communications ciblées aux différents publics du projet.</p>
+          </div>
+          <div class="sprint">
+            <div class="sprint-header">
+              <div class="sprint-num">S3</div>
+              <h5>Création des flyers</h5>
+            </div>
+            <p>Production des supports imprimés et diffusion physique à l'IUT de Sceaux.</p>
+          </div>
+          <div class="sprint">
+            <div class="sprint-header">
+              <div class="sprint-num">S4</div>
+              <h5>Micro-événements</h5>
+            </div>
+            <p>Organisation d'étapes intermédiaires pour maintenir la dynamique et la visibilité du projet.</p>
+          </div>
+          <div class="sprint">
+            <div class="sprint-header">
+              <div class="sprint-num">S5</div>
+              <h5>Partenariat BDA</h5>
+            </div>
+            <p>Coordination avec le Bureau des Arts pour élargir l'audience et renforcer la communication.</p>
+          </div>
+          <div class="sprint">
+            <div class="sprint-header">
+              <div class="sprint-num">S6</div>
+              <h5>Jour J — Défilé</h5>
+            </div>
+            <p>Coordination finale, gestion de l'événement et accompagnement des participants le jour du défilé.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Collaborateurs extérieurs -->
+      <div>
+        <div class="section-label">Collaboration externe</div>
+        <h2 class="section-title">Travailler avec des profils issus d'un autre milieu</h2>
+        <div class="collaborators">
+          <div class="collab-card">
+            <span class="collab-emoji">👗</span>
+            <h4>Étudiants en école de mode</h4>
+            <p>Comprendre leurs attentes créatives et intégrer leurs contraintes de mise en valeur des créations dans l'organisation globale.</p>
+            <span class="collab-tag">Adaptation créative</span>
+          </div>
+          <div class="collab-card">
+            <span class="collab-emoji">🧵</span>
+            <h4>Créateurs</h4>
+            <p>Coordonner avec les porteurs de projets vestimentaires pour aligner la direction artistique de l'événement avec leurs identités.</p>
+            <span class="collab-tag">Coordination</span>
+          </div>
+          <div class="collab-card">
+            <span class="collab-emoji">👠</span>
+            <h4>Mannequins</h4>
+            <p>Intégrer les besoins et les contraintes de jeunes mannequins à leur première expérience devant un public extérieur à leur école.</p>
+            <span class="collab-tag">Expérience utilisateur</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progression : créatif → pilotage -->
+      <div>
+        <div class="section-label">Montée en compétence</div>
+        <h2 class="section-title">D'une logique créative à une logique de pilotage</h2>
+        <div class="arc-card">
+          <div class="arc-header">
+            <div class="arc-header-title">Arc de progression</div>
+            <div class="arc-from-to">
+              <span class="arc-pill from">Logique créative</span>
+              <span class="arc-arrow-small">→</span>
+              <span class="arc-pill to">Pilotage de projet</span>
+            </div>
+          </div>
+          <div class="arc-body">
+            <div class="arc-col">
+              <div class="arc-col-label creative">En entrant dans le projet</div>
+              <div class="arc-item">
+                <span class="arc-bullet">●</span>
+                <div><strong>Intuition visuelle</strong>Partir d'idées créatives sans cadre formalisé ni méthode définie.</div>
+              </div>
+              <div class="arc-item">
+                <span class="arc-bullet">●</span>
+                <div><strong>Exécution spontanée</strong>Avancer sans véritable planning, en réagissant aux besoins au fil du temps.</div>
+              </div>
+              <div class="arc-item">
+                <span class="arc-bullet">●</span>
+                <div><strong>Travail en solo créatif</strong>Concevoir des supports sans nécessairement les intégrer dans une stratégie globale.</div>
+              </div>
+            </div>
+            <div class="arc-col">
+              <div class="arc-col-label structured">En sortant du projet</div>
+              <div class="arc-item structured">
+                <span class="arc-bullet">●</span>
+                <div><strong>Identité visuelle construite</strong>Créer une cohérence reconnaissable sur l'ensemble des supports, du logo aux réseaux.</div>
+              </div>
+              <div class="arc-item structured">
+                <span class="arc-bullet">●</span>
+                <div><strong>Pilotage par sprints</strong>Organiser le travail en étapes définies, avec des deadlines et des livrables précis à chaque phase.</div>
+              </div>
+              <div class="arc-item structured">
+                <span class="arc-bullet">●</span>
+                <div><strong>Collaboration multi-profils</strong>S'adapter à des interlocuteurs extérieurs, comprendre leurs attentes et les intégrer à l'organisation.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="skills-light">
+        <div class="section-label">Compétences mobilisées</div>
+        <div class="skills-row">
+          <div class="skill-light-card">
+            <div class="skill-light-name">Piloter</div>
+            <div class="skill-light-desc">Animer une équipe en mode agile, coordonner des acteurs extérieurs et suivre l'avancement des sprints jusqu'au jour J.</div>
+          </div>
+          <div class="skill-light-card">
+            <div class="skill-light-name">Entreprendre</div>
+            <div class="skill-light-desc">Formaliser le projet avec un cahier des charges, construire une organisation mesurable à partir d'une idée créative.</div>
+          </div>
+          <div class="skill-light-card">
+            <div class="skill-light-name">Développer</div>
+            <div class="skill-light-desc">Concevoir une direction artistique complète — logo, affiches, flyers, réseaux — cohérente sur tous les supports.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Retour -->
+      <a href="index.html" class="proj-back">← Retour au portfolio</a>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <div class="footer-logo-mark">TF</div>
+      <span class="footer-name">Timothé Flipo</span>
+    </div>
+    <span class="footer-copy">© 2026 — Portfolio BUT GEA · Parcours GEMA</span>
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="parcours.html">Parcours</a>
+      <a href="competences.html">Compétences</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="js/data.js?v=48"></script>
+  <script src="js/main.js?v=48"></script>
+</body>
+</html>
