@@ -60,7 +60,7 @@ const thematiquesData = [
         title: "Maia Village : accompagner la transition numérique",
         description: "Mettre en place un outil digital ne garantit pas qu'il sera bien adopté. Ce projet m'a appris à penser la transition numérique dans son ensemble, du besoin de départ jusqu'à l'accompagnement au changement.",
         tags: ["Analyser", "Décider", "Piloter"],
-        link: "#",
+        link: "maia-village.html",
         popupName: "Maia Village",
         competencyDetails: [
           { name: "Analyser", level: "Niveau 3", description: "Intégrer les enjeux de l'organisation et proposer des améliorations.", example: "Analyse des besoins des crèches et des familles, rédaction du cahier des charges." },
