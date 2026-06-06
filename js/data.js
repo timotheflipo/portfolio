@@ -131,7 +131,7 @@ const thematiquesData = [
     hoverColor: "#fae588",
     tagBg: "rgba(255,255,255,0.25)",
     accentOnWhite: "#8a6a00",
-    accentTagText: "#1c1c1a",
+    accentTagText: "#2F2723",
     reversed: true,
     title: "Concevoir et faire avancer des projets créateurs de valeur",
     tags: ["Entreprendre", "Créer", "Innover"],
