@@ -48,7 +48,7 @@ const thematiquesData = [
         title: "les BOZE : optimiser et fluidifier un processus interne",
         description: "Quand une mission répétitive prend plus de temps qu'elle ne le devrait, c'est souvent qu'un processus mérite d'être repensé. J'ai donc utilisé Notion pour rendre la préparation des réunions BOZE plus fluide, plus fiable et plus lisible.",
         tags: ["Analyser", "Décider", "Piloter"],
-        link: "#",
+        link: "boze.html",
         popupName: "les BOZE",
         competencyDetails: [
           { name: "Analyser", level: "Niveau 3", description: "Conseiller pour améliorer les processus.", example: "Identification des pertes de temps et des informations dispersées." },

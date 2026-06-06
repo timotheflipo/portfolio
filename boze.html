@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Les BOZE : optimiser et fluidifier un processus interne — Projet de Timothé Flipo chez Roole.">
+  <title>Les BOZE — Timothé Flipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=48">
+  <style>
+    /* ---- Hero projet ---- */
+    .proj-hero {
+      padding: calc(var(--header-h) + 5rem) 2rem 4rem;
+      background-color: var(--bg);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .proj-hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .proj-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      color: var(--light-gray);
+      margin-bottom: 1.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+    .proj-breadcrumb a { color: var(--light-gray); transition: color .2s; }
+    .proj-breadcrumb a:hover { color: var(--accent); }
+    .proj-breadcrumb-sep { opacity: 0.4; }
+    .proj-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .proj-eyebrow::before {
+      content: '';
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background-color: var(--accent);
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+    .proj-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.7rem, 3.8vw, 2.9rem);
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 1.75rem;
+    }
+    .proj-tags-hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .proj-tag-hero {
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      background-color: var(--accent-muted);
+      color: var(--accent-dark);
+      border: 1px solid var(--accent-border);
+    }
+
+    /* ---- Chiffres clés ---- */
+    .key-numbers {
+      background-color: var(--white);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .key-numbers-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      text-align: center;
+    }
+    .key-num-item {
+      padding: 1rem;
+    }
+    .key-num-value {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 2.6rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .key-num-label {
+      font-size: 0.78rem;
+      color: var(--gray);
+      line-height: 1.55;
+    }
+
+    /* ---- Contenu ---- */
+    .proj-content {
+      padding: 5rem 2rem 8rem;
+    }
+    .proj-content-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    /* Section label */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .section-label::after {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background-color: var(--accent);
+      opacity: 0.35;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+      line-height: 1.3;
+    }
+    .prose {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.82;
+    }
+    .prose + .prose { margin-top: 1rem; }
+
+    /* ---- Contexte + Problèmes : 2 colonnes ---- */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* Cards problèmes */
+    .problem-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .problem-card {
+      background-color: var(--white);
+      border-radius: var(--r-md);
+      padding: 1.1rem 1.25rem;
+      border: 1px solid var(--card-border);
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: box-shadow .25s ease, border-color .25s ease;
+    }
+    .problem-card:hover {
+      box-shadow: var(--shadow-sm);
+      border-color: var(--accent-border);
+    }
+    .problem-icon {
+      width: 34px; height: 34px; min-width: 34px;
+      border-radius: 50%;
+      background-color: var(--accent-muted);
+      border: 1px solid var(--accent-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .problem-card h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .problem-card p {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.62;
+    }
+
+    /* ---- Étapes ---- */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 50px;
+      bottom: 50px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent-border), var(--muted));
+      border-radius: 2px;
+    }
+    .step {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      position: relative;
+      z-index: 1;
+    }
+    .step-num {
+      width: 40px; height: 40px; min-width: 40px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.82rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(255,111,60,0.30);
+    }
+    .step-body {
+      background-color: var(--white);
+      border-radius: var(--r-md);
+      padding: 1.25rem 1.4rem;
+      border: 1px solid var(--card-border);
+      flex: 1;
+      transition: box-shadow .25s ease;
+    }
+    .step-body:hover { box-shadow: var(--shadow-sm); }
+    .step-body h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .step-body p {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.72;
+    }
+
+    /* ---- Résultats ---- */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .result-card {
+      background-color: var(--white);
+      border-radius: var(--r-md);
+      padding: 1.4rem;
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--accent);
+      transition: box-shadow .25s ease, transform .25s ease;
+    }
+    .result-card:hover {
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-2px);
+    }
+    .result-card h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .result-card p {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* ---- Compétences ---- */
+    .skills-block {
+      background-color: var(--dark);
+      border-radius: var(--r-xl);
+      padding: 2.5rem;
+    }
+    .skills-block .section-label { color: var(--accent); }
+    .skills-block .section-label::after { background-color: var(--accent); }
+    .skills-block .section-title { color: var(--white); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .skill-card {
+      background-color: rgba(255,255,255,0.05);
+      border-radius: var(--r-md);
+      padding: 1.25rem;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .skill-name {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .skill-desc {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+    }
+    .progress-note {
+      background-color: rgba(255,111,60,0.10);
+      border-radius: var(--r-md);
+      padding: 1.25rem 1.5rem;
+      border: 1px solid rgba(255,111,60,0.22);
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.75;
+    }
+    .progress-note strong { color: var(--accent); font-weight: 700; }
+
+    /* ---- Back ---- */
+    .proj-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color .2s;
+      padding: 10px 0;
+    }
+    .proj-back:hover { color: var(--accent); }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 700px) {
+      .two-col { grid-template-columns: 1fr; }
+      .results-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .key-numbers-inner { grid-template-columns: 1fr; gap: 1.25rem; }
+      .steps::before { display: none; }
+      .skills-block { padding: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="proj-hero">
+    <div class="proj-hero-inner">
+      <div class="proj-breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span class="proj-breadcrumb-sep">›</span>
+        <span>Les BOZE</span>
+      </div>
+      <div class="proj-eyebrow">Roole · Alternance 2024–2026</div>
+      <h1 class="proj-title">Les BOZE : optimiser et fluidifier<br>un processus interne</h1>
+      <div class="proj-tags-hero">
+        <span class="proj-tag-hero">Analyser</span>
+        <span class="proj-tag-hero">Décider</span>
+        <span class="proj-tag-hero">Piloter</span>
+        <span class="proj-tag-hero">Notion</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHIFFRES CLÉS -->
+  <div class="key-numbers">
+    <div class="key-numbers-inner">
+      <div class="key-num-item">
+        <div class="key-num-value">4</div>
+        <div class="key-num-label">directions régionales<br>à coordonner</div>
+      </div>
+      <div class="key-num-item">
+        <div class="key-num-value">~40</div>
+        <div class="key-num-label">sujets à suivre<br>chaque semaine</div>
+      </div>
+      <div class="key-num-item">
+        <div class="key-num-value">1</div>
+        <div class="key-num-label">réunion hebdomadaire<br>à préparer</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENU -->
+  <div class="proj-content">
+    <div class="proj-content-inner">
+
+      <!-- Contexte + Problèmes -->
+      <div class="two-col">
+        <div>
+          <div class="section-label">Situation de départ</div>
+          <h2 class="section-title">Une mission récurrente plus complexe qu'il n'y paraît</h2>
+          <p class="prose">
+            Chez Roole, je prépare chaque semaine la venue au siège d'une des quatre directions régionales dans le cadre des BOZE : recenser les sujets à traiter, contacter les intervenants, organiser les créneaux et valider avec le directeur régional.
+          </p>
+          <p class="prose">
+            Ce qui semblait simple en surface se révélait chronophage : informations dispersées, suivi partiellement manuel, organisation à reconstruire à chaque retour de l'IUT.
+          </p>
+        </div>
+
+        <div>
+          <div class="section-label">Problèmes identifiés</div>
+          <div class="problem-list">
+            <div class="problem-card">
+              <div class="problem-icon">📋</div>
+              <div>
+                <h4>Suivi peu fiable</h4>
+                <p>Difficile de savoir ce qui avait été traité, ce qui compliquait la préparation des séances.</p>
+              </div>
+            </div>
+            <div class="problem-card">
+              <div class="problem-icon">🔍</div>
+              <div>
+                <h4>Informations dispersées</h4>
+                <p>Données réparties à différents endroits, nécessitant de nombreuses vérifications manuelles.</p>
+              </div>
+            </div>
+            <div class="problem-card">
+              <div class="problem-icon">⏱</div>
+              <div>
+                <h4>Ressaisie répétitive</h4>
+                <p>Organisation manuelle alors que Notion permettait d'automatiser une partie du travail.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Étapes -->
+      <div>
+        <div class="section-label">Démarche & actions</div>
+        <h2 class="section-title">Une réorganisation complète de l'espace Notion</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Prise de recul et analyse du processus</h4>
+              <p>Plutôt que de m'adapter au fonctionnement existant, j'ai identifié précisément les sources de perte de temps avant de construire une solution. Une étape clé dans l'évolution de ma façon de travailler.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Refonte de la base de données des sujets</h4>
+              <p>Simplification et restructuration pour un suivi plus lisible : thèmes à traiter, intervenants concernés et avancement visible d'un coup d'œil.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Création d'une base dédiée aux passages</h4>
+              <p>Reliée à la base des sujets : elle récupère automatiquement le sujet et l'intervenant. Il suffit de saisir l'horaire — le reste se remplit seul.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Base centrale de coordination</h4>
+              <p>Une base maîtresse qui relie toutes les autres, offrant une vue d'ensemble structurée de l'ensemble des BOZE et de leurs sujets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Résultats -->
+      <div>
+        <div class="section-label">Résultats obtenus</div>
+        <h2 class="section-title">Un processus plus fluide, un pilotage plus autonome</h2>
+        <div class="results-grid">
+          <div class="result-card">
+            <h4>Moins de temps à rechercher l'information</h4>
+            <p>Données centralisées et accessibles immédiatement, sans multiplier les vérifications.</p>
+          </div>
+          <div class="result-card">
+            <h4>Suivi fiabilisé</h4>
+            <p>L'avancement des sujets est visible en temps réel — fini les oublis et les doublons.</p>
+          </div>
+          <div class="result-card">
+            <h4>Préparation accélérée</h4>
+            <p>Certaines données se remplissent automatiquement, libérant du temps pour le fond plutôt que la forme.</p>
+          </div>
+          <div class="result-card">
+            <h4>Pilotage plus autonome</h4>
+            <p>Vision claire de l'avancement, même lors des semaines passées à l'IUT.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compétences -->
+      <div class="skills-block">
+        <div class="section-label">Compétences mobilisées</div>
+        <h2 class="section-title">Ce que cette mission m'a permis de développer</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-name">Analyser</div>
+            <div class="skill-desc">Identifier les dysfonctionnements d'un processus existant et diagnostiquer les sources de perte de temps.</div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">Décider</div>
+            <div class="skill-desc">Prendre l'initiative de réorganiser plutôt que de subir, en construisant une solution adaptée aux contraintes réelles.</div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">Piloter</div>
+            <div class="skill-desc">Coordonner sujets, intervenants et directions régionales avec une organisation plus structurée et lisible.</div>
+          </div>
+        </div>
+        <div class="progress-note">
+          <strong>Ce que je retiens de ma progression ·</strong> Avant, j'avais tendance à m'adapter à un fonctionnement existant. Aujourd'hui, j'identifie plus rapidement les points de blocage et je propose des améliorations concrètes. Je souhaite encore progresser dans la mise en place d'indicateurs pour mesurer les effets dans le temps.
+        </div>
+      </div>
+
+      <!-- Retour -->
+      <a href="index.html" class="proj-back">← Retour au portfolio</a>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <div class="footer-logo-mark">TF</div>
+      <span class="footer-name">Timothé Flipo</span>
+    </div>
+    <span class="footer-copy">© 2026 — Portfolio BUT GEA · Parcours GEMA</span>
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="parcours.html">Parcours</a>
+      <a href="competences.html">Compétences</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="js/data.js?v=48"></script>
+  <script src="js/main.js?v=48"></script>
+</body>
+</html>
