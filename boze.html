@@ -292,12 +292,12 @@
 
     /* ---- Compétences ---- */
     .skills-block {
-      background-color: var(--dark);
+      background-color: var(--accent);
       border-radius: var(--r-xl);
       padding: 2.5rem;
     }
-    .skills-block .section-label { color: var(--accent); }
-    .skills-block .section-label::after { background-color: var(--accent); }
+    .skills-block .section-label { color: rgba(255,255,255,0.85); }
+    .skills-block .section-label::after { background-color: rgba(255,255,255,0.45); opacity: 1; }
     .skills-block .section-title { color: var(--white); }
     .skills-grid {
       display: grid;
@@ -306,32 +306,32 @@
       margin-bottom: 1.5rem;
     }
     .skill-card {
-      background-color: rgba(255,255,255,0.05);
+      background-color: rgba(255,255,255,0.18);
       border-radius: var(--r-md);
       padding: 1.25rem;
-      border: 1px solid rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.22);
     }
     .skill-name {
       font-size: 0.9rem;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--white);
       margin-bottom: 8px;
     }
     .skill-desc {
       font-size: 0.78rem;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.78);
       line-height: 1.65;
     }
     .progress-note {
-      background-color: rgba(255,111,60,0.10);
+      background-color: rgba(0,0,0,0.12);
       border-radius: var(--r-md);
       padding: 1.25rem 1.5rem;
-      border: 1px solid rgba(255,111,60,0.22);
+      border: 1px solid rgba(0,0,0,0.10);
       font-size: 0.84rem;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,0.88);
       line-height: 1.75;
     }
-    .progress-note strong { color: var(--accent); font-weight: 700; }
+    .progress-note strong { color: var(--white); font-weight: 700; }
 
     /* ---- Back ---- */
     .proj-back {
