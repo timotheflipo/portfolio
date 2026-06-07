@@ -586,7 +586,7 @@ ul { list-style: none; }
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  animation: pcfShine 3s linear infinite;
+  animation: pcfShine 2.3s linear infinite;
 }
 .pcf-badge::before {
   content: '';
@@ -598,12 +598,13 @@ ul { list-style: none; }
   border-radius: 1px;
   box-shadow: 0 0 6px rgba(255,111,60,0.45);
 }
-/* Avec background-size 300% (gradient 3x le conteneur), la position reste
-   dans [0%, 100%] donc le bg couvre toujours intégralement le texte.
-   La lumière (centre du gradient) traverse de gauche à droite. */
+/* Avec background-size 300%, la position reste dans [0%, 100%] donc le bg
+   couvre toujours intégralement le texte (pas de lettres invisibles).
+   La lumière (centre du gradient) glisse de -10% à 110% du conteneur :
+   elle entre par la gauche, traverse tout le texte, et sort par la droite. */
 @keyframes pcfShine {
-  from { background-position: 75% 0; }  /* lumière au bord gauche */
-  to   { background-position: 25% 0; }  /* lumière au bord droit */
+  from { background-position: 80% 0; }  /* lumière hors champ à gauche (-10%) */
+  to   { background-position: 20% 0; }  /* lumière hors champ à droite (110%) */
 }
 @media (prefers-reduced-motion: reduce) {
   .pcf-badge { animation: none; }
