@@ -1617,22 +1617,20 @@ ul { list-style: none; }
   50%       { opacity: 0.85; transform: scaleY(1.12); }
 }
 
-/* ---- Contour tournant + halo lumineux (featured cards) ---- */
+/* ---- Contour tournant (featured cards) ---- */
 @property --border-angle {
   syntax: '<angle>';
   initial-value: 0turn;
-  inherits: true;
+  inherits: false;
 }
 @keyframes borderSpin {
   to { --border-angle: 1turn; }
 }
-
-/* Wrapper qui pilote la rotation du contour des cartes featured */
-.proj-card-wrap:has(> .proj-card-featured) {
+.proj-card-featured {
   animation: borderSpin 5s linear infinite;
 }
 @media (prefers-reduced-motion: reduce) {
-  .proj-card-wrap:has(> .proj-card-featured) { animation: none; }
+  .proj-card-featured { animation: none; }
 }
 
 /* ============================================
