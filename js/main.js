@@ -31,6 +31,14 @@ function buildNav() {
   panel.id = 'nav-panel';
   panel.setAttribute('aria-label', 'Navigation principale');
 
+  // Icônes outline minimalistes (style Lucide)
+  const icons = {
+    index: '<svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>',
+    parcours: '<svg viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>',
+    competences: '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>',
+    contact: '<svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>'
+  };
+
   const links = [
     { label: 'Accueil', href: 'index.html', key: 'index' },
     { label: 'Parcours', href: 'parcours.html', key: 'parcours' },
@@ -41,13 +49,21 @@ function buildNav() {
   const currentPage = path.split('/').pop() || 'index.html';
 
   panel.innerHTML = `
+    <div class="nav-head">
+      <div class="nav-head-mark">TF</div>
+      <div class="nav-head-info">
+        <span class="nav-head-name">Timothé Flipo</span>
+        <span class="nav-head-mail">Portfolio · BUT GEA</span>
+      </div>
+    </div>
+    <div class="nav-section-label">Navigation</div>
     <ul class="nav-links">
-      ${links.map((l, i) => `
+      ${links.map(l => `
         <li>
           <a class="nav-link ${currentPage === l.href || (currentPage === '' && l.key === 'index') ? 'active' : ''}"
              href="${l.href}">
-            <span class="nav-num">0${i + 1}</span>
-            ${l.label}
+            <span class="nav-ico">${icons[l.key]}</span>
+            <span class="nav-text">${l.label}</span>
           </a>
         </li>
       `).join('')}

@@ -195,7 +195,7 @@ ul { list-style: none; }
 .burger-btn.open .burger-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .burger-btn.open .burger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .burger-btn.open .burger-line:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-.burger-btn.open .burger-line { background-color: var(--white); }
+.burger-btn.open .burger-line { background-color: var(--dark); }
 
 /* Nav overlay */
 .nav-overlay {
@@ -210,55 +210,95 @@ ul { list-style: none; }
 }
 .nav-overlay.visible { opacity: 1; pointer-events: all; }
 
-/* Nav panel */
+/* Nav panel — design clair & minimaliste */
 .nav-panel {
   position: fixed;
   top: 0; right: 0;
-  width: min(340px, 100vw);
+  width: min(330px, 100vw);
   height: 100vh;
-  background-color: var(--dark);
+  background-color: var(--bg);
   z-index: 1000;
   transform: translateX(100%);
   transition: transform var(--t-slow);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 4rem 3rem;
+  padding: 1.75rem 1.4rem 2rem;
   overflow-y: auto;
+  box-shadow: -10px 0 50px rgba(0,0,0,0.12);
 }
 .nav-panel.open { transform: translateX(0); }
 
-.nav-links { display: flex; flex-direction: column; gap: 0.15rem; }
-.nav-link {
+/* En-tête : logo + identité */
+.nav-head {
   display: flex;
-  align-items: baseline;
-  gap: 14px;
-  padding: 12px 0;
-  color: rgba(255,255,255,0.28);
+  align-items: center;
+  gap: 12px;
+  padding: 0.25rem 0.5rem 1.25rem;
+}
+.nav-head-mark {
+  width: 42px; height: 42px;
+  background-color: var(--dark);
+  color: #fff;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.6rem, 4vw, 2rem);
-  cursor: pointer;
-  transition: color var(--t-fast), transform var(--t-fast);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.85rem;
+  flex-shrink: 0;
 }
-.nav-link:last-child { border-bottom: none; }
-.nav-link:hover { color: var(--white); transform: translateX(8px); }
-.nav-link.active { color: var(--accent); transform: translateX(8px); }
-.nav-num {
+.nav-head-info { display: flex; flex-direction: column; gap: 1px; }
+.nav-head-name { font-size: 0.92rem; font-weight: 700; color: var(--dark); line-height: 1.25; }
+.nav-head-mail { font-size: 0.74rem; color: var(--light-gray); }
+
+/* Label de section */
+.nav-section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--light-gray);
+  letter-spacing: 0.02em;
+  padding: 0 0.75rem;
+  margin: 0.75rem 0 0.5rem;
+  border-top: 1px solid rgba(0,0,0,0.07);
+  padding-top: 1.25rem;
+}
+
+.nav-links { display: flex; flex-direction: column; gap: 2px; }
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  color: var(--gray);
   font-family: var(--font-body);
-  font-size: 0.6rem;
-  letter-spacing: 0.14em;
-  opacity: 0.35;
-  padding-top: 4px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: background-color var(--t-fast), color var(--t-fast);
+}
+.nav-link:hover { background-color: rgba(0,0,0,0.045); color: var(--dark); }
+.nav-link.active { background-color: var(--accent-muted); color: var(--accent-dark); }
+.nav-ico {
+  width: 20px; height: 20px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-ico svg {
+  width: 20px; height: 20px;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
 }
 
 .nav-bottom {
   margin-top: auto;
-  padding-top: 3rem;
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.2);
+  padding: 1.25rem 0.75rem 0;
+  font-size: 0.7rem;
+  color: var(--light-gray);
   line-height: 1.7;
+  border-top: 1px solid rgba(0,0,0,0.07);
 }
 
 /* ============================================
@@ -543,21 +583,47 @@ ul { list-style: none; }
 .ts1-sub-grid .proj-card-wrap .proj-card { flex: 1; }
 
 /* ---- Carte featured (S1 + S3) ---- */
+/* Technique : 2 backgrounds.
+   - var(--white) padding-box : remplit l'intérieur de la carte
+   - linear-gradient border-box : se voit uniquement sur la bordure
+     (car le padding-box blanc masque l'intérieur).
+   Une bande lumineuse glisse de gauche à droite sur ce contour orange. */
 .proj-card-featured {
   display: block;
   text-decoration: none;
-  background-color: var(--white);
-  border: 1px solid var(--card-border);
+  background:
+    var(--white) padding-box,
+    linear-gradient(
+      110deg,
+      rgba(255,111,60,0.4) 0%,
+      rgba(255,111,60,0.4) 40%,
+      #ffd6a3 47%,
+      #fff3df 50%,
+      #ffd6a3 53%,
+      rgba(255,111,60,0.4) 60%,
+      rgba(255,111,60,0.4) 100%
+    ) border-box;
+  background-size: auto, 300% 100%;
+  background-repeat: no-repeat;
+  background-position: 0 0, 80% 0;
+  border: 1.5px solid transparent;
   border-radius: var(--r-xl);
   padding: 2rem 2.5rem;
   box-shadow: var(--shadow-md);
   cursor: pointer;
   transition: box-shadow 0.3s ease;
+  animation: pcfCardShine 2.3s linear infinite;
 }
-/* Hover : ombre renforcée + contour orange (identique aux autres cartes) */
+/* Hover : juste un boost d'ombre (le contour orange est déjà permanent) */
 .proj-card-wrap:hover .proj-card-featured {
-  box-shadow: var(--shadow-lg),
-    inset 0 0 0 1.5px rgba(255,111,60,0.28);
+  box-shadow: var(--shadow-lg);
+}
+@keyframes pcfCardShine {
+  from { background-position: 0 0, 80% 0; }
+  to   { background-position: 0 0, 20% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .proj-card-featured { animation: none; }
 }
 .pcf-badge {
   display: inline-flex;
@@ -706,26 +772,47 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: 1.35fr 1fr;
   gap: 1.25rem;
-  align-items: start;
+  align-items: stretch;
 }
-.ts3-secondary { display: flex; flex-direction: column; gap: 1.25rem; }
+/* space-between : la 1re carte reste en haut, la dernière (Fashion Day)
+   descend pour que son bas s'aligne avec le bas de Breathe&Go */
+.ts3-secondary {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
 
 /* Carte featured avec image (Breathe&Go) */
+/* Même technique que les cartes blanches, mais fond sombre dans le padding-box */
 .proj-card-featured.img-card {
   position: relative;
   overflow: hidden;
-  background-color: var(--dark);
-  border: 1px solid transparent;
+  background:
+    var(--dark) padding-box,
+    linear-gradient(
+      110deg,
+      rgba(255,111,60,0.55) 0%,
+      rgba(255,111,60,0.55) 40%,
+      #ffd6a3 47%,
+      #fff3df 50%,
+      #ffd6a3 53%,
+      rgba(255,111,60,0.55) 60%,
+      rgba(255,111,60,0.55) 100%
+    ) border-box;
+  background-size: auto, 300% 100%;
+  background-repeat: no-repeat;
+  background-position: 0 0, 80% 0;
+  border: 1.5px solid transparent;
   min-height: 460px;
   padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
-/* Hover img-card : contour orange (le inset shadow standard) */
+/* Hover img-card : juste un boost d'ombre */
 .proj-card-wrap:hover .proj-card-featured.img-card {
-  box-shadow: var(--shadow-lg),
-    inset 0 0 0 1.5px rgba(255,111,60,0.45);
+  box-shadow: var(--shadow-lg);
 }
 .pcf-bg {
   position: absolute;
