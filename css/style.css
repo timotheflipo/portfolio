@@ -536,39 +536,55 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
+  align-items: stretch;
 }
+/* Hauteurs égales dans la sous-grille */
+.ts1-sub-grid .proj-card-wrap { display: flex; flex-direction: column; }
+.ts1-sub-grid .proj-card-wrap .proj-card { flex: 1; }
 
 /* ---- Carte featured (S1 + S3) ---- */
 .proj-card-featured {
   display: block;
   text-decoration: none;
-  background-color: var(--white);
+  background:
+    var(--white) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      rgba(255,111,60,0.03) 40%,
+      rgba(255,111,60,0.72) 65%,
+      rgba(255,111,60,0.03) 88%
+    ) border-box;
+  border: 2px solid transparent;
   border-radius: var(--r-xl);
   padding: 2rem 2.5rem;
-  border: 1px solid var(--card-border);
-  border-left: 4px solid var(--accent);
   box-shadow: var(--shadow-md);
   cursor: pointer;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  transition: box-shadow 0.3s ease;
+  animation: borderSpin 4s linear infinite;
 }
-.proj-card-featured:hover {
+/* Hover via .proj-card-wrap:hover — pas de conflit avec .reveal.visible */
+.proj-card-wrap:hover .proj-card-featured {
   box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
 }
 .pcf-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 13px;
-  border-radius: 50px;
-  font-size: 0.6rem;
+  gap: 8px;
+  font-size: 0.62rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  background-color: var(--accent-muted);
-  color: var(--accent-dark);
-  border: 1px solid var(--accent-border);
-  margin-bottom: 1.1rem;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.pcf-badge::before {
+  content: '';
+  display: block;
+  width: 14px;
+  height: 2px;
+  background-color: var(--accent);
+  flex-shrink: 0;
+  border-radius: 1px;
 }
 .pcf-top {
   display: flex;
@@ -607,7 +623,7 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: 260px 1fr;
   gap: 5rem;
-  align-items: start;
+  align-items: stretch;
 }
 .ts2-sidebar { position: sticky; top: calc(var(--header-h) + 2rem); }
 .ts2-num {
@@ -627,30 +643,33 @@ ul { list-style: none; }
   margin-bottom: 0.75rem;
 }
 .ts2-sidebar .ts-intro { margin-bottom: 1.25rem; }
-.ts2-cards { display: flex; flex-direction: column; gap: 1.25rem; }
+.ts2-cards { display: flex; flex-direction: column; justify-content: center; gap: 1.25rem; }
 
 /* ---- Section 3 — Créateurs de valeur ---- */
 .ts3-header {
-  max-width: 700px;
+  position: relative;
+  overflow: hidden;
+  max-width: var(--max-w);
   margin: 0 auto;
   padding: 5rem 2rem 3.5rem;
   text-align: center;
 }
-.ts3-num-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-.ts3-num-line { height: 1px; width: 48px; background-color: var(--muted); }
-.ts3-num-label {
-  font-size: 0.6rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
+.ts3-bg-num {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(6rem, 14vw, 11rem);
+  line-height: 0.82;
   color: var(--accent);
+  opacity: 0.07;
+  letter-spacing: -0.05em;
+  user-select: none;
+  pointer-events: none;
 }
+.ts3-header .ts-eyebrow { justify-content: center; margin-bottom: 0.75rem; }
 .ts3-header .ts-title {
   font-size: clamp(1.4rem, 2.5vw, 2.1rem);
   margin-bottom: 0.75rem;
@@ -672,9 +691,15 @@ ul { list-style: none; }
 .proj-card-featured.img-card {
   position: relative;
   overflow: hidden;
-  background-color: var(--dark);
-  border-left: none;
-  border-color: transparent;
+  background:
+    var(--dark) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      rgba(255,111,60,0.03) 40%,
+      rgba(255,111,60,0.6) 65%,
+      rgba(255,111,60,0.03) 88%
+    ) border-box;
+  border: 2px solid transparent;
   min-height: 460px;
   padding: 0;
   display: flex;
@@ -1582,6 +1607,16 @@ ul { list-style: none; }
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.4; transform: scaleY(1); }
   50%       { opacity: 0.85; transform: scaleY(1.12); }
+}
+
+/* ---- Contour tournant (featured cards) ---- */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0turn;
+  inherits: false;
+}
+@keyframes borderSpin {
+  to { --border-angle: 1turn; }
 }
 
 /* ============================================

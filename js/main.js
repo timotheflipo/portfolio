@@ -149,15 +149,17 @@ function buildS1HTML(theme, num, cards) {
   const [fc, ...sc] = cards;
 
   const featuredHTML = `
-    <a class="proj-card-featured reveal" href="${fc.card.link}">
-      <div class="pcf-badge">Projet central</div>
-      <div class="pcf-top">
-        <h3>${fc.card.title}</h3>
-        <span class="pcf-arrow">↗</span>
-      </div>
-      <p>${fc.card.description}</p>
-      <div class="proj-tags">${fc.tagsHTML}</div>
-    </a>`;
+    <div class="proj-card-wrap">
+      <a class="proj-card-featured reveal" href="${fc.card.link}">
+        <div class="pcf-badge">Projet central</div>
+        <div class="pcf-top">
+          <h3>${fc.card.title}</h3>
+          <span class="pcf-arrow">↗</span>
+        </div>
+        <p>${fc.card.description}</p>
+        <div class="proj-tags">${fc.tagsHTML}</div>
+      </a>
+    </div>`;
 
   const subHTML = sc.map(({ card, tagsHTML }) => `
     <div class="proj-card-wrap">
@@ -195,10 +197,10 @@ function buildS2HTML(theme, num, cards) {
 
   const cardsHTML = cards.map(({ card, tagsHTML }) => `
     <div class="proj-card-wrap">
-      <a class="proj-card reveal" href="${card.link}">
-        <div class="proj-card-top">
+      <a class="proj-card-featured reveal" href="${card.link}">
+        <div class="pcf-top">
           <h3>${card.title}</h3>
-          <span class="proj-arrow">↗</span>
+          <span class="pcf-arrow">↗</span>
         </div>
         <p>${card.description}</p>
         <div class="proj-tags">${tagsHTML}</div>
@@ -228,14 +230,27 @@ function buildS3HTML(theme, num, cards) {
     : '';
 
   const featuredHTML = theme.image ? `
-    <a class="proj-card-featured img-card reveal-l" href="${fc.card.link}">
-      <div class="pcf-bg" ${imgAttr}></div>
-      <div class="pcf-overlay"></div>
-      <div class="pcf-img-body">
-        <div class="pcf-awards">
-          <span class="pcf-award">🏆 Prix innovation</span>
-          <span class="pcf-award">🏆 Prix entrepreneurial</span>
+    <div class="proj-card-wrap">
+      <a class="proj-card-featured img-card reveal-l" href="${fc.card.link}">
+        <div class="pcf-bg" ${imgAttr}></div>
+        <div class="pcf-overlay"></div>
+        <div class="pcf-img-body">
+          <div class="pcf-awards">
+            <span class="pcf-award">🏆 Prix innovation</span>
+            <span class="pcf-award">🏆 Prix entrepreneurial</span>
+          </div>
+          <div class="pcf-badge">Projet phare</div>
+          <div class="pcf-top">
+            <h3>${fc.card.title}</h3>
+            <span class="pcf-arrow">↗</span>
+          </div>
+          <p>${fc.card.description}</p>
+          <div class="proj-tags">${fc.tagsHTML}</div>
         </div>
+      </a>
+    </div>` : `
+    <div class="proj-card-wrap">
+      <a class="proj-card-featured reveal-l" href="${fc.card.link}">
         <div class="pcf-badge">Projet phare</div>
         <div class="pcf-top">
           <h3>${fc.card.title}</h3>
@@ -243,17 +258,8 @@ function buildS3HTML(theme, num, cards) {
         </div>
         <p>${fc.card.description}</p>
         <div class="proj-tags">${fc.tagsHTML}</div>
-      </div>
-    </a>` : `
-    <a class="proj-card-featured reveal-l" href="${fc.card.link}">
-      <div class="pcf-badge">Projet phare</div>
-      <div class="pcf-top">
-        <h3>${fc.card.title}</h3>
-        <span class="pcf-arrow">↗</span>
-      </div>
-      <p>${fc.card.description}</p>
-      <div class="proj-tags">${fc.tagsHTML}</div>
-    </a>`;
+      </a>
+    </div>`;
 
   const secHTML = sc.map(({ card, tagsHTML }) => `
     <div class="proj-card-wrap">
@@ -269,11 +275,8 @@ function buildS3HTML(theme, num, cards) {
 
   return `
     <div class="ts3-header reveal">
-      <div class="ts3-num-row">
-        <div class="ts3-num-line"></div>
-        <div class="ts3-num-label">${num}</div>
-        <div class="ts3-num-line"></div>
-      </div>
+      <span class="ts3-bg-num">${num}</span>
+      <div class="ts-eyebrow">${num}</div>
       <h2 class="ts-title" style="font-size:clamp(1.4rem,2.5vw,2.1rem);margin-bottom:.75rem">${theme.title}</h2>
       <p class="ts-intro" style="margin-bottom:1.25rem">${theme.intro || ''}</p>
       <div class="ts-tags">${centerTagsHTML}</div>
