@@ -198,6 +198,7 @@ function buildS2HTML(theme, num, cards) {
   const cardsHTML = cards.map(({ card, tagsHTML }) => `
     <div class="proj-card-wrap">
       <a class="proj-card-featured reveal" href="${card.link}">
+        <div class="pcf-badge">Projet central</div>
         <div class="pcf-top">
           <h3>${card.title}</h3>
           <span class="pcf-arrow">↗</span>
@@ -239,7 +240,7 @@ function buildS3HTML(theme, num, cards) {
             <span class="pcf-award">🏆 Prix innovation</span>
             <span class="pcf-award">🏆 Prix entrepreneurial</span>
           </div>
-          <div class="pcf-badge">Projet phare</div>
+          <div class="pcf-badge">Projet central</div>
           <div class="pcf-top">
             <h3>${fc.card.title}</h3>
             <span class="pcf-arrow">↗</span>
@@ -251,7 +252,7 @@ function buildS3HTML(theme, num, cards) {
     </div>` : `
     <div class="proj-card-wrap">
       <a class="proj-card-featured reveal-l" href="${fc.card.link}">
-        <div class="pcf-badge">Projet phare</div>
+        <div class="pcf-badge">Projet central</div>
         <div class="pcf-top">
           <h3>${fc.card.title}</h3>
           <span class="pcf-arrow">↗</span>
