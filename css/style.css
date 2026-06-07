@@ -550,7 +550,7 @@ ul { list-style: none; }
   background:
     var(--white) padding-box,
     conic-gradient(
-      from var(--border-angle),
+      from var(--border-angle, 0deg),
       rgba(255,111,60,0.18) 0%,
       rgba(255,111,60,0.18) 35%,
       rgba(255,140,80,0.8) 48%,
@@ -698,7 +698,7 @@ ul { list-style: none; }
   background:
     var(--dark) padding-box,
     conic-gradient(
-      from var(--border-angle),
+      from var(--border-angle, 0deg),
       rgba(255,111,60,0.18) 0%,
       rgba(255,111,60,0.18) 35%,
       rgba(255,140,80,0.8) 48%,
@@ -1617,21 +1617,8 @@ ul { list-style: none; }
   50%       { opacity: 0.85; transform: scaleY(1.12); }
 }
 
-/* ---- Contour tournant (featured cards) ---- */
-@property --border-angle {
-  syntax: '<angle>';
-  initial-value: 0turn;
-  inherits: false;
-}
-@keyframes borderSpin {
-  to { --border-angle: 1turn; }
-}
-.proj-card-featured {
-  animation: borderSpin 5s linear infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .proj-card-featured { animation: none; }
-}
+/* ---- Contour tournant (featured cards) — angle piloté par JS ---- */
+:root { --border-angle: 0deg; }
 
 /* ============================================
    RESPONSIVE
