@@ -141,76 +141,179 @@ function buildFAQ(container) {
 // ============================================
 // SECTIONS THÉMATIQUES (index.html sections 3-5)
 // ============================================
-// Registre des projets (rempli au build) — indexé par data-reg sur les tags
 const projectsRegistry = [];
 
+// --- Section 1 : Diagnostic & Analyse ---
+function buildS1HTML(theme, num, cards) {
+  const headerTagsHTML = theme.tags.map(t => `<span class="ts-tag">${t}</span>`).join('');
+  const [fc, ...sc] = cards;
+
+  const featuredHTML = `
+    <a class="proj-card-featured reveal" href="${fc.card.link}">
+      <div class="pcf-badge">Projet central</div>
+      <div class="pcf-top">
+        <h3>${fc.card.title}</h3>
+        <span class="pcf-arrow">↗</span>
+      </div>
+      <p>${fc.card.description}</p>
+      <div class="proj-tags">${fc.tagsHTML}</div>
+    </a>`;
+
+  const subHTML = sc.map(({ card, tagsHTML }) => `
+    <div class="proj-card-wrap">
+      <a class="proj-card reveal" href="${card.link}">
+        <div class="proj-card-top">
+          <h3>${card.title}</h3>
+          <span class="proj-arrow">↗</span>
+        </div>
+        <p>${card.description}</p>
+        <div class="proj-tags">${tagsHTML}</div>
+      </a>
+    </div>`).join('');
+
+  return `
+    <div class="ts1-header reveal">
+      <div class="ts1-header-left">
+        <div class="ts-eyebrow">${num}</div>
+        <h2 class="ts-title" style="font-size:clamp(1.4rem,2.5vw,2.1rem);margin-bottom:.75rem">${theme.title}</h2>
+        <p class="ts-intro">${theme.intro || ''}</p>
+      </div>
+      <div class="ts1-header-right">
+        <span class="ts1-num">${num}</span>
+        <div class="ts-tags">${headerTagsHTML}</div>
+      </div>
+    </div>
+    <div class="ts1-cards-area">
+      ${featuredHTML}
+      <div class="ts1-sub-grid">${subHTML}</div>
+    </div>`;
+}
+
+// --- Section 2 : Pilotage & Décision ---
+function buildS2HTML(theme, num, cards) {
+  const sideTagsHTML = theme.tags.map(t => `<span class="ts-tag">${t}</span>`).join('');
+
+  const cardsHTML = cards.map(({ card, tagsHTML }) => `
+    <div class="proj-card-wrap">
+      <a class="proj-card reveal" href="${card.link}">
+        <div class="proj-card-top">
+          <h3>${card.title}</h3>
+          <span class="proj-arrow">↗</span>
+        </div>
+        <p>${card.description}</p>
+        <div class="proj-tags">${tagsHTML}</div>
+      </a>
+    </div>`).join('');
+
+  return `
+    <div class="ts2-inner">
+      <div class="ts2-sidebar reveal-l">
+        <span class="ts2-num">${num}</span>
+        <div class="ts-eyebrow">Compétences</div>
+        <h2 class="ts-title" style="font-size:clamp(1.2rem,1.8vw,1.55rem);margin-bottom:.75rem">${theme.title}</h2>
+        <p class="ts-intro" style="margin-bottom:1.25rem">${theme.intro || ''}</p>
+        <div class="ts-tags">${sideTagsHTML}</div>
+      </div>
+      <div class="ts2-cards reveal-r">${cardsHTML}</div>
+    </div>`;
+}
+
+// --- Section 3 : Créateurs de valeur ---
+function buildS3HTML(theme, num, cards) {
+  const centerTagsHTML = theme.tags.map(t => `<span class="ts-tag">${t}</span>`).join('');
+  const [fc, ...sc] = cards;
+
+  const imgAttr = theme.image
+    ? `style="background-image:url('${theme.image}');background-position:${theme.bgPosition || 'center'}"`
+    : '';
+
+  const featuredHTML = theme.image ? `
+    <a class="proj-card-featured img-card reveal-l" href="${fc.card.link}">
+      <div class="pcf-bg" ${imgAttr}></div>
+      <div class="pcf-overlay"></div>
+      <div class="pcf-img-body">
+        <div class="pcf-awards">
+          <span class="pcf-award">🏆 Prix innovation</span>
+          <span class="pcf-award">🏆 Prix entrepreneurial</span>
+        </div>
+        <div class="pcf-badge">Projet phare</div>
+        <div class="pcf-top">
+          <h3>${fc.card.title}</h3>
+          <span class="pcf-arrow">↗</span>
+        </div>
+        <p>${fc.card.description}</p>
+        <div class="proj-tags">${fc.tagsHTML}</div>
+      </div>
+    </a>` : `
+    <a class="proj-card-featured reveal-l" href="${fc.card.link}">
+      <div class="pcf-badge">Projet phare</div>
+      <div class="pcf-top">
+        <h3>${fc.card.title}</h3>
+        <span class="pcf-arrow">↗</span>
+      </div>
+      <p>${fc.card.description}</p>
+      <div class="proj-tags">${fc.tagsHTML}</div>
+    </a>`;
+
+  const secHTML = sc.map(({ card, tagsHTML }) => `
+    <div class="proj-card-wrap">
+      <a class="proj-card reveal-r" href="${card.link}">
+        <div class="proj-card-top">
+          <h3>${card.title}</h3>
+          <span class="proj-arrow">↗</span>
+        </div>
+        <p>${card.description}</p>
+        <div class="proj-tags">${tagsHTML}</div>
+      </a>
+    </div>`).join('');
+
+  return `
+    <div class="ts3-header reveal">
+      <div class="ts3-num-row">
+        <div class="ts3-num-line"></div>
+        <div class="ts3-num-label">${num}</div>
+        <div class="ts3-num-line"></div>
+      </div>
+      <h2 class="ts-title" style="font-size:clamp(1.4rem,2.5vw,2.1rem);margin-bottom:.75rem">${theme.title}</h2>
+      <p class="ts-intro" style="margin-bottom:1.25rem">${theme.intro || ''}</p>
+      <div class="ts-tags">${centerTagsHTML}</div>
+    </div>
+    <div class="ts3-grid">
+      ${featuredHTML}
+      <div class="ts3-secondary">${secHTML}</div>
+    </div>`;
+}
+
+// --- Orchestrateur ---
 function buildThematiques(container) {
   if (!container || typeof thematiquesData === 'undefined') return;
   projectsRegistry.length = 0;
 
   thematiquesData.forEach((theme, themeIdx) => {
     const section = document.createElement('section');
-    section.className = 'theme-section';
+    section.className = `theme-section theme-s${themeIdx + 1}`;
     section.id = theme.id;
+    const num = String(themeIdx + 1).padStart(2, '0');
 
-    const cardsHTML = theme.cards.map(card => {
+    const cards = theme.cards.map(card => {
       const regIndex = projectsRegistry.length;
-      projectsRegistry.push({
-        name:    card.popupName || card.title,
-        details: card.competencyDetails || []
-      });
-
+      projectsRegistry.push({ name: card.popupName || card.title, details: card.competencyDetails || [] });
       const hasDetails = (card.competencyDetails || []).length > 0;
       const tagsHTML = card.tags.map(t =>
         hasDetails
           ? `<button type="button" class="proj-tag proj-tag-clickable" data-reg="${regIndex}">${t}</button>`
           : `<span class="proj-tag">${t}</span>`
       ).join('');
+      return { card, tagsHTML };
+    });
 
-      return `
-        <div class="proj-card-wrap">
-          <a class="proj-card reveal" href="${card.link}">
-            <div class="proj-card-top">
-              <h3>${card.title}</h3>
-              <span class="proj-arrow">↗</span>
-            </div>
-            <p>${card.description}</p>
-            <div class="proj-tags">${tagsHTML}</div>
-          </a>
-        </div>`;
-    }).join('');
-
-    const rev = theme.reversed;
-    const num = String(themeIdx + 1).padStart(2, '0');
-
-    section.innerHTML = `
-      <div class="theme-inner${rev ? ' reversed' : ''}">
-        <div class="theme-visual ${rev ? 'reveal-r' : 'reveal-l'}">
-          <div class="theme-visual-frame${theme.image ? ' has-image' : ''}">
-            <div class="theme-visual-bg" ${theme.image ? `style="background-image:url('${theme.image}'); background-position:${theme.bgPosition || 'center'};"` : ''}></div>
-            ${theme.image ? '' : `<div class="theme-visual-placeholder"></div>`}
-            <div class="theme-overlay">
-              <div class="theme-encart">
-                <span class="theme-encart-num">${num}</span>
-                <h2>${theme.title}</h2>
-                <div class="tags-row">
-                  ${theme.tags.map(t => `<span class="tag">${t}</span>`).join('')}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="theme-cards ${rev ? 'reveal-l' : 'reveal-r'}">
-          <p class="theme-cards-title">Projets associés</p>
-          ${cardsHTML}
-        </div>
-      </div>
-    `;
+    if (themeIdx === 0)      section.innerHTML = buildS1HTML(theme, num, cards);
+    else if (themeIdx === 1) section.innerHTML = buildS2HTML(theme, num, cards);
+    else                     section.innerHTML = buildS3HTML(theme, num, cards);
 
     container.appendChild(section);
   });
 
-  // Délégation : clic sur un tag de compétence → ouvre la pop-up du projet
   container.addEventListener('click', e => {
     const tag = e.target.closest('.proj-tag-clickable');
     if (!tag) return;

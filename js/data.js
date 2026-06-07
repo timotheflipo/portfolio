@@ -30,6 +30,7 @@ const notionBlocks = [
 const thematiquesData = [
   {
     id: "theme-1",
+    intro: "Analyser les organisations, identifier les sources de friction et concevoir des solutions adaptées au terrain.",
     bg: "#d8caf6",
     encartColor: "#ac88e8",
     encartTextColor: "white",
@@ -84,6 +85,7 @@ const thematiquesData = [
   },
   {
     id: "theme-2",
+    intro: "Transformer des données brutes en décisions structurées — du tableau de bord Excel au plan de transformation piloté par des KPI.",
     bg: "#dcece9",
     encartColor: "#82b2c0",
     encartTextColor: "white",
@@ -125,6 +127,7 @@ const thematiquesData = [
   },
   {
     id: "theme-3",
+    intro: "Mener des projets créateurs de valeur jusqu'au bout, de l'idée initiale à la réalisation concrète, avec ambition et méthode.",
     bg: "#fcefb4",
     encartColor: "#f9dc5c",
     encartTextColor: "white",
