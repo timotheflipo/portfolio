@@ -545,30 +545,19 @@ ul { list-style: none; }
 /* ---- Carte featured (S1 + S3) ---- */
 .proj-card-featured {
   display: block;
-  position: relative;
   text-decoration: none;
-  background:
-    var(--white) padding-box,
-    conic-gradient(
-      from var(--border-angle, 0deg),
-      rgba(255,111,60,0.18) 0%,
-      rgba(255,111,60,0.18) 35%,
-      rgba(255,140,80,0.8) 48%,
-      rgba(255,220,160,1) 50%,
-      rgba(255,140,80,0.8) 52%,
-      rgba(255,111,60,0.18) 65%,
-      rgba(255,111,60,0.18) 100%
-    ) border-box;
-  border: 2px solid transparent;
+  background-color: var(--white);
+  border: 1px solid var(--card-border);
   border-radius: var(--r-xl);
   padding: 2rem 2.5rem;
   box-shadow: var(--shadow-md);
   cursor: pointer;
   transition: box-shadow 0.3s ease;
 }
-/* Hover via .proj-card-wrap:hover — pas de conflit avec .reveal.visible */
+/* Hover : ombre renforcée + contour orange (identique aux autres cartes) */
 .proj-card-wrap:hover .proj-card-featured {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg),
+    inset 0 0 0 1.5px rgba(255,111,60,0.28);
 }
 .pcf-badge {
   display: inline-flex;
@@ -695,24 +684,18 @@ ul { list-style: none; }
 .proj-card-featured.img-card {
   position: relative;
   overflow: hidden;
-  background:
-    var(--dark) padding-box,
-    conic-gradient(
-      from var(--border-angle, 0deg),
-      rgba(255,111,60,0.18) 0%,
-      rgba(255,111,60,0.18) 35%,
-      rgba(255,140,80,0.8) 48%,
-      rgba(255,220,160,1) 50%,
-      rgba(255,140,80,0.8) 52%,
-      rgba(255,111,60,0.18) 65%,
-      rgba(255,111,60,0.18) 100%
-    ) border-box;
-  border: 2px solid transparent;
+  background-color: var(--dark);
+  border: 1px solid transparent;
   min-height: 460px;
   padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+/* Hover img-card : contour orange (le inset shadow standard) */
+.proj-card-wrap:hover .proj-card-featured.img-card {
+  box-shadow: var(--shadow-lg),
+    inset 0 0 0 1.5px rgba(255,111,60,0.45);
 }
 .pcf-bg {
   position: absolute;
@@ -1617,8 +1600,6 @@ ul { list-style: none; }
   50%       { opacity: 0.85; transform: scaleY(1.12); }
 }
 
-/* ---- Contour tournant (featured cards) — angle piloté par JS ---- */
-:root { --border-angle: 0deg; }
 
 /* ============================================
    RESPONSIVE

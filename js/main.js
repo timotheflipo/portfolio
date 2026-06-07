@@ -139,38 +139,6 @@ function buildFAQ(container) {
 }
 
 // ============================================
-// CONTOUR LUMINEUX ANIMÉ — cartes "Projet central"
-// ============================================
-function initBorderSpin() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  let cards = [];
-  function refresh() {
-    cards = Array.from(document.querySelectorAll('.proj-card-featured'));
-  }
-
-  const DURATION = 5000; // 5 secondes pour un tour
-  function update(t) {
-    if (cards.length) {
-      const angle = ((t / DURATION) * 360) % 360;
-      const angleStr = angle.toFixed(2) + 'deg';
-      for (let i = 0; i < cards.length; i++) {
-        cards[i].style.setProperty('--border-angle', angleStr);
-      }
-    }
-    requestAnimationFrame(update);
-  }
-
-  // Premier refresh + boucle d'animation
-  refresh();
-  requestAnimationFrame(update);
-
-  // Re-scanner après injection dynamique des cartes thématiques
-  setTimeout(refresh, 100);
-  setTimeout(refresh, 500);
-}
-
-// ============================================
 // SECTIONS THÉMATIQUES (index.html sections 3-5)
 // ============================================
 const projectsRegistry = [];
@@ -751,7 +719,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Reveal (après injection du contenu dynamique)
   setTimeout(initReveal, 50);
-
-  // Contour lumineux animé sur les cartes Projet central
-  initBorderSpin();
 });
