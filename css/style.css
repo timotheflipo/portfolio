@@ -583,35 +583,46 @@ ul { list-style: none; }
 .ts1-sub-grid .proj-card-wrap .proj-card { flex: 1; }
 
 /* ---- Carte featured (S1 + S3) ---- */
-/* Technique : 2 backgrounds.
-   - var(--white) padding-box : remplit l'intérieur de la carte
-   - linear-gradient border-box : se voit uniquement sur la bordure
-     (car le padding-box blanc masque l'intérieur).
-   Une bande lumineuse glisse de gauche à droite sur ce contour orange. */
+/* Fond blanc franc. Le contour orange glowing est dessiné par un ::before
+   masqué (technique mask-composite) : seul l'anneau de bordure est visible,
+   et une bande lumineuse y glisse en continu. */
 .proj-card-featured {
   display: block;
+  position: relative;
   text-decoration: none;
-  background:
-    var(--white) padding-box,
-    linear-gradient(
-      110deg,
-      rgba(255,111,60,0.4) 0%,
-      rgba(255,111,60,0.4) 40%,
-      #ffd6a3 47%,
-      #fff3df 50%,
-      #ffd6a3 53%,
-      rgba(255,111,60,0.4) 60%,
-      rgba(255,111,60,0.4) 100%
-    ) border-box;
-  background-size: auto, 300% 100%;
-  background-repeat: no-repeat;
-  background-position: 0 0, 80% 0;
-  border: 1.5px solid transparent;
+  background-color: var(--white);
   border-radius: var(--r-xl);
   padding: 2rem 2.5rem;
   box-shadow: var(--shadow-md);
   cursor: pointer;
   transition: box-shadow 0.3s ease;
+}
+.proj-card-featured::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;               /* épaisseur du contour */
+  background: linear-gradient(
+    110deg,
+    rgba(255,111,60,0.45) 0%,
+    rgba(255,111,60,0.45) 42%,
+    #ffcf9e 47%,
+    #fff6e8 50%,
+    #ffcf9e 53%,
+    rgba(255,111,60,0.45) 58%,
+    rgba(255,111,60,0.45) 100%
+  );
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+  background-position: 80% 0;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: 3;
   animation: pcfCardShine 2.3s linear infinite;
 }
 /* Hover : juste un boost d'ombre (le contour orange est déjà permanent) */
@@ -619,11 +630,11 @@ ul { list-style: none; }
   box-shadow: var(--shadow-lg);
 }
 @keyframes pcfCardShine {
-  from { background-position: 0 0, 80% 0; }
-  to   { background-position: 0 0, 20% 0; }
+  from { background-position: 80% 0; }
+  to   { background-position: 20% 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .proj-card-featured { animation: none; }
+  .proj-card-featured::before { animation: none; }
 }
 .pcf-badge {
   display: inline-flex;
@@ -784,26 +795,11 @@ ul { list-style: none; }
 }
 
 /* Carte featured avec image (Breathe&Go) */
-/* Même technique que les cartes blanches, mais fond sombre dans le padding-box */
+/* Carte image (Breathe&Go) : fond sombre, hérite du ::before glowing */
 .proj-card-featured.img-card {
   position: relative;
   overflow: hidden;
-  background:
-    var(--dark) padding-box,
-    linear-gradient(
-      110deg,
-      rgba(255,111,60,0.55) 0%,
-      rgba(255,111,60,0.55) 40%,
-      #ffd6a3 47%,
-      #fff3df 50%,
-      #ffd6a3 53%,
-      rgba(255,111,60,0.55) 60%,
-      rgba(255,111,60,0.55) 100%
-    ) border-box;
-  background-size: auto, 300% 100%;
-  background-repeat: no-repeat;
-  background-position: 0 0, 80% 0;
-  border: 1.5px solid transparent;
+  background-color: var(--dark);
   min-height: 460px;
   padding: 0;
   display: flex;
