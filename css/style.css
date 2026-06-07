@@ -580,7 +580,7 @@ ul { list-style: none; }
     var(--accent) 60%,
     var(--accent) 100%
   );
-  background-size: 200% 100%;
+  background-size: 300% 100%;
   background-repeat: no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
@@ -598,9 +598,12 @@ ul { list-style: none; }
   border-radius: 1px;
   box-shadow: 0 0 6px rgba(255,111,60,0.45);
 }
+/* Avec background-size 300% (gradient 3x le conteneur), la position reste
+   dans [0%, 100%] donc le bg couvre toujours intégralement le texte.
+   La lumière (centre du gradient) traverse de gauche à droite. */
 @keyframes pcfShine {
-  from { background-position: 120% 0; }  /* lumière complètement hors champ à gauche */
-  to   { background-position: -20% 0; }  /* lumière complètement hors champ à droite */
+  from { background-position: 75% 0; }  /* lumière au bord gauche */
+  to   { background-position: 25% 0; }  /* lumière au bord droit */
 }
 @media (prefers-reduced-motion: reduce) {
   .pcf-badge { animation: none; }
