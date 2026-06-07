@@ -568,8 +568,8 @@ ul { list-style: none; }
   text-transform: uppercase;
   letter-spacing: 0.16em;
   margin-bottom: 1rem;
-  /* Effet shine : le texte est rempli par un dégradé orange avec une bande lumineuse
-     qui balaie de gauche à droite en 4 secondes */
+  /* Effet shine : la lumière entre par la gauche, traverse le texte
+     en continu et sort par la droite, sans pause au bout */
   background-image: linear-gradient(
     110deg,
     var(--accent) 0%,
@@ -582,12 +582,11 @@ ul { list-style: none; }
   );
   background-size: 200% 100%;
   background-repeat: no-repeat;
-  background-position: 100% 0;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  animation: pcfShine 4s ease-in-out infinite;
+  animation: pcfShine 3s linear infinite;
 }
 .pcf-badge::before {
   content: '';
@@ -598,21 +597,13 @@ ul { list-style: none; }
   flex-shrink: 0;
   border-radius: 1px;
   box-shadow: 0 0 6px rgba(255,111,60,0.45);
-  animation: pcfDashGlow 4s ease-in-out infinite;
 }
 @keyframes pcfShine {
-  0%   { background-position: 100% 0; }
-  35%  { background-position: 0% 0; }
-  100% { background-position: 0% 0; }
-}
-@keyframes pcfDashGlow {
-  0%, 100% { box-shadow: 0 0 5px rgba(255,111,60,0.3); }
-  35%      { box-shadow: 0 0 12px rgba(255,200,140,0.85); }
-  70%      { box-shadow: 0 0 5px rgba(255,111,60,0.3); }
+  from { background-position: 120% 0; }  /* lumière complètement hors champ à gauche */
+  to   { background-position: -20% 0; }  /* lumière complètement hors champ à droite */
 }
 @media (prefers-reduced-motion: reduce) {
-  .pcf-badge,
-  .pcf-badge::before { animation: none; }
+  .pcf-badge { animation: none; }
 }
 .pcf-top {
   display: flex;
