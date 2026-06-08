@@ -465,14 +465,22 @@ function buildSoftwareSkills(container) {
     card.classList.add(`reveal-delay-${(i % 4) + 1}`);
 
     const fillPct = Math.round((skill.level / skill.levelMax) * 100);
-    const logoHTML = skill.logo
-      ? `<img src="${skill.logo}" alt="Logo ${skill.name}">`
-      : `<span>${skill.initials}</span>`;
+    let logoBlockHTML;
+    if (skill.logos && skill.logos.length) {
+      logoBlockHTML = `
+        <div class="skill-logo skill-logo-group">
+          ${skill.logos.map(src => `<img src="${src}" alt="Logo ${skill.name}">`).join('')}
+        </div>`;
+    } else if (skill.logo) {
+      logoBlockHTML = `<div class="skill-logo"><img src="${skill.logo}" alt="Logo ${skill.name}"></div>`;
+    } else {
+      logoBlockHTML = `<div class="skill-logo"><span>${skill.initials}</span></div>`;
+    }
 
     card.innerHTML = `
       <div class="skill-flip-inner">
         <div class="skill-flip-face skill-flip-front">
-          <div class="skill-logo">${logoHTML}</div>
+          ${logoBlockHTML}
           <h3 class="skill-name">${skill.name}</h3>
           <div class="skill-level-row">
             <span class="skill-level-label">Niveau</span>

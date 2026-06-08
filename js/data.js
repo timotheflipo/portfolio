@@ -327,7 +327,8 @@ const competencesData = [
 ];
 
 // --- Compétences informatiques (cartes flip, page Compétences) ---
-// Pour ajouter un vrai logo : remplacer logo: null par "images/logos/xxx.svg" (les initiales servent de placeholder)
+// logo: chemin vers un SVG/PNG (images/logos/) — initials sert de repli si logo est null
+// logos: tableau de logos (carte regroupant plusieurs outils, ex. Claude/ChatGPT/NotebookLM)
 const softwareSkillsData = [
   {
     id: "notion",
@@ -336,7 +337,7 @@ const softwareSkillsData = [
     levelDisplay: "5",
     levelMax: 5,
     levelDescription: "Maîtrise complète ou quasi complète de tous les éléments du logiciel.",
-    logo: null,
+    logo: "images/logos/notion.svg",
     initials: "N",
     examples: [
       "Second cerveau",
@@ -351,7 +352,7 @@ const softwareSkillsData = [
     levelDisplay: "5",
     levelMax: 5,
     levelDescription: "Maîtrise complète ou quasi complète de tous les éléments du logiciel.",
-    logo: null,
+    logo: "images/logos/canva.svg",
     initials: "C",
     examples: [
       "Refonte de documents d'invitation et de mailing pour les Tables Rondes chez Roole",
@@ -366,7 +367,7 @@ const softwareSkillsData = [
     levelDisplay: "3,5",
     levelMax: 5,
     levelDescription: "En cours d'apprentissage.",
-    logo: null,
+    logo: "images/logos/excel.svg",
     initials: "X",
     examples: [
       "Tableau de bord pour les bons plans régionaux, avec graphiques et segments de filtres selon les mois, les bons plans ou les saisons",
@@ -380,7 +381,7 @@ const softwareSkillsData = [
     levelDisplay: "2",
     levelMax: 5,
     levelDescription: "En cours d'apprentissage.",
-    logo: null,
+    logo: "images/logos/powerbi.svg",
     initials: "BI",
     examples: [
       "Lecture de bases de données",
@@ -395,6 +396,7 @@ const softwareSkillsData = [
     levelMax: 5,
     levelDescription: "Acquis et en cours d'approfondissement.",
     logo: null,
+    logos: ["images/logos/claude.svg", "images/logos/chatgpt.svg", "images/logos/notebooklm.svg"],
     initials: "IA",
     examples: [
       "Utilisation de Claude Code pour construire mon portfolio",
@@ -412,7 +414,7 @@ const softwareSkillsData = [
     levelDisplay: "4",
     levelMax: 5,
     levelDescription: "Acquis.",
-    logo: null,
+    logo: "images/logos/mailchimp.svg",
     initials: "M",
     examples: [
       "Mise en forme et envoi de newsletters internes chez Roole"
@@ -425,7 +427,7 @@ const softwareSkillsData = [
     levelDisplay: "2,5",
     levelMax: 5,
     levelDescription: "Utilisation passée.",
-    logo: null,
+    logo: "images/logos/wordpress.svg",
     initials: "W",
     examples: [
       "Amélioration de la mise en page du site internet de l'Hôpital Foch",
@@ -439,7 +441,7 @@ const softwareSkillsData = [
     levelDisplay: "2,5",
     levelMax: 5,
     levelDescription: "Utilisation passée.",
-    logo: null,
+    logo: "images/logos/sketchup.svg",
     initials: "SK",
     examples: [
       "Création de maisons en 3D de A à Z",
@@ -453,7 +455,7 @@ const softwareSkillsData = [
     levelDisplay: "1",
     levelMax: 5,
     levelDescription: "Utilisation brève et passée.",
-    logo: null,
+    logo: "images/logos/illustrator.svg",
     initials: "Ai",
     examples: [
       "Création de logos",
