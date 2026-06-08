@@ -325,3 +325,139 @@ const competencesData = [
     ]
   }
 ];
+
+// --- Compétences informatiques (cartes flip, page Compétences) ---
+// Pour ajouter un vrai logo : remplacer logo: null par "images/logos/xxx.svg" (les initiales servent de placeholder)
+const softwareSkillsData = [
+  {
+    id: "notion",
+    name: "Notion",
+    level: 5,
+    levelDisplay: "5",
+    levelMax: 5,
+    levelDescription: "Maîtrise complète ou quasi complète de tous les éléments du logiciel.",
+    logo: null,
+    initials: "N",
+    examples: [
+      "Second cerveau",
+      "Tableaux de bord pour des projets, notamment Breathe&Go et Fashion Day",
+      "Portfolio réalisé en deuxième année de BUT"
+    ]
+  },
+  {
+    id: "canva",
+    name: "Canva",
+    level: 5,
+    levelDisplay: "5",
+    levelMax: 5,
+    levelDescription: "Maîtrise complète ou quasi complète de tous les éléments du logiciel.",
+    logo: null,
+    initials: "C",
+    examples: [
+      "Refonte de documents d'invitation et de mailing pour les Tables Rondes chez Roole",
+      "Création d'une grande partie de mes présentations depuis ma première année de BUT",
+      "Création d'affiches et de directions artistiques pour différents projets"
+    ]
+  },
+  {
+    id: "excel",
+    name: "Excel",
+    level: 3.5,
+    levelDisplay: "3,5",
+    levelMax: 5,
+    levelDescription: "En cours d'apprentissage.",
+    logo: null,
+    initials: "X",
+    examples: [
+      "Tableau de bord pour les bons plans régionaux, avec graphiques et segments de filtres selon les mois, les bons plans ou les saisons",
+      "Création de tableaux croisés dynamiques à partir de bases de données"
+    ]
+  },
+  {
+    id: "powerbi",
+    name: "Power BI",
+    level: 2,
+    levelDisplay: "2",
+    levelMax: 5,
+    levelDescription: "En cours d'apprentissage.",
+    logo: null,
+    initials: "BI",
+    examples: [
+      "Lecture de bases de données",
+      "Utilisation des filtres pour extraire les données qui m'intéressent"
+    ]
+  },
+  {
+    id: "ia-tools",
+    name: "Claude, ChatGPT et NotebookLM",
+    level: 4,
+    levelDisplay: "4",
+    levelMax: 5,
+    levelDescription: "Acquis et en cours d'approfondissement.",
+    logo: null,
+    initials: "IA",
+    examples: [
+      "Utilisation de Claude Code pour construire mon portfolio",
+      "Utilisation de Claude Design pour améliorer des affiches chez Roole",
+      "Utilisation de Claude CoWork pour des projets Excel",
+      "Utilisation de ChatGPT et Claude Chat pour challenger mes idées, améliorer mes travaux et structurer mes réflexions",
+      "Utilisation avancée grâce à des techniques de méta-prompting",
+      "Utilisation de NotebookLM pour résumer des contenus et les intégrer dans mon second cerveau"
+    ]
+  },
+  {
+    id: "mailchimp",
+    name: "Mailchimp",
+    level: 4,
+    levelDisplay: "4",
+    levelMax: 5,
+    levelDescription: "Acquis.",
+    logo: null,
+    initials: "M",
+    examples: [
+      "Mise en forme et envoi de newsletters internes chez Roole"
+    ]
+  },
+  {
+    id: "wordpress",
+    name: "WordPress",
+    level: 2.5,
+    levelDisplay: "2,5",
+    levelMax: 5,
+    levelDescription: "Utilisation passée.",
+    logo: null,
+    initials: "W",
+    examples: [
+      "Amélioration de la mise en page du site internet de l'Hôpital Foch",
+      "Création et mise en forme de nouvelles pages pour le site internet de l'Hôpital Foch"
+    ]
+  },
+  {
+    id: "sketchup",
+    name: "SketchUp 3D",
+    level: 2.5,
+    levelDisplay: "2,5",
+    levelMax: 5,
+    levelDescription: "Utilisation passée.",
+    logo: null,
+    initials: "SK",
+    examples: [
+      "Création de maisons en 3D de A à Z",
+      "Importation de créations SketchUp dans un logiciel de rendu 3D pour obtenir des visuels de style architectural"
+    ]
+  },
+  {
+    id: "illustrator",
+    name: "Adobe Illustrator",
+    level: 1,
+    levelDisplay: "1",
+    levelMax: 5,
+    levelDescription: "Utilisation brève et passée.",
+    logo: null,
+    initials: "Ai",
+    examples: [
+      "Création de logos",
+      "Amélioration d'affiches pour l'Hôpital Foch"
+    ]
+  }
+];

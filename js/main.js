@@ -451,6 +451,59 @@ function buildTimeline(container) {
 }
 
 // ============================================
+// COMPÉTENCES INFORMATIQUES — cartes flip (competences.html)
+// ============================================
+function buildSoftwareSkills(container) {
+  if (!container || typeof softwareSkillsData === 'undefined') return;
+
+  // Sur les écrans tactiles (pas de hover réel), le flip se fait au tap
+  const supportsHover = window.matchMedia('(hover: hover)').matches;
+
+  softwareSkillsData.forEach((skill, i) => {
+    const card = document.createElement('div');
+    card.className = 'skill-flip-card reveal';
+    card.classList.add(`reveal-delay-${(i % 4) + 1}`);
+
+    const fillPct = Math.round((skill.level / skill.levelMax) * 100);
+    const logoHTML = skill.logo
+      ? `<img src="${skill.logo}" alt="Logo ${skill.name}">`
+      : `<span>${skill.initials}</span>`;
+
+    card.innerHTML = `
+      <div class="skill-flip-inner">
+        <div class="skill-flip-face skill-flip-front">
+          <div class="skill-logo">${logoHTML}</div>
+          <h3 class="skill-name">${skill.name}</h3>
+          <div class="skill-level-row">
+            <span class="skill-level-label">Niveau</span>
+            <span class="skill-level-value">${skill.levelDisplay}/${skill.levelMax}</span>
+          </div>
+          <div class="skill-level-bar"><span style="width:${fillPct}%"></span></div>
+        </div>
+        <div class="skill-flip-face skill-flip-back">
+          <div class="skill-back-block">
+            <span class="skill-back-eyebrow">Niveau de maîtrise</span>
+            <p class="skill-back-desc">${skill.levelDescription}</p>
+          </div>
+          <div class="skill-back-block">
+            <span class="skill-back-eyebrow">Exemples de travaux réalisés</span>
+            <ul class="skill-example-list">
+              ${skill.examples.map(ex => `<li>${ex}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      </div>
+    `;
+
+    if (!supportsHover) {
+      card.addEventListener('click', () => card.classList.toggle('flipped'));
+    }
+
+    container.appendChild(card);
+  });
+}
+
+// ============================================
 // COMPÉTENCES (competences.html)
 // ============================================
 function buildCompetences(container) {
@@ -728,6 +781,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Parcours
   const timelineContainer = document.getElementById('timeline-axis');
   if (timelineContainer) buildTimeline(timelineContainer);
+
+  // Compétences informatiques (cartes flip)
+  const skillsContainer = document.getElementById('skills-flip-grid');
+  if (skillsContainer) buildSoftwareSkills(skillsContainer);
 
   // Compétences
   const compContainer = document.getElementById('comp-grid');

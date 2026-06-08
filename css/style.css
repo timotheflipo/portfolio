@@ -1348,6 +1348,188 @@ ul { list-style: none; }
 }
 
 /* ============================================
+   COMPÉTENCES INFORMATIQUES — CARTES FLIP 3D
+   ============================================ */
+.skills-tech-section {
+  background-color: var(--bg);
+  padding: 1.5rem 0 1rem;
+}
+.skills-tech-head {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 3rem;
+  padding: 0 2rem;
+}
+.skills-tech-head h2 { margin-bottom: 0.7rem; }
+.skills-tech-head p {
+  color: var(--gray);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.skills-flip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.skill-flip-card {
+  perspective: 1500px;
+  height: 320px;
+}
+.skill-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--r-lg);
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.skill-flip-card:hover .skill-flip-inner,
+.skill-flip-card.flipped .skill-flip-inner {
+  transform: translateY(-6px) rotateY(180deg);
+}
+
+.skill-flip-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--r-lg);
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-sm);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: box-shadow var(--t-med), border-color var(--t-med);
+}
+.skill-flip-card:hover .skill-flip-face,
+.skill-flip-card.flipped .skill-flip-face {
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-lg), 0 0 36px rgba(255, 111, 60, 0.16);
+}
+
+.skill-flip-front {
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+.skill-logo {
+  width: 76px;
+  height: 76px;
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-muted);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-dark);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+}
+.skill-logo img { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
+.skill-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--dark);
+  line-height: 1.3;
+}
+.skill-level-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.skill-level-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--light-gray);
+}
+.skill-level-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--accent-dark);
+}
+.skill-level-bar {
+  width: 100%;
+  max-width: 130px;
+  height: 5px;
+  border-radius: 999px;
+  background-color: var(--muted);
+  overflow: hidden;
+}
+.skill-level-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+}
+
+/* Verso */
+.skill-flip-back {
+  transform: rotateY(180deg);
+  padding: 1.7rem 1.6rem;
+  gap: 1.2rem;
+  overflow-y: auto;
+}
+.skill-back-block { text-align: left; }
+.skill-back-eyebrow {
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin-bottom: 6px;
+}
+.skill-back-desc {
+  font-size: 0.8rem;
+  color: var(--gray);
+  line-height: 1.55;
+}
+.skill-example-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.skill-example-list li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.78rem;
+  color: var(--dark);
+  line-height: 1.5;
+}
+.skill-example-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+@media (max-width: 1024px) {
+  .skills-flip-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .skills-flip-grid { grid-template-columns: 1fr; }
+  .skill-flip-card { height: 300px; }
+  .skill-flip-back { padding: 1.5rem 1.4rem; }
+}
+
+/* ============================================
    COMPETENCES PAGE
    ============================================ */
 .competences-section {
