@@ -364,8 +364,8 @@ ul { list-style: none; }
 
 /* Bloc accroche — capsules + problématique réunis */
 .hero-block {
-  max-width: 520px;
-  margin: 0 auto 2.5rem;
+  max-width: 620px;
+  margin: 0 auto 4rem;
   padding: 1rem 1.3rem 1.1rem;
   border: 1px solid var(--card-border);
   border-top: 1.5px solid var(--accent-border);
