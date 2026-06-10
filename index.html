@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=68">
+  <link rel="stylesheet" href="css/style.css?v=69">
 </head>
 <body>
 
@@ -22,25 +22,41 @@
         <span class="hero-line hero-line-1">Créatif et curieux par nature.</span>
         <span class="hero-line hero-line-2">Méthodique et organisé dans l'action.</span>
       </h1>
-      <p class="hero-tagline">
-        8 projets, 8 problèmes, 8 solutions. Comment un profil atypique peut-il s'imposer
-        comme une force pour repérer ce qui bloque, structurer ce qui manque
-        et transformer ce qui peut l'être ?
+      <!-- Signature : 3 capsules -->
+      <div class="hero-signature">
+        <span class="hero-sig-cap">8 projets.</span>
+        <span class="hero-sig-sep" aria-hidden="true">·</span>
+        <span class="hero-sig-cap">8 problèmes.</span>
+        <span class="hero-sig-sep" aria-hidden="true">·</span>
+        <span class="hero-sig-cap">8 solutions.</span>
+      </div>
+
+      <!-- Problématique -->
+      <p class="hero-question">
+        Comment un profil atypique peut-il devenir une force pour repérer ce qui bloque,
+        structurer ce qui manque et transformer ce qui peut l'être ?
       </p>
-      <ul class="hero-meta">
-        <li data-status="future">
-          <span class="hero-meta-label">Master Management Stratégique et Changement</span>
-          <span class="hero-meta-date">sept. 2026 – juin 2028</span>
-        </li>
-        <li data-status="current">
-          <span class="hero-meta-label">Chargé de marketing BtoB chez Roole</span>
-          <span class="hero-meta-date">sept. 2025 – sept. 2027</span>
-        </li>
-        <li data-status="past">
-          <span class="hero-meta-label">BUT Gestion des Entreprises et des Administrations</span>
-          <span class="hero-meta-date">sept. 2023 – juin 2026</span>
-        </li>
-      </ul>
+
+      <!-- Mini-timeline de parcours -->
+      <div class="hero-timeline" aria-label="Parcours">
+        <div class="htl-item" data-status="past">
+          <span class="htl-dot"></span>
+          <time class="htl-years">2023 – 2026</time>
+          <span class="htl-label">BUT GEA, parcours GEMA</span>
+        </div>
+        <div class="htl-sep" role="presentation"></div>
+        <div class="htl-item" data-status="current">
+          <span class="htl-dot"></span>
+          <time class="htl-years">2025 – 2027</time>
+          <span class="htl-label">Chargé de marketing BtoB chez Roole</span>
+        </div>
+        <div class="htl-sep" role="presentation"></div>
+        <div class="htl-item" data-status="future">
+          <span class="htl-dot"></span>
+          <time class="htl-years">2026 – 2028</time>
+          <span class="htl-label">Master Management Stratégique et Changement</span>
+        </div>
+      </div>
       <div class="hero-cta">
         <a class="btn btn-dark"
            href="https://drive.google.com/file/d/1ViNlOX1TIQGyhfPD3OKuMDHuxHsTGBOj/view?usp=share_link"
@@ -52,6 +68,9 @@
       <div class="scroll-hint">
         <div class="scroll-line"></div>
         <span>Découvrir</span>
+        <svg class="scroll-chevron" viewBox="0 0 14 8" fill="none" aria-hidden="true">
+          <path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
     </div>
   </section>
@@ -119,7 +138,7 @@
     </div>
   </footer>
 
-  <script src="js/data.js?v=68"></script>
-  <script src="js/main.js?v=68"></script>
+  <script src="js/data.js?v=69"></script>
+  <script src="js/main.js?v=69"></script>
 </body>
 </html>
