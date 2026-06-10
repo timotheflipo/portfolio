@@ -34,6 +34,7 @@ function buildNav() {
   // Icônes outline minimalistes (style Lucide)
   const icons = {
     index: '<svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>',
+    about: '<svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
     parcours: '<svg viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>',
     competences: '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>',
     contact: '<svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>'
@@ -41,6 +42,7 @@ function buildNav() {
 
   const links = [
     { label: 'Accueil', href: 'index.html', key: 'index' },
+    { label: 'À propos', href: 'about.html', key: 'about' },
     { label: 'Parcours', href: 'parcours.html', key: 'parcours' },
     { label: 'Compétences', href: 'competences.html', key: 'competences' },
     { label: 'Contact', href: 'contact.html', key: 'contact' }

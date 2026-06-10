@@ -1334,6 +1334,24 @@ ul { list-style: none; }
 }
 
 /* ============================================
+   PAGE À PROPOS
+   ============================================ */
+.about-section {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 2rem 7rem;
+}
+.about-prose p {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--gray);
+  margin-bottom: 1.75rem;
+}
+.about-prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
    TIMELINE PAGE
    ============================================ */
 .timeline-section {
