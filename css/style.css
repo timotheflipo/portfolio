@@ -1757,18 +1757,11 @@ ul { list-style: none; }
   cursor: pointer;
   position: relative;
   min-height: 160px;
-  transition: transform var(--t-med), box-shadow var(--t-med), border-radius var(--t-med);
-}
-.comp-card-wrap.expanded .comp-card {
-  border-radius: var(--r-xl) var(--r-xl) 0 0;
+  transition: transform var(--t-med), box-shadow var(--t-med);
 }
 .comp-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 24px 56px rgba(0,0,0,0.18);
-}
-.comp-card-wrap.expanded .comp-card:hover {
-  transform: none;
-  box-shadow: none;
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.14);
 }
 
 .comp-card-bg {
@@ -1798,7 +1791,6 @@ ul { list-style: none; }
 
 .comp-content {
   position: relative;
-  height: 100%;
   min-height: 160px;
   display: flex;
   flex-direction: column;
@@ -1846,20 +1838,18 @@ ul { list-style: none; }
   gap: 10px;
 }
 
-/* Expanded projects */
+/* Expanded projects — maintenant à l'intérieur de .comp-card */
 .comp-projects {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s ease;
-  border-radius: 0 0 var(--r-xl) var(--r-xl);
+  position: relative;
 }
 .comp-card-wrap.expanded .comp-projects { max-height: 400px; }
 .comp-projects-inner {
-  background-color: var(--white);
-  border-radius: 0 0 var(--r-xl) var(--r-xl);
-  padding: 1.5rem;
-  border: 1px solid var(--card-border);
-  border-top: none;
+  background-color: rgba(255,255,255,0.15);
+  padding: 1.25rem 2rem 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.2);
 }
 .comp-proj-list { display: flex; flex-direction: column; gap: 0.5rem; }
 .comp-proj-item {
@@ -1868,17 +1858,16 @@ ul { list-style: none; }
   justify-content: space-between;
   padding: 10px 14px;
   border-radius: var(--r-sm);
-  background-color: var(--bg);
+  background-color: rgba(255,255,255,0.18);
   font-size: 0.83rem;
-  color: var(--dark);
-  transition: background-color var(--t-fast), color var(--t-fast);
+  color: rgba(255,255,255,0.92);
+  transition: background-color var(--t-fast);
   cursor: pointer;
   text-decoration: none;
   font-weight: 500;
 }
 .comp-proj-item:hover {
-  background-color: var(--accent-muted);
-  color: var(--accent-dark);
+  background-color: rgba(255,255,255,0.3);
 }
 .comp-proj-arrow {
   color: var(--light-gray);

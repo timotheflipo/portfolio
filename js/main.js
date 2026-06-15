@@ -538,19 +538,19 @@ function buildCompetences(container) {
             <span>→</span>
           </div>
         </div>
-      </div>
-      <div class="comp-projects" id="proj-${comp.id}">
-        <div class="comp-projects-inner">
-          <ul class="comp-proj-list">
-            ${comp.projects.map(p => `
-              <li>
-                <a class="comp-proj-item" href="${p.link}">
-                  <span>${p.title}</span>
-                  <span class="comp-proj-arrow">→</span>
-                </a>
-              </li>
-            `).join('')}
-          </ul>
+        <div class="comp-projects" id="proj-${comp.id}">
+          <div class="comp-projects-inner">
+            <ul class="comp-proj-list">
+              ${comp.projects.map(p => `
+                <li>
+                  <a class="comp-proj-item" href="${p.link}">
+                    <span>${p.title}</span>
+                    <span class="comp-proj-arrow">→</span>
+                  </a>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
         </div>
       </div>
     `;
