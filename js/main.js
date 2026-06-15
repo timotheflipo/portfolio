@@ -422,30 +422,42 @@ function buildNotionBlocks(container) {
 function buildTimeline(container) {
   if (!container || typeof timelineItems === 'undefined') return;
 
-  container.innerHTML = timelineItems.map(item => {
-    const isScolaire = item.type === 'scolaire';
-    const cardHTML = `
-      <div class="tl-card">
-        <span class="tl-tag ${item.tag}">${item.tag}</span>
-        <h3>${item.title}</h3>
-        <div class="tl-period">${item.period}</div>
-        <div class="tl-org">${item.org}</div>
-        <p class="tl-desc">${item.description}</p>
-      </div>
-    `;
+  const makeCard = (item, cls) => `
+    <div class="tl-card ${cls}">
+      <span class="tl-tag ${item.tag}">${item.tag}</span>
+      <h3>${item.title}</h3>
+      <div class="tl-period">${item.period}</div>
+      <div class="tl-org">${item.org}</div>
+      <p class="tl-desc">${item.description}</p>
+      ${item.durantBut ? '<span class="tl-durant-badge">Pendant le BUT GEA</span>' : ''}
+    </div>
+  `;
+
+  container.innerHTML = timelineItems.map((row) => {
+    const L = row.left || null;
+    const R = row.right || null;
+    const RS = row.rightSpan || null;
+    const dotClass = L ? 'scolaire' : 'pro';
+    const concurrent = (L && R) ? ' concurrent' : '';
+
+    const leftHTML = L ? makeCard(L, 'tl-card--edu') : '';
+    const rightHTML = R
+      ? makeCard(R, 'tl-card--pro')
+      : RS
+      ? `<div class="tl-roole-span"><span class="tl-roole-span-label">${RS.label}</span><span class="tl-roole-span-note">${RS.note}</span></div>`
+      : '';
 
     return `
       <div class="tl-item">
-        <div class="tl-left">${isScolaire ? cardHTML : ''}</div>
+        <div class="tl-left">${leftHTML}</div>
         <div class="tl-dot-wrap">
-          <div class="tl-dot ${item.type === 'scolaire' ? 'scolaire' : 'pro'}"></div>
+          <div class="tl-dot ${dotClass}${concurrent}"></div>
         </div>
-        <div class="tl-right">${!isScolaire ? cardHTML : ''}</div>
+        <div class="tl-right">${rightHTML}</div>
       </div>
     `;
   }).join('');
 
-  // Ajouter les animations reveal sur chaque card
   container.querySelectorAll('.tl-card').forEach((card, i) => {
     card.classList.add('reveal');
     card.style.transitionDelay = `${i * 0.08}s`;
