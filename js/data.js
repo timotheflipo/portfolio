@@ -263,76 +263,239 @@ const competencesData = [
     id: "analyser",
     name: "Analyser",
     number: "01",
-    description: "Identifier et analyser les enjeux d'une situation, repérer des dysfonctionnements et proposer des pistes d'amélioration.",
+    levelAchieved: "Niveau 3 atteint",
+    levelDesc: "Conseiller pour l'amélioration des processus de l'organisation",
     gradient: "linear-gradient(145deg, #C0392B 0%, #EC7063 100%)",
     accent: "#EC7063",
-    projects: [
-      { title: "Les BOZE — optimiser un processus interne", link: "boze.html" },
-      { title: "Maia Village — accompagner la transition numérique", link: "maia-village.html" },
-      { title: "Hôtel-restaurant — du diagnostic au plan d'action", link: "hotel-restaurant.html" },
-      { title: "Bons plans régionaux — transformer des données en outil de pilotage", link: "bons-plans.html" },
-      { title: "Piloter une transformation numérique par les KPI", link: "transfo-numerique.html" },
-      { title: "Tables rondes Roole — renforcer l'impact d'un événement", link: "tables-rondes.html" }
+    niveaux: [
+      {
+        num: 1,
+        title: "Identifier les processus de l'organisation",
+        items: [
+          // AC11.01
+          { text: "Identifier les différents types d'enjeux", example: "Problème de l'alcool au volant chez les jeunes", tags: ["Breathe&Go"] },
+          // AC11.02
+          { text: "Qualifier les différents types d'organisations", example: "Roole, Maia Village et hôtel-restaurant fictif", tags: ["Roole", "Maia Village", "Hôtel-restaurant"] },
+          // AC11.03
+          { text: "Identifier les parties prenantes et leurs relations", example: "Directions régionales, intervenants et directeur régional", tags: ["BOZE"] }
+        ]
+      },
+      {
+        num: 2,
+        title: "Évaluer les processus de l'organisation",
+        items: [
+          // AC21.01
+          { text: "Analyser les différents types d'enjeux", example: "Freins terrain dans la transformation numérique", tags: ["Transfo numérique"] },
+          // AC21.02
+          { text: "Analyser les dimensions internes et externes d'une organisation", example: "Dysfonctionnements RH, opérationnels et managériaux", tags: ["Hôtel-restaurant"] },
+          // AC21.03
+          { text: "Évaluer le niveau de performance des processus", example: "Suivi trop manuel, informations dispersées dans l'organisation", tags: ["BOZE"] }
+        ]
+      },
+      {
+        num: 3,
+        title: "Conseiller pour l'amélioration des processus",
+        items: [
+          // AC31.01
+          { text: "Intégrer l'impact des enjeux sur l'organisation", example: "Impact des ressaisies et de l'appropriation des outils", tags: ["Roole"] },
+          // AC31.02
+          { text: "Conseiller un type d'organisation", example: "Accompagnement au changement pour un réseau de crèches", tags: ["Maia Village"] },
+          // AC31.03
+          { text: "Proposer des améliorations des processus", example: "Refonte de l'espace Notion pour fiabiliser le suivi", tags: ["BOZE"] }
+        ]
+      }
     ]
   },
   {
     id: "decider",
     name: "Décider",
     number: "02",
-    description: "Prendre des décisions éclairées en mobilisant les informations pertinentes et en évaluant les alternatives.",
+    levelAchieved: "Niveau 3 atteint",
+    levelDesc: "Concourir à la prise de décision",
     gradient: "linear-gradient(145deg, #D35400 0%, #F0883A 100%)",
     accent: "#F0883A",
-    projects: [
-      { title: "Les BOZE — optimiser un processus interne", link: "boze.html" },
-      { title: "Maia Village — accompagner la transition numérique", link: "maia-village.html" },
-      { title: "Hôtel-restaurant — du diagnostic au plan d'action", link: "hotel-restaurant.html" },
-      { title: "Bons plans régionaux — transformer des données en outil de pilotage", link: "bons-plans.html" },
-      { title: "Piloter une transformation numérique par les KPI", link: "transfo-numerique.html" },
-      { title: "Tables rondes Roole — renforcer l'impact d'un événement", link: "tables-rondes.html" }
+    niveaux: [
+      {
+        num: 1,
+        title: "Identifier les éléments d'aide à la prise de décision",
+        items: [
+          // AC12.01
+          { text: "Identifier les composantes d'un système d'information de gestion", example: "Bases Notion et tableau de bord Excel", tags: ["BOZE", "Bons plans"] },
+          // AC12.02
+          { text: "Rechercher, collecter et traiter des données brutes", example: "Questionnaires et base de données des bons plans", tags: ["Breathe&Go", "Bons plans"] },
+          // AC12.03
+          { text: "Identifier les contraintes de l'organisation", example: "Contraintes terrain, budgétaires et organisationnelles", tags: ["Tables rondes"] },
+          // AC12.04
+          { text: "Identifier les risques", example: "Alcool au volant, adoption d'outil, désorganisation RH", tags: ["Breathe&Go", "Maia Village", "Hôtel-restaurant"] }
+        ]
+      },
+      {
+        num: 2,
+        title: "Évaluer les éléments d'aide à la prise de décision",
+        items: [
+          // AC22.01
+          { text: "Analyser les enjeux du système d'information", example: "Maturité numérique de Roole avec le modèle DIMM", tags: ["Transfo numérique"] },
+          // AC22.02
+          { text: "Exploiter un outil de gestion et ses fonctionnalités", example: "Notion, Excel, Forms et outils internes Roole", tags: ["BOZE", "Bons plans"] },
+          // AC22.03
+          { text: "Traiter les données pour répondre à une problématique", example: "Tableau de bord des bons plans régionaux par performance", tags: ["Bons plans"] },
+          // AC22.04
+          { text: "Analyser les contraintes et leur impact sur la performance", example: "Hétérogénéité des pratiques dans les concessions", tags: ["Transfo numérique"] },
+          // AC22.05
+          { text: "Évaluer les risques", example: "Freins à l'adoption d'un outil numérique", tags: ["Maia Village"] }
+        ]
+      },
+      {
+        num: 3,
+        title: "Concourir à la prise de décision",
+        items: [
+          // AC32.01
+          { text: "Collaborer à l'amélioration continue du système d'information", example: "Réorganisation de l'espace Notion pour les BOZE", tags: ["BOZE"] },
+          // AC32.02
+          { text: "Exploiter les données pour accompagner la prise de décision", example: "Indicateurs, graphiques et segments du tableau de bord", tags: ["Bons plans"] },
+          // AC32.03
+          { text: "Participer à la prise de décision selon les contraintes identifiées", example: "Matrice des bons plans à maintenir, pousser ou optimiser", tags: ["Bons plans"] },
+          // AC32.04
+          { text: "Élaborer des mesures préventives de minimisation des risques", example: "Accompagnement au changement et plan de redressement", tags: ["Maia Village", "Hôtel-restaurant"] }
+        ]
+      }
     ]
   },
   {
     id: "piloter",
     name: "Piloter",
     number: "03",
-    description: "Planifier, coordonner et suivre la réalisation d'activités et de projets avec méthode et rigueur.",
+    levelAchieved: "Niveau 3 atteint",
+    levelDesc: "Améliorer les relations entre les parties prenantes",
     gradient: "linear-gradient(145deg, #C8970A 0%, #F5C518 100%)",
     accent: "#F5C518",
-    projects: [
-      { title: "Les BOZE — optimiser un processus interne", link: "boze.html" },
-      { title: "Maia Village — accompagner la transition numérique", link: "maia-village.html" },
-      { title: "Piloter une transformation numérique par les KPI", link: "transfo-numerique.html" },
-      { title: "Breathe&Go — concevoir une solution innovante de A à Z", link: "breathe-go.html" },
-      { title: "Tables rondes Roole — renforcer l'impact d'un événement", link: "tables-rondes.html" },
-      { title: "Fashion Day — piloter un projet événementiel", link: "fashion-day.html" }
+    niveaux: [
+      {
+        num: 1,
+        title: "Identifier les relations entre les parties prenantes",
+        items: [
+          // AC13.01
+          { text: "Identifier ses qualités individuelles", example: "Rôle d'architecte du groupe : structure, méthode, livrables", tags: ["Breathe&Go"] },
+          // AC13.02
+          { text: "Identifier les relations interpersonnelles et collectives", example: "Coordination entre créateurs, mannequins et équipe", tags: ["Fashion Day"] },
+          // AC13.03
+          { text: "Travailler en équipe avec méthode", example: "Répartition des tâches et échéances sur Notion", tags: ["Breathe&Go", "Fashion Day"] },
+          // AC13.04
+          { text: "Utiliser les techniques de communication pertinentes", example: "Mails, supports Canva, pitchs et présentations", tags: ["Breathe&Go", "Tables rondes"] }
+        ]
+      },
+      {
+        num: 2,
+        title: "Coordonner les relations entre les parties prenantes",
+        items: [
+          // AC23.01
+          { text: "Mobiliser ses qualités au service de l'intelligence collective", example: "Structuration des rendus et supports de groupe", tags: ["Breathe&Go"] },
+          // AC23.02
+          { text: "Analyser les relations collectives dans la stratégie de l'organisation", example: "Rôle des directions régionales dans le pilotage BOZE", tags: ["BOZE"] },
+          // AC23.03
+          { text: "Utiliser des outils dédiés au travail collaboratif", example: "Notion, Forms, Excel et supports partagés", tags: ["BOZE", "Transfo numérique"] },
+          // AC23.04
+          { text: "Combiner les méthodes de communication selon la stratégie", example: "Mails ciblés, réseaux sociaux, affiches et supports projetés", tags: ["Fashion Day", "Tables rondes"] }
+        ]
+      },
+      {
+        num: 3,
+        title: "Améliorer les relations entre les parties prenantes",
+        items: [
+          // AC33.01
+          { text: "Animer une équipe", example: "Sprints, répartition des tâches et suivi de l'avancement", tags: ["Fashion Day"] },
+          // AC33.02
+          { text: "Mener un projet collaboratif", example: "Coordination d'équipe de bout en bout", tags: ["Breathe&Go", "Fashion Day", "Tables rondes"] },
+          // AC33.03
+          { text: "Participer à l'amélioration de la communication", example: "Adaptation des invitations et supports des tables rondes Roole", tags: ["Tables rondes"] }
+        ]
+      }
     ]
   },
   {
     id: "entreprendre",
     name: "Entreprendre",
     number: "04",
-    description: "Concevoir et mettre en œuvre des projets avec une démarche créative, proactive et orientée résultats.",
+    levelAchieved: "Niveau 2 atteint",
+    levelDesc: "Sécuriser la proposition de valeur",
     gradient: "linear-gradient(145deg, #1A7A40 0%, #3DBD70 100%)",
     accent: "#3DBD70",
-    projects: [
-      { title: "Breathe&Go — concevoir une solution innovante de A à Z", link: "breathe-go.html" },
-      { title: "Fashion Day — piloter un projet événementiel", link: "fashion-day.html" }
+    niveaux: [
+      {
+        num: 1,
+        title: "Modéliser la proposition de valeur",
+        items: [
+          // AC14.01
+          { text: "S'adapter aux évolutions et à l'incertitude", example: "Ajustements continus après les retours du corps enseignant", tags: ["Breathe&Go"] },
+          // AC14.02
+          { text: "Évaluer le potentiel d'un marché", example: "Questionnaires quantitatifs et qualitatifs auprès des usagers", tags: ["Breathe&Go"] },
+          // AC14.03
+          { text: "Modéliser les composantes d'un business model", example: "Modèle économique complet de Breathe&Go", tags: ["Breathe&Go"] },
+          // AC14.04
+          { text: "Apprécier la cohérence d'un business model et d'un business plan", example: "Lien entre coût, prix, cible et prévisions financières", tags: ["Breathe&Go"] }
+        ]
+      },
+      {
+        num: 2,
+        title: "Sécuriser la proposition de valeur",
+        items: [
+          // AC24.01
+          { text: "Tester la viabilité financière d'un business model", example: "Business plan complet avec seuil de rentabilité", tags: ["Breathe&Go"] },
+          // AC24.02
+          { text: "Apprécier les risques financiers, fiscaux et juridiques", example: "Analyse de faisabilité et des risques du produit", tags: ["Breathe&Go"] },
+          // AC24.03
+          { text: "Préconiser des mesures de protection contre les risques", example: "Solution préventive face au risque d'alcool au volant", tags: ["Breathe&Go"] },
+          // AC24.04
+          { text: "Persuader une partie prenante de la viabilité du projet", example: "Pitch final devant plus d'une centaine de personnes", tags: ["Breathe&Go"] },
+          // AC24.05
+          { text: "Confronter son projet à l'expérience de terrain", example: "Stand, questionnaires et partenariat avec la Prévention Routière", tags: ["Breathe&Go"] }
+        ]
+      }
     ]
   },
   {
     id: "developper",
     name: "Développer",
     number: "05",
-    description: "Mobiliser et enrichir ses connaissances, s'adapter à de nouveaux contextes et contribuer au développement des organisations.",
+    levelAchieved: "Niveau 2 atteint",
+    levelDesc: "Optimiser la chaîne de valeur",
     gradient: "linear-gradient(145deg, #1E3A8A 0%, #4469C9 100%)",
     accent: "#4469C9",
-    projects: [
-      { title: "Hôtel-restaurant — du diagnostic au plan d'action", link: "hotel-restaurant.html" },
-      { title: "Bons plans régionaux — transformer des données en outil de pilotage", link: "bons-plans.html" },
-      { title: "Piloter une transformation numérique par les KPI", link: "transfo-numerique.html" },
-      { title: "Breathe&Go — concevoir une solution innovante de A à Z", link: "breathe-go.html" },
-      { title: "Tables rondes Roole — renforcer l'impact d'un événement", link: "tables-rondes.html" },
-      { title: "Fashion Day — piloter un projet événementiel", link: "fashion-day.html" }
+    niveaux: [
+      {
+        num: 1,
+        title: "Développer la chaîne de valeur",
+        items: [
+          // AC15.01
+          { text: "Promouvoir un projet, un événement ou une organisation", example: "Affiches, flyers et réseaux sociaux pour l'événement", tags: ["Fashion Day"] },
+          // AC15.02
+          { text: "Identifier la variété des processus de production", example: "Prototype et impression 3D", tags: ["Breathe&Go"] },
+          // AC15.03
+          { text: "Utiliser les techniques de négociation avec les partenaires", example: "Échanges avec la Prévention Routière et les acteurs événementiels", tags: ["Breathe&Go", "Fashion Day"] },
+          // AC15.04
+          { text: "Évaluer une démarche de marketing opérationnel digital", example: "Suivi des bons plans régionaux et campagnes d'animation", tags: ["Bons plans"] },
+          // AC15.05
+          { text: "Évaluer le risque de trésorerie", example: "Prévisions financières et seuil de rentabilité", tags: ["Breathe&Go"] },
+          // AC15.06
+          { text: "Contribuer à la gestion opérationnelle des ressources humaines", example: "Plan d'action RH dans le cas de l'hôtel-restaurant", tags: ["Hôtel-restaurant"] }
+        ]
+      },
+      {
+        num: 2,
+        title: "Optimiser la chaîne de valeur",
+        items: [
+          // AC25.01
+          { text: "Concevoir une stratégie de communication avec les outils adaptés", example: "Identité visuelle complète et plan de communication", tags: ["Fashion Day"] },
+          // AC25.02
+          { text: "Mettre en œuvre des processus adaptés à la situation de l'entité", example: "Organisation par sprints avec livrables définis", tags: ["Fashion Day"] },
+          // AC25.03
+          { text: "Concevoir une démarche de marketing opérationnel adaptée", example: "Priorisation des bons plans selon leur performance terrain", tags: ["Bons plans"] },
+          // AC25.04
+          { text: "Prévenir les risques de défaillance avec les outils adaptés", example: "Plan de redressement complet pour l'hôtel-restaurant", tags: ["Hôtel-restaurant"] },
+          // AC25.05
+          { text: "Déterminer les axes principaux d'une politique RH", example: "Bien-être au travail, climat social et coordination des équipes", tags: ["Hôtel-restaurant"] }
+        ]
+      }
     ]
   }
 ];

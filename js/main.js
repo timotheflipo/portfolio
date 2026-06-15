@@ -524,6 +524,27 @@ function buildCompetences(container) {
     wrap.className = 'comp-card-wrap';
     wrap.dataset.id = comp.id;
 
+    const niveauxHTML = comp.niveaux.map(n => `
+      <div class="comp-niveau">
+        <div class="comp-niveau-head">
+          <span class="comp-niveau-num">Niveau ${n.num}</span>
+          <span class="comp-niveau-title">${n.title}</span>
+        </div>
+        <ul class="comp-items">
+          ${n.items.map(item => `
+            <li class="comp-item">
+              <div class="comp-item-body">
+                <span class="comp-item-text">${item.text}</span>
+                <span class="comp-item-example">
+                  ${item.example}${item.tags && item.tags.length ? ' — ' + item.tags.map(t => `<span class="comp-item-badge">${t}</span>`).join('') : ''}
+                </span>
+              </div>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+    `).join('');
+
     wrap.innerHTML = `
       <div class="comp-card reveal" data-id="${comp.id}">
         <div class="comp-card-bg"></div>
@@ -532,24 +553,16 @@ function buildCompetences(container) {
         <div class="comp-content">
           <div class="comp-num">Compétence ${comp.number}</div>
           <div class="comp-name">${comp.name}</div>
-          <div class="comp-desc">${comp.description}</div>
+          <div class="comp-level-badge">${comp.levelAchieved}</div>
+          <div class="comp-desc">${comp.levelDesc}</div>
           <div class="comp-cta">
-            <span>Voir les projets</span>
+            <span>Voir les apprentissages</span>
             <span>→</span>
           </div>
         </div>
         <div class="comp-projects" id="proj-${comp.id}">
           <div class="comp-projects-inner">
-            <ul class="comp-proj-list">
-              ${comp.projects.map(p => `
-                <li>
-                  <a class="comp-proj-item" href="${p.link}">
-                    <span>${p.title}</span>
-                    <span class="comp-proj-arrow">→</span>
-                  </a>
-                </li>
-              `).join('')}
-            </ul>
+            <div class="comp-niveaux">${niveauxHTML}</div>
           </div>
         </div>
       </div>
