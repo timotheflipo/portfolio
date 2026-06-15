@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=81">
+  <link rel="stylesheet" href="css/style.css?v=82">
 </head>
 <body>
 
@@ -58,9 +58,9 @@
         </div>
       </div>
       <div class="hero-cta">
-        <a class="btn btn-dark" id="cv-btn" href="CV_Timothe_Flipo.pdf">
+        <button type="button" class="btn btn-dark" onclick="window.open('CV_Timothe_Flipo.pdf','_blank','noopener,noreferrer')">
           Mon CV ↗
-        </a>
+        </button>
         <a class="btn btn-outline" href="contact.html">Me contacter</a>
       </div>
       <div class="scroll-hint">
@@ -136,13 +136,7 @@
     </div>
   </footer>
 
-  <script src="js/data.js?v=81"></script>
-  <script src="js/main.js?v=81"></script>
-  <script>
-    document.getElementById('cv-btn').addEventListener('click', function(e) {
-      e.preventDefault();
-      window.open(this.href, '_blank');
-    });
-  </script>
+  <script src="js/data.js?v=82"></script>
+  <script src="js/main.js?v=82"></script>
 </body>
 </html>
