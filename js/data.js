@@ -215,6 +215,7 @@ const faqItems = [
 const timelineItems = [
   // Master (futur, gauche) + continuité Roole (droite)
   {
+    type: 'standard',
     left: {
       tag: "Futur",
       title: "Master Management Stratégique et Changement",
@@ -227,8 +228,9 @@ const timelineItems = [
       note: "Se poursuit en alternance pendant le Master"
     }
   },
-  // BUT GEA + Roole : concurrent (même ligne)
+  // Bloc concurrent : BUT + toutes les expériences réalisées en même temps
   {
+    type: 'concurrent',
     left: {
       tag: "Formation",
       title: "BUT Gestion des Entreprises et des Administrations",
@@ -236,37 +238,34 @@ const timelineItems = [
       org: "Parcours GEMA · IUT de Paris - Rives de Seine",
       description: "Base solide en gestion, management, entrepreneuriat et marketing. Projets en analyse organisationnelle, transformation numérique et pilotage d'actions."
     },
-    right: {
-      tag: "Alternance",
-      title: "Chargé de marketing BtoB",
-      period: "Août 2025 – présent",
-      org: "Roole",
-      description: "Coordination, analyse de données, optimisation de processus, communication interne et pilotage d'actions marketing BtoB."
-    }
-  },
-  // Stages effectués pendant le BUT
-  {
-    right: {
-      tag: "Stage",
-      title: "Stage en communication",
-      period: "Janv. – Mars 2025",
-      org: "Hôpital Foch",
-      description: "Supports visuels, contenus web et organisation d'événements professionnels au sein d'un service communication hospitalier exigeant.",
-      durantBut: true
-    }
-  },
-  {
-    right: {
-      tag: "Stage",
-      title: "Stage en comptabilité / gestion",
-      period: "Mars 2024",
-      org: "Ocellis",
-      description: "Première expérience professionnelle — suivi de données sur Excel, logiques comptables et gestion administrative dans un cadre professionnel structuré.",
-      durantBut: true
-    }
+    rights: [
+      {
+        tag: "Alternance",
+        title: "Chargé de marketing BtoB",
+        period: "Août 2025 – présent",
+        org: "Roole",
+        description: "Coordination, analyse de données, optimisation de processus, communication interne et pilotage d'actions marketing BtoB.",
+        continuesMaster: true
+      },
+      {
+        tag: "Stage",
+        title: "Stage en communication",
+        period: "Janv. – Mars 2025",
+        org: "Hôpital Foch",
+        description: "Supports visuels, contenus web et organisation d'événements professionnels au sein d'un service communication hospitalier exigeant."
+      },
+      {
+        tag: "Stage",
+        title: "Stage en comptabilité / gestion",
+        period: "Mars 2024",
+        org: "Ocellis",
+        description: "Première expérience professionnelle — suivi de données sur Excel, logiques comptables et gestion administrative dans un cadre professionnel structuré."
+      }
+    ]
   },
   // Bac
   {
+    type: 'standard',
     left: {
       tag: "Formation",
       title: "Baccalauréat général — mention assez bien",

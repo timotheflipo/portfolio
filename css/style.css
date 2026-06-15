@@ -1428,13 +1428,19 @@ ul { list-style: none; }
 .legend-dot.pro { background-color: var(--accent); }
 
 .timeline-axis { position: relative; }
-.timeline-line-center {
+.timeline-axis::before {
+  content: '';
   position: absolute;
   left: 50%;
   top: 0; bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.07) 5%, rgba(0,0,0,0.07) 95%, transparent);
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.13) 4%, rgba(0,0,0,0.13) 96%, transparent);
   transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+}
+.timeline-line-center {
+  display: none;
 }
 .tl-item {
   display: grid;
@@ -1496,6 +1502,11 @@ ul { list-style: none; }
   color: #2a4a9c;
   border: 1px solid rgba(68,105,201,0.2);
 }
+.tl-tag.Futur {
+  background-color: rgba(249,220,92,0.15);
+  color: #7a5d00;
+  border: 1px solid rgba(249,220,92,0.5);
+}
 .tl-tag.Alternance {
   background-color: var(--accent);
   color: var(--white);
@@ -1546,6 +1557,59 @@ ul { list-style: none; }
   background: rgba(68,105,201,0.07);
   color: #2a4a9c;
   border: 1px solid rgba(68,105,201,0.2);
+}
+
+/* Wrapper pointillé du bloc concurrent */
+.tl-concurrent-wrap {
+  position: relative;
+  border: 1.5px dashed rgba(0,0,0,0.13);
+  border-radius: 14px;
+  padding: 1.5rem 0;
+  margin-bottom: 3rem;
+}
+.tl-concurrent-wrap::before {
+  content: 'Pendant le BUT GEA';
+  position: absolute;
+  top: -0.55rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.57rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.28);
+  background: #f1f1ec;
+  padding: 0 10px;
+  white-space: nowrap;
+  z-index: 1;
+}
+.tl-concurrent {
+  margin-bottom: 0;
+}
+.tl-concurrent .tl-left {
+  display: flex;
+  align-items: center;
+  padding-right: 2.5rem;
+  text-align: right;
+}
+.tl-right--multi {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-left: 2.5rem;
+}
+.tl-continues-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: 99px;
+  margin-top: 10px;
+  background: rgba(255,111,60,0.08);
+  color: #c95520;
+  border: 1px solid rgba(255,111,60,0.22);
 }
 
 /* Indicateur de continuité Roole (ligne Master) */
@@ -2538,6 +2602,9 @@ ul { list-style: none; }
   .tl-dot-wrap { position: absolute; left: 1.5rem; top: 1.2rem; transform: translateX(-50%); }
   .tl-left:empty, .tl-right:empty { display: none; }
   .tl-empty { display: none; }
+  .tl-concurrent .tl-left { display: block; align-items: unset; }
+  .tl-right--multi { padding-left: 3.5rem; }
+  .timeline-axis::before { left: 1.5rem; transform: none; }
   .comp-grid { grid-template-columns: 1fr; }
   .comp-card-wrap:nth-child(5) { max-width: 100%; }
   .comp-card-wrap:nth-child(1),

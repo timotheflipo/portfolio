@@ -429,34 +429,53 @@ function buildTimeline(container) {
       <div class="tl-period">${item.period}</div>
       <div class="tl-org">${item.org}</div>
       <p class="tl-desc">${item.description}</p>
-      ${item.durantBut ? '<span class="tl-durant-badge">Pendant le BUT GEA</span>' : ''}
+      ${item.continuesMaster ? '<span class="tl-continues-badge">↑ Se poursuit pendant le Master</span>' : ''}
     </div>
   `;
 
-  container.innerHTML = timelineItems.map((row) => {
-    const L = row.left || null;
-    const R = row.right || null;
-    const RS = row.rightSpan || null;
-    const dotClass = L ? 'scolaire' : 'pro';
-    const concurrent = (L && R) ? ' concurrent' : '';
+  let html = '';
 
-    const leftHTML = L ? makeCard(L, 'tl-card--edu') : '';
-    const rightHTML = R
-      ? makeCard(R, 'tl-card--pro')
-      : RS
-      ? `<div class="tl-roole-span"><span class="tl-roole-span-label">${RS.label}</span><span class="tl-roole-span-note">${RS.note}</span></div>`
-      : '';
+  timelineItems.forEach((row) => {
+    if (row.type === 'concurrent') {
+      const leftHTML = makeCard(row.left, 'tl-card--edu');
+      const rightsHTML = row.rights.map(r => makeCard(r, 'tl-card--pro')).join('');
 
-    return `
-      <div class="tl-item">
-        <div class="tl-left">${leftHTML}</div>
-        <div class="tl-dot-wrap">
-          <div class="tl-dot ${dotClass}${concurrent}"></div>
+      html += `
+        <div class="tl-concurrent-wrap">
+          <div class="tl-item tl-concurrent">
+            <div class="tl-left">${leftHTML}</div>
+            <div class="tl-dot-wrap">
+              <div class="tl-dot scolaire"></div>
+            </div>
+            <div class="tl-right tl-right--multi">
+              ${rightsHTML}
+            </div>
+          </div>
         </div>
-        <div class="tl-right">${rightHTML}</div>
-      </div>
-    `;
-  }).join('');
+      `;
+    } else {
+      const L = row.left || null;
+      const RS = row.rightSpan || null;
+      const dotClass = L ? 'scolaire' : 'pro';
+
+      const leftHTML = L ? makeCard(L, 'tl-card--edu') : '';
+      const rightHTML = RS
+        ? `<div class="tl-roole-span"><span class="tl-roole-span-label">${RS.label}</span><span class="tl-roole-span-note">${RS.note}</span></div>`
+        : '';
+
+      html += `
+        <div class="tl-item">
+          <div class="tl-left">${leftHTML}</div>
+          <div class="tl-dot-wrap">
+            <div class="tl-dot ${dotClass}"></div>
+          </div>
+          <div class="tl-right">${rightHTML}</div>
+        </div>
+      `;
+    }
+  });
+
+  container.innerHTML = html;
 
   container.querySelectorAll('.tl-card').forEach((card, i) => {
     card.classList.add('reveal');
