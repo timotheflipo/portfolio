@@ -1990,7 +1990,24 @@ ul { list-style: none; }
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
+  padding-left: 1.5rem;
 }
+
+/* Track line verticale */
+.pcol--edu::before,
+.pcol--pro::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 3.25rem;
+  bottom: 0.5rem;
+  width: 2px;
+  border-radius: 2px;
+  pointer-events: none;
+}
+.pcol--edu::before { background: linear-gradient(to bottom, rgba(68,105,201,0.4) 0%, rgba(68,105,201,0.04) 100%); }
+.pcol--pro::before { background: linear-gradient(to bottom, rgba(255,111,60,0.4) 0%, rgba(255,111,60,0.04) 100%); }
 .pcol-header {
   display: flex;
   align-items: center;
@@ -2016,7 +2033,6 @@ ul { list-style: none; }
   border: 1px solid var(--card-border);
   box-shadow: var(--shadow-sm);
   border-left: 3px solid transparent;
-  overflow: hidden;
   transition: transform var(--t-med), box-shadow var(--t-med);
 }
 .pcard:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
@@ -2026,19 +2042,21 @@ ul { list-style: none; }
 /* Featured cards : padding supplémentaire */
 .pcard--featured { padding: 1.6rem 1.75rem 1.5rem; }
 
-/* Ghost year (décoratif) */
-.pcard-ghost {
+/* Dot de timeline sur chaque carte */
+.pcol--edu .pcard::before,
+.pcol--pro .pcard::before {
+  content: '';
   position: absolute;
-  top: -0.25rem;
-  right: 0.75rem;
-  font-size: 4.5rem;
-  font-weight: 800;
-  color: rgba(0,0,0,0.04);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: -0.02em;
+  left: calc(-1.5rem - 4px);
+  top: 1.5rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  z-index: 2;
 }
+.pcol--edu .pcard::before { background: #4469C9; }
+.pcol--pro .pcard::before { background: var(--accent); }
 
 /* Méta : type + période */
 .pcard-meta {
@@ -2218,8 +2236,10 @@ ul { list-style: none; }
 @media (max-width: 600px) {
   .parcours-narrative { padding-bottom: 2.5rem; }
   .parcours-split { padding-bottom: 3rem; }
-  .pcard-ghost { font-size: 3.5rem; }
   .pdest-card { padding: 1.75rem; }
+  .pcol { padding-left: 1.25rem; }
+  .pcol--edu .pcard::before,
+  .pcol--pro .pcard::before { left: calc(-1.25rem - 4px); }
 }
 
 /* ============================================
