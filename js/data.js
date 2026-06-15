@@ -267,9 +267,12 @@ const competencesData = [
     gradient: "linear-gradient(145deg, #C0392B 0%, #EC7063 100%)",
     accent: "#EC7063",
     projects: [
-      { title: "Projet à compléter", link: "#" },
-      { title: "Projet à compléter", link: "#" },
-      { title: "Projet à compléter", link: "#" }
+      { title: "Les BOZE — optimiser un processus interne", link: "boze.html" },
+      { title: "Maia Village — accompagner la transition numérique", link: "maia-village.html" },
+      { title: "Hôtel-restaurant — du diagnostic au plan d'action", link: "hotel-restaurant.html" },
+      { title: "Bons plans régionaux — transformer des données en outil de pilotage", link: "bons-plans.html" },
+      { title: "Piloter une transformation numérique par les KPI", link: "transfo-numerique.html" },
+      { title: "Tables rondes Roole — renforcer l'impact d'un événement", link: "tables-rondes.html" }
     ]
   },
   {
@@ -280,9 +283,12 @@ const competencesData = [
     gradient: "linear-gradient(145deg, #D35400 0%, #F0883A 100%)",
     accent: "#F0883A",
     projects: [
-      { title: "Projet à compléter", link: "#" },
-      { title: "Projet à compléter", link: "#" },
-      { title: "Projet à compléter", link: "#" }
+      { title: "Les BOZE — optimiser un processus interne", link: "boze.html" },
+      { title: "Maia Village — accompagner la transition numérique", link: "maia-village.html" },
+      { title: "Hôtel-restaurant — du diagnostic au plan d'action", link: "hotel-restaurant.html" },
+      { title: "Bons plans régionaux — transformer des données en outil de pilotage", link: "bons-plans.html" },
+      { title: "Piloter une transformation numérique par les KPI", link: "transfo-numerique.html" },
+      { title: "Tables rondes Roole — renforcer l'impact d'un événement", link: "tables-rondes.html" }
     ]
   },
   {
@@ -293,9 +299,12 @@ const competencesData = [
     gradient: "linear-gradient(145deg, #C8970A 0%, #F5C518 100%)",
     accent: "#F5C518",
     projects: [
-      { title: "Projet à compléter", link: "#" },
-      { title: "Projet à compléter", link: "#" },
-      { title: "Projet à compléter", link: "#" }
+      { title: "Les BOZE — optimiser un processus interne", link: "boze.html" },
+      { title: "Maia Village — accompagner la transition numérique", link: "maia-village.html" },
+      { title: "Piloter une transformation numérique par les KPI", link: "transfo-numerique.html" },
+      { title: "Breathe&Go — concevoir une solution innovante de A à Z", link: "breathe-go.html" },
+      { title: "Tables rondes Roole — renforcer l'impact d'un événement", link: "tables-rondes.html" },
+      { title: "Fashion Day — piloter un projet événementiel", link: "fashion-day.html" }
     ]
   },
   {
@@ -306,9 +315,8 @@ const competencesData = [
     gradient: "linear-gradient(145deg, #1A7A40 0%, #3DBD70 100%)",
     accent: "#3DBD70",
     projects: [
-      { title: "Projet à compléter", link: "#" },
-      { title: "Projet à compléter", link: "#" },
-      { title: "Projet à compléter", link: "#" }
+      { title: "Breathe&Go — concevoir une solution innovante de A à Z", link: "breathe-go.html" },
+      { title: "Fashion Day — piloter un projet événementiel", link: "fashion-day.html" }
     ]
   },
   {
@@ -319,9 +327,12 @@ const competencesData = [
     gradient: "linear-gradient(145deg, #1E3A8A 0%, #4469C9 100%)",
     accent: "#4469C9",
     projects: [
-      { title: "Projet à compléter", link: "#" },
-      { title: "Projet à compléter", link: "#" },
-      { title: "Projet à compléter", link: "#" }
+      { title: "Hôtel-restaurant — du diagnostic au plan d'action", link: "hotel-restaurant.html" },
+      { title: "Bons plans régionaux — transformer des données en outil de pilotage", link: "bons-plans.html" },
+      { title: "Piloter une transformation numérique par les KPI", link: "transfo-numerique.html" },
+      { title: "Breathe&Go — concevoir une solution innovante de A à Z", link: "breathe-go.html" },
+      { title: "Tables rondes Roole — renforcer l'impact d'un événement", link: "tables-rondes.html" },
+      { title: "Fashion Day — piloter un projet événementiel", link: "fashion-day.html" }
     ]
   }
 ];
