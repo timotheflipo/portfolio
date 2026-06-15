@@ -213,47 +213,45 @@ const faqItems = [
 
 // --- Page Parcours : Timeline ---
 const timelineItems = [
-  // TYPE : "scolaire" ou "professionnel"
-  // TAG : "Formation" | "Alternance" | "Stage" | "Projet"
-  {
-    type: "scolaire",
-    tag: "Formation",
-    title: "BUT GEA — Parcours GEMA",
-    period: "2023 — 2026",
-    org: "IUT de Sceaux, Université Paris-Saclay",
-    description: "Bachelor Universitaire de Technologie Gestion des Entreprises et des Administrations, spécialisation Gestion et Management des Organisations."
-  },
   {
     type: "professionnel",
     tag: "Alternance",
-    title: "Alternant — Roole",
-    period: "2024 — 2026",
+    title: "Chargé de marketing BtoB",
+    period: "Août 2025 – présent",
     org: "Roole",
-    description: "Alternance dans le cadre de la 2e et 3e année de BUT GEA. Missions à compléter."
-  },
-  {
-    type: "scolaire",
-    tag: "Formation",
-    title: "Master Management Stratégique et Changement",
-    period: "À partir de sept. 2026",
-    org: "Université Paris-Saclay",
-    description: "Poursuite d'études en master sur deux ans, en alternance, orientée transformation et management stratégique des organisations."
+    description: "Coordination, analyse de données, optimisation de processus, communication interne et pilotage d'actions marketing BtoB au sein d'un acteur majeur de l'assurance automobile."
   },
   {
     type: "professionnel",
     tag: "Stage",
-    title: "Stage — À compléter",
-    period: "Période à compléter",
-    org: "Organisme à compléter",
-    description: "Description des missions à compléter."
+    title: "Stage en communication",
+    period: "Janvier – Mars 2025",
+    org: "Hôpital Foch",
+    description: "Supports visuels, contenus web et organisation d'événements professionnels au sein d'un service communication hospitalier exigeant."
+  },
+  {
+    type: "professionnel",
+    tag: "Stage",
+    title: "Stage en comptabilité / gestion",
+    period: "Mars 2024",
+    org: "Ocellis",
+    description: "Première expérience professionnelle — suivi de données sur Excel, logiques comptables et gestion administrative dans un cadre professionnel structuré."
   },
   {
     type: "scolaire",
     tag: "Formation",
-    title: "Baccalauréat Général — À compléter",
-    period: "2023",
-    org: "Lycée à compléter",
-    description: "Spécialités et mention à compléter."
+    title: "BUT Gestion des Entreprises et des Administrations",
+    period: "2023 – présent",
+    org: "Parcours GEMA · IUT de Paris - Rives de Seine",
+    description: "Base solide en gestion, management, entrepreneuriat et marketing. Projets en analyse organisationnelle, transformation numérique et pilotage d'actions."
+  },
+  {
+    type: "scolaire",
+    tag: "Formation",
+    title: "Baccalauréat général — mention assez bien",
+    period: "2020 – 2023",
+    org: "Lycée Paul Langevin · Suresnes",
+    description: "Spécialités SES et HGGSP — première culture économique, sociale et géopolitique, nourrissant l'intérêt pour les organisations et les transformations économiques."
   }
 ];
 

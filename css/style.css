@@ -1424,8 +1424,8 @@ ul { list-style: none; }
   width: 10px; height: 10px;
   border-radius: 50%;
 }
-.legend-dot.scolaire { background-color: var(--accent); }
-.legend-dot.pro { background-color: var(--dark); }
+.legend-dot.scolaire { background-color: #4469C9; }
+.legend-dot.pro { background-color: var(--accent); }
 
 .timeline-axis { position: relative; }
 .timeline-line-center {
@@ -1459,8 +1459,8 @@ ul { list-style: none; }
   border: 2.5px solid var(--bg);
   flex-shrink: 0;
 }
-.tl-dot.scolaire { background-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-border); }
-.tl-dot.pro { background-color: var(--dark); box-shadow: 0 0 0 1.5px rgba(0,0,0,0.15); }
+.tl-dot.scolaire { background-color: #4469C9; box-shadow: 0 0 0 2px rgba(68,105,201,0.25); }
+.tl-dot.pro { background-color: var(--accent); box-shadow: 0 0 0 1.5px var(--accent-border); }
 
 .tl-card {
   background-color: var(--white);
@@ -1484,12 +1484,12 @@ ul { list-style: none; }
   margin-bottom: 10px;
 }
 .tl-tag.Formation {
-  background-color: var(--accent-muted);
-  color: var(--accent-dark);
-  border: 1px solid var(--accent-border);
+  background-color: rgba(68,105,201,0.08);
+  color: #2a4a9c;
+  border: 1px solid rgba(68,105,201,0.2);
 }
 .tl-tag.Alternance {
-  background-color: var(--dark);
+  background-color: var(--accent);
   color: var(--white);
 }
 .tl-tag.Stage {
