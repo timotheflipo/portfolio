@@ -1948,6 +1948,281 @@ ul { list-style: none; }
 }
 
 /* ============================================
+   PARCOURS PAGE
+   ============================================ */
+
+/* Intro narrative */
+.parcours-narrative {
+  background: var(--bg);
+  padding: 0 2rem 3.5rem;
+}
+.parcours-narrative-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 1.5rem 1.75rem;
+  border-left: 3px solid var(--accent);
+  background: var(--white);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  box-shadow: var(--shadow-sm);
+}
+.parcours-narrative-inner p {
+  font-size: 0.95rem;
+  color: var(--gray);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Split layout : formations + expériences */
+.parcours-split {
+  background: var(--bg);
+  padding: 0 2rem 4rem;
+}
+.parcours-split-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* Column */
+.pcol {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.pcol-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--light-gray);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid var(--card-border);
+}
+.pcol--edu .pcol-header { color: #4469C9; }
+.pcol--pro .pcol-header { color: var(--accent); }
+
+/* Cards */
+.pcard {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--r-lg);
+  padding: 1.4rem 1.5rem 1.3rem;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-sm);
+  border-left: 3px solid transparent;
+  overflow: hidden;
+  transition: transform var(--t-med), box-shadow var(--t-med);
+}
+.pcard:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.pcard--edu { border-left-color: #4469C9; }
+.pcard--pro { border-left-color: var(--accent); }
+
+/* Featured cards : padding supplémentaire */
+.pcard--featured { padding: 1.6rem 1.75rem 1.5rem; }
+
+/* Ghost year (décoratif) */
+.pcard-ghost {
+  position: absolute;
+  top: -0.25rem;
+  right: 0.75rem;
+  font-size: 4.5rem;
+  font-weight: 800;
+  color: rgba(0,0,0,0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.02em;
+}
+
+/* Méta : type + période */
+.pcard-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.7rem;
+}
+.pcard-type {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: 99px;
+  border: 1px solid var(--card-border);
+  background: var(--bg);
+  color: var(--gray);
+}
+.pcard--edu .pcard-type { background: rgba(68,105,201,0.07); color: #2a4a9c; border-color: rgba(68,105,201,0.18); }
+.pcard--pro .pcard-type { background: var(--accent-muted); color: var(--accent-dark); border-color: var(--accent-border); }
+
+.pcard-period {
+  font-size: 0.67rem;
+  font-weight: 600;
+  color: var(--light-gray);
+  letter-spacing: 0.04em;
+}
+
+/* Titre */
+.pcard-title {
+  font-size: 0.97rem;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
+}
+.pcard--featured .pcard-title { font-size: 1.05rem; }
+.pcard-mention {
+  font-weight: 500;
+  font-size: 0.85em;
+  color: var(--gray);
+}
+
+/* Organisation */
+.pcard-org {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.77rem;
+  color: var(--gray);
+  margin-bottom: 0.75rem;
+}
+.pcard-org svg { flex-shrink: 0; opacity: 0.55; }
+
+/* Description */
+.pcard-desc {
+  font-size: 0.81rem;
+  color: var(--gray);
+  line-height: 1.65;
+  margin-bottom: 0.9rem;
+}
+
+/* Tags partagés */
+.pcard-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.pcard-tags span {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 3px 9px;
+  border-radius: 99px;
+  background: var(--bg);
+  color: var(--dark);
+  border: 1px solid rgba(0,0,0,0.09);
+}
+.pcard--edu .pcard-tags span { background: rgba(68,105,201,0.07); color: #2a4a9c; border-color: rgba(68,105,201,0.15); }
+.pcard--pro .pcard-tags span { background: var(--accent-muted); color: var(--accent-dark); border-color: var(--accent-border); }
+
+/* ── Destination : Master ── */
+.parcours-dest {
+  background: var(--bg);
+  padding: 0 2rem 7rem;
+}
+.parcours-dest-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+/* Eyebrow : ligne + label + ligne */
+.pdest-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.pdest-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--muted));
+}
+.pdest-eyebrow .pdest-line:last-child {
+  background: linear-gradient(to left, transparent, var(--muted));
+}
+.pdest-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* Carte destination */
+.pdest-card {
+  background: var(--white);
+  border: 2px dashed rgba(255,111,60,0.35);
+  border-radius: var(--r-xl);
+  padding: 2.25rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  transition: border-color var(--t-med), box-shadow var(--t-med);
+}
+.pdest-card:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); }
+
+.pdest-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--accent-muted);
+  color: var(--accent-dark);
+  border: 1px solid var(--accent-border);
+  margin-bottom: 0.75rem;
+}
+.pdest-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.3;
+  margin-bottom: 0.45rem;
+}
+.pdest-org {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  color: var(--gray);
+}
+.pdest-org svg { opacity: 0.55; flex-shrink: 0; }
+.pdest-desc {
+  font-size: 0.83rem;
+  color: var(--gray);
+  line-height: 1.7;
+  margin-bottom: 0.9rem;
+}
+.pdest-tags span {
+  background: var(--accent-muted);
+  color: var(--accent-dark);
+  border-color: var(--accent-border);
+}
+
+/* Responsive parcours */
+@media (max-width: 860px) {
+  .parcours-split-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .pcol--pro { border-top: 1px solid var(--card-border); padding-top: 2rem; }
+  .pdest-card { grid-template-columns: 1fr; gap: 1.25rem; }
+}
+@media (max-width: 600px) {
+  .parcours-narrative { padding-bottom: 2.5rem; }
+  .parcours-split { padding-bottom: 3rem; }
+  .pcard-ghost { font-size: 3.5rem; }
+  .pdest-card { padding: 1.75rem; }
+}
+
+/* ============================================
    CONTACT PAGE
    ============================================ */
 .contact-section {

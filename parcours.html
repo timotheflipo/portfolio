@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Parcours scolaire et professionnel de Timothé Flipo — Timeline de formations et expériences.">
+  <meta name="description" content="Parcours de Timothé Flipo — formations, expériences et progression vers le management stratégique.">
   <title>Parcours — Timothé Flipo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,40 +15,166 @@
   <!-- Header injecté par main.js -->
 
   <main>
+
     <!-- PAGE HERO -->
     <div class="page-hero">
       <h1>Parcours</h1>
-      <p>
-        Mon chemin scolaire et professionnel, des formations qui m'ont construit
-        aux expériences qui m'ont appris à agir.
-      </p>
+      <p>Formations, expériences et projets — un profil construit étape par étape.</p>
       <div class="page-divider"></div>
     </div>
 
-    <!-- TIMELINE -->
-    <section class="timeline-section">
-      <div class="timeline-wrap">
+    <!-- INTRO NARRATIVE -->
+    <div class="parcours-narrative">
+      <div class="parcours-narrative-inner reveal">
+        <p>Trois ans de formation solide, trois expériences de terrain complémentaires. Chaque étape a construit la suivante&nbsp;: une culture économique d'abord, des compétences de gestion ensuite, puis un ancrage professionnel. C'est ce fil qui me conduit vers le Management Stratégique et le Changement.</p>
+      </div>
+    </div>
 
-        <!-- Légende -->
-        <div class="timeline-legend reveal">
-          <div class="legend-item">
-            <div class="legend-dot scolaire"></div>
-            <span>Parcours scolaire</span>
-          </div>
-          <div class="legend-item">
-            <div class="legend-dot pro"></div>
-            <span>Expérience professionnelle</span>
-          </div>
+    <!-- SPLIT : FORMATIONS | EXPÉRIENCES -->
+    <section class="parcours-split">
+      <div class="parcours-split-inner">
+
+        <!-- ── Colonne FORMATIONS ── -->
+        <div class="pcol pcol--edu">
+          <header class="pcol-header">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3L22 8.5L12 14L2 8.5L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M7 11.5V17C7 17 9 20 12 20C15 20 17 17 17 17V11.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <span>Formations</span>
+          </header>
+
+          <!-- BUT GEA — featured -->
+          <article class="pcard pcard--edu pcard--featured reveal">
+            <div class="pcard-ghost" aria-hidden="true">2023</div>
+            <div class="pcard-meta">
+              <span class="pcard-type">BUT</span>
+              <span class="pcard-period">2023 – présent</span>
+            </div>
+            <h3 class="pcard-title">Gestion des Entreprises<br>et des Administrations</h3>
+            <p class="pcard-org">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8z" stroke="currentColor" stroke-width="1.8"/></svg>
+              Parcours GEMA · IUT de Paris - Rives de Seine · Université Paris Cité
+            </p>
+            <p class="pcard-desc">Une base solide en gestion, management, entrepreneuriat et marketing, renforcée par des projets significatifs en analyse organisationnelle, transformation numérique et entrepreneuriat.</p>
+            <div class="pcard-tags">
+              <span>Gestion</span><span>Management</span><span>Entrepreneuriat</span>
+              <span>Marketing</span><span>Analyse org.</span><span>Pilotage</span>
+            </div>
+          </article>
+
+          <!-- Bac -->
+          <article class="pcard pcard--edu reveal">
+            <div class="pcard-meta">
+              <span class="pcard-type">Baccalauréat</span>
+              <span class="pcard-period">2020 – 2023</span>
+            </div>
+            <h3 class="pcard-title">Baccalauréat général <span class="pcard-mention">· mention assez bien</span></h3>
+            <p class="pcard-org">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8z" stroke="currentColor" stroke-width="1.8"/></svg>
+              Lycée Paul Langevin · Suresnes
+            </p>
+            <p class="pcard-desc">Spécialités SES et HGGSP — une première culture économique, sociale et géopolitique qui a nourri mon intérêt pour les organisations et les transformations économiques.</p>
+            <div class="pcard-tags">
+              <span>SES</span><span>HGGSP</span><span>Économie</span><span>Géopolitique</span>
+            </div>
+          </article>
         </div>
 
-        <!-- Axe timeline — injecté par buildTimeline() dans main.js -->
-        <div class="timeline-axis" id="timeline-axis">
-          <div class="timeline-line-center"></div>
-          <!-- Les éléments seront injectés ici -->
+        <!-- ── Colonne EXPÉRIENCES ── -->
+        <div class="pcol pcol--pro">
+          <header class="pcol-header">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M16 7V5C16 3.9 15.1 3 14 3H10C8.9 3 8 3.9 8 5V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <span>Expériences</span>
+          </header>
+
+          <!-- Roole — featured -->
+          <article class="pcard pcard--pro pcard--featured reveal">
+            <div class="pcard-ghost" aria-hidden="true">2025</div>
+            <div class="pcard-meta">
+              <span class="pcard-type">Alternance</span>
+              <span class="pcard-period">Août 2025 – présent</span>
+            </div>
+            <h3 class="pcard-title">Chargé de marketing BtoB</h3>
+            <p class="pcard-org">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8z" stroke="currentColor" stroke-width="1.8"/></svg>
+              Roole
+            </p>
+            <p class="pcard-desc">Mon premier ancrage professionnel durable — coordination, analyse de données, optimisation de processus, communication interne et pilotage d'actions marketing BtoB.</p>
+            <div class="pcard-tags">
+              <span>Marketing BtoB</span><span>Données</span><span>Processus</span><span>Communication interne</span>
+            </div>
+          </article>
+
+          <!-- Hôpital Foch -->
+          <article class="pcard pcard--pro reveal">
+            <div class="pcard-meta">
+              <span class="pcard-type">Stage</span>
+              <span class="pcard-period">Jan – Mars 2025</span>
+            </div>
+            <h3 class="pcard-title">Stage en communication</h3>
+            <p class="pcard-org">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8z" stroke="currentColor" stroke-width="1.8"/></svg>
+              Hôpital Foch
+            </p>
+            <p class="pcard-desc">Découverte d'un service communication dans un environnement hospitalier exigeant — supports visuels, contenus web et organisation d'événements professionnels.</p>
+            <div class="pcard-tags">
+              <span>Communication</span><span>Supports visuels</span><span>Web</span><span>Événementiel</span>
+            </div>
+          </article>
+
+          <!-- Ocellis -->
+          <article class="pcard pcard--pro reveal">
+            <div class="pcard-meta">
+              <span class="pcard-type">Stage</span>
+              <span class="pcard-period">Mars 2024</span>
+            </div>
+            <h3 class="pcard-title">Stage en comptabilité / gestion</h3>
+            <p class="pcard-org">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8z" stroke="currentColor" stroke-width="1.8"/></svg>
+              Ocellis
+            </p>
+            <p class="pcard-desc">Première expérience professionnelle — suivi de données sur Excel, logiques comptables et gestion administrative dans un cadre professionnel structuré.</p>
+            <div class="pcard-tags">
+              <span>Comptabilité</span><span>Excel</span><span>Gestion administrative</span>
+            </div>
+          </article>
         </div>
 
       </div>
     </section>
+
+    <!-- DESTINATION : Master 2026 -->
+    <section class="parcours-dest">
+      <div class="parcours-dest-inner">
+        <div class="pdest-eyebrow reveal">
+          <div class="pdest-line"></div>
+          <span class="pdest-label">Prochaine étape · Septembre 2026</span>
+          <div class="pdest-line"></div>
+        </div>
+        <article class="pdest-card reveal">
+          <div class="pdest-left">
+            <span class="pdest-badge">M1 MSC</span>
+            <h3 class="pdest-title">Master Management Stratégique et Changement</h3>
+            <p class="pdest-org">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8z" stroke="currentColor" stroke-width="1.8"/></svg>
+              ISM-IAE Paris-Saclay / UVSQ · En partenariat avec Sup de V
+            </p>
+          </div>
+          <div class="pdest-right">
+            <p class="pdest-desc">Suite logique de mon parcours — approfondir stratégie, conduite du changement, transformation des organisations et pilotage de projets complexes en contexte professionnel réel.</p>
+            <div class="pcard-tags pdest-tags">
+              <span>Stratégie</span><span>Conduite du changement</span>
+              <span>Transformation</span><span>Pilotage de projets</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
   </main>
 
   <!-- FOOTER -->
