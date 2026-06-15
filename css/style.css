@@ -1847,9 +1847,8 @@ ul { list-style: none; }
 }
 .comp-card-wrap.expanded .comp-projects { max-height: 400px; }
 .comp-projects-inner {
-  background-color: rgba(255,255,255,0.15);
+  background-color: var(--white);
   padding: 1.25rem 2rem 1.5rem;
-  border-top: 1px solid rgba(255,255,255,0.2);
 }
 .comp-proj-list { display: flex; flex-direction: column; gap: 0.5rem; }
 .comp-proj-item {
@@ -1858,16 +1857,17 @@ ul { list-style: none; }
   justify-content: space-between;
   padding: 10px 14px;
   border-radius: var(--r-sm);
-  background-color: rgba(255,255,255,0.18);
+  background-color: var(--bg);
   font-size: 0.83rem;
-  color: rgba(255,255,255,0.92);
-  transition: background-color var(--t-fast);
+  color: var(--dark);
+  transition: background-color var(--t-fast), color var(--t-fast);
   cursor: pointer;
   text-decoration: none;
   font-weight: 500;
 }
 .comp-proj-item:hover {
-  background-color: rgba(255,255,255,0.3);
+  background-color: var(--accent-muted);
+  color: var(--accent-dark);
 }
 .comp-proj-arrow {
   color: var(--light-gray);
