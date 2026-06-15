@@ -212,67 +212,75 @@ const faqItems = [
 ];
 
 // --- Page Parcours : Timeline ---
+// Ordre anté-chronologique (le plus récent en haut → le plus ancien en bas).
+// kind: 'formation' | 'central' (BUT) | 'future' (Master)
 const timelineItems = [
-  // Master (futur, gauche) + continuité Roole (droite)
   {
-    type: 'standard',
-    left: {
-      tag: "Futur",
-      title: "Master Management Stratégique et Changement",
-      period: "À partir de sept. 2026",
-      org: "ISM-IAE Paris-Saclay / UVSQ · Sup de V",
-      description: "Deux ans en alternance — stratégie, conduite du changement, transformation des organisations et pilotage de projets complexes."
-    },
-    rightSpan: {
-      label: "Alternance — Roole",
-      note: "Se poursuit en alternance pendant le Master"
+    kind: "future",
+    chip: "À venir",
+    title: "Master 1 — Management Stratégique & Changement",
+    period: "Sept. 2026",
+    org: "ISM-IAE Paris-Saclay / UVSQ · en partenariat avec Sup de V",
+    description: "La suite logique de mon parcours : stratégie, conduite du changement, transformation des organisations et pilotage de projets.",
+    group: {
+      head: "L'alternance se poursuit pendant le Master",
+      items: [
+        {
+          chip: "Alternance",
+          chipKind: "alternance",
+          title: "Chargé de marketing BtoB en alternance",
+          period: "Août 2026 – Août 2027",
+          org: "Roole",
+          description: "Poursuite, sur la première année du Master, de l'alternance entamée pendant le BUT."
+        }
+      ]
     }
   },
-  // Bloc concurrent : BUT + toutes les expériences réalisées en même temps
   {
-    type: 'concurrent',
-    left: {
-      tag: "Formation",
-      title: "BUT Gestion des Entreprises et des Administrations",
-      period: "2023 – présent",
-      org: "Parcours GEMA · IUT de Paris - Rives de Seine",
-      description: "Base solide en gestion, management, entrepreneuriat et marketing. Projets en analyse organisationnelle, transformation numérique et pilotage d'actions."
-    },
-    rights: [
-      {
-        tag: "Alternance",
-        title: "Chargé de marketing BtoB",
-        period: "Août 2025 – présent",
-        org: "Roole",
-        description: "Coordination, analyse de données, optimisation de processus, communication interne et pilotage d'actions marketing BtoB.",
-        continuesMaster: true
-      },
-      {
-        tag: "Stage",
-        title: "Stage en communication",
-        period: "Janv. – Mars 2025",
-        org: "Hôpital Foch",
-        description: "Supports visuels, contenus web et organisation d'événements professionnels au sein d'un service communication hospitalier exigeant."
-      },
-      {
-        tag: "Stage",
-        title: "Stage en comptabilité / gestion",
-        period: "Mars 2024",
-        org: "Ocellis",
-        description: "Première expérience professionnelle — suivi de données sur Excel, logiques comptables et gestion administrative dans un cadre professionnel structuré."
-      }
-    ]
-  },
-  // Bac
-  {
-    type: 'standard',
-    left: {
-      tag: "Formation",
-      title: "Baccalauréat général — mention assez bien",
-      period: "2020 – 2023",
-      org: "Lycée Paul Langevin · Suresnes",
-      description: "Spécialités SES et HGGSP — première culture économique, sociale et géopolitique, nourrissant l'intérêt pour les organisations et les transformations économiques."
+    kind: "central",
+    chip: "Formation actuelle",
+    title: "BUT GEA — parcours GEMA",
+    period: "2023–2026",
+    org: "Université Paris Cité · IUT de Paris - Rives de Seine",
+    description: "La formation centrale de mon parcours : montée en compétences en gestion, management, entrepreneuriat, marketing, analyse d'organisation et pilotage d'activité.",
+    group: {
+      head: "Trois expériences de terrain pendant le BUT",
+      items: [
+        {
+          chip: "Alternance",
+          chipKind: "alternance",
+          title: "Chargé de marketing BtoB en alternance",
+          period: "Août 2025 – présent",
+          org: "Roole",
+          description: "Optimisation de processus sur Notion, suivi de KPI régionaux, coordination de réunions régionales, suivi de livrables et contribution à la newsletter interne.",
+          note: "Se poursuit pendant le Master"
+        },
+        {
+          chip: "Stage",
+          chipKind: "stage",
+          title: "Stage en communication",
+          period: "Janvier – Mars 2025",
+          org: "Hôpital Foch",
+          description: "Création de visuels Canva, création de pages WordPress et contribution à la gestion événementielle."
+        },
+        {
+          chip: "Stage",
+          chipKind: "stage",
+          title: "Stage en comptabilité / gestion",
+          period: "Mars 2024",
+          org: "Ocellis",
+          description: "Préparation d'échéanciers comptables et suivi Excel de fournisseurs spécialisés, dans une logique RSE."
+        }
+      ]
     }
+  },
+  {
+    kind: "formation",
+    chip: "Formation",
+    title: "Baccalauréat général",
+    period: "2020–2023",
+    org: "Lycée Paul Langevin · Suresnes",
+    description: "Spécialités SES et HGGSP, options Maths complémentaires et Anglais section européenne — une première culture économique, sociale et géopolitique."
   }
 ];
 

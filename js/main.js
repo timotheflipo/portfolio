@@ -422,64 +422,57 @@ function buildNotionBlocks(container) {
 function buildTimeline(container) {
   if (!container || typeof timelineItems === 'undefined') return;
 
-  const makeCard = (item, cls) => `
-    <div class="tl-card ${cls}">
-      <span class="tl-tag ${item.tag}">${item.tag}</span>
-      <h3>${item.title}</h3>
-      <div class="tl-period">${item.period}</div>
-      <div class="tl-org">${item.org}</div>
-      <p class="tl-desc">${item.description}</p>
-      ${item.continuesMaster ? '<span class="tl-continues-badge">↑ Se poursuit pendant le Master</span>' : ''}
+  // Sous-carte d'expérience (à l'intérieur d'un groupe)
+  const makeExp = (e) => `
+    <div class="tl-exp reveal">
+      <span class="tl-exp-dot"></span>
+      <div class="tl-exp-head">
+        <h4>${e.title}</h4>
+        <span class="tl-chip tl-chip--${e.chipKind}">${e.chip}</span>
+      </div>
+      <div class="tl-exp-meta">${e.period} · <strong>${e.org}</strong></div>
+      ${e.description ? `<p>${e.description}</p>` : ''}
+      ${e.note ? `<span class="tl-exp-note">↳ ${e.note}</span>` : ''}
     </div>
   `;
 
-  let html = '';
+  const chipClass = {
+    formation: 'tl-chip--formation',
+    central:   'tl-chip--central',
+    future:    'tl-chip--future'
+  };
 
-  timelineItems.forEach((row) => {
-    if (row.type === 'concurrent') {
-      const leftHTML = makeCard(row.left, 'tl-card--edu');
-      const rightsHTML = row.rights.map(r => makeCard(r, 'tl-card--pro')).join('');
-
-      html += `
-        <div class="tl-concurrent-wrap">
-          <div class="tl-item tl-concurrent">
-            <div class="tl-left">${leftHTML}</div>
-            <div class="tl-dot-wrap">
-              <div class="tl-dot scolaire"></div>
-            </div>
-            <div class="tl-right tl-right--multi">
-              ${rightsHTML}
-            </div>
-          </div>
+  const html = timelineItems.map((node) => {
+    const groupHTML = node.group ? `
+      <div class="tl-group">
+        <div class="tl-group-head">${node.group.head}</div>
+        <div class="tl-exp-list">
+          ${node.group.items.map(makeExp).join('')}
         </div>
-      `;
-    } else {
-      const L = row.left || null;
-      const RS = row.rightSpan || null;
-      const dotClass = L ? 'scolaire' : 'pro';
+      </div>
+    ` : '';
 
-      const leftHTML = L ? makeCard(L, 'tl-card--edu') : '';
-      const rightHTML = RS
-        ? `<div class="tl-roole-span"><span class="tl-roole-span-label">${RS.label}</span><span class="tl-roole-span-note">${RS.note}</span></div>`
-        : '';
-
-      html += `
-        <div class="tl-item">
-          <div class="tl-left">${leftHTML}</div>
-          <div class="tl-dot-wrap">
-            <div class="tl-dot ${dotClass}"></div>
-          </div>
-          <div class="tl-right">${rightHTML}</div>
+    return `
+      <div class="tl-node tl-node--${node.kind} reveal">
+        <div class="tl-date">${node.period}</div>
+        <div class="tl-rail"><span class="tl-dot"></span></div>
+        <div class="tl-body">
+          <article class="tl-card ${node.kind === 'central' ? 'tl-card--central' : ''}">
+            <span class="tl-chip ${chipClass[node.kind]}">${node.chip}</span>
+            <h3>${node.title}</h3>
+            <div class="tl-meta">${node.org}</div>
+            <p>${node.description}</p>
+          </article>
+          ${groupHTML}
         </div>
-      `;
-    }
-  });
+      </div>
+    `;
+  }).join('');
 
   container.innerHTML = html;
 
-  container.querySelectorAll('.tl-card').forEach((card, i) => {
-    card.classList.add('reveal');
-    card.style.transitionDelay = `${i * 0.08}s`;
+  container.querySelectorAll('.tl-node').forEach((n, i) => {
+    n.style.transitionDelay = `${i * 0.08}s`;
   });
 }
 

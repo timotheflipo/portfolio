@@ -5,6 +5,9 @@ use HTTP::Daemon;
 use HTTP::Status;
 use File::Basename;
 
+# Évite que le serveur meure quand un navigateur ferme la connexion (broken pipe / SIGPIPE)
+$SIG{PIPE} = 'IGNORE';
+
 my $ROOT = '/Users/tim/Documents/Cours/BUT GEA 3/PORTFOLIO/Claude';
 my $PORT = $ENV{PORT} || 3456;
 
