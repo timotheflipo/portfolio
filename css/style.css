@@ -636,7 +636,7 @@ ul { list-style: none; }
   color: var(--gray);
   line-height: 1.75;
 }
-.ts-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.ts-tags { display: none; }
 .ts-tag {
   padding: 4px 13px;
   border-radius: 50px;
