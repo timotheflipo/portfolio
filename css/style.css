@@ -1757,7 +1757,10 @@ ul { list-style: none; }
   cursor: pointer;
   position: relative;
   min-height: 160px;
-  transition: transform var(--t-med), box-shadow var(--t-med);
+  transition: transform var(--t-med), box-shadow var(--t-med), border-radius var(--t-med);
+}
+.comp-card-wrap.expanded .comp-card {
+  border-radius: var(--r-xl) var(--r-xl) 0 0;
 }
 .comp-card:hover {
   transform: translateY(-8px);
