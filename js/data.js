@@ -664,3 +664,174 @@ const softwareSkillsData = [
     ]
   }
 ];
+
+// --- Preuves associées aux projets ---
+// Clé = slug du projet (= nom du fichier .html sans l'extension).
+// Chaque preuve : name, format, competence (liée), description (ce qu'elle démontre),
+// files (1+ chemins). Si le 1er fichier est un .pdf → bouton « Ouvrir le PDF »,
+// sinon → visionneuse plein écran (galerie si plusieurs images).
+const preuvesData = {
+  "boze": [
+    {
+      name: "L'espace Notion avant refonte",
+      format: "2 captures Notion",
+      competence: "Analyser",
+      description: "Le point de départ que j'ai diagnostiqué : un suivi manuel et des informations dispersées sur plusieurs pages.",
+      files: ["preuves/boze/notion-avant-1.png", "preuves/boze/notion-avant-2.png"]
+    },
+    {
+      name: "L'espace Notion après refonte",
+      format: "Capture Notion",
+      competence: "Décider · Piloter",
+      description: "La base relationnelle que j'ai reconstruite : sujets, intervenants et passages reliés, où la préparation des réunions se remplit en partie automatiquement.",
+      files: ["preuves/boze/notion-apres.png"]
+    }
+  ],
+  "maia-village": [
+    {
+      name: "Stratégie d'affichage — 3 cibles",
+      format: "3 affiches",
+      competence: "Piloter",
+      description: "Les supports de communication créés pour accompagner l'adoption du nouvel outil, déclinés par cible : familles, salariés et ambassadeurs.",
+      files: ["preuves/maia-village/affiche-famille.png", "preuves/maia-village/affiche-salarie.png", "preuves/maia-village/affiche-ambassadeur.png"]
+    }
+  ],
+  "hotel-restaurant": [
+    {
+      name: "Présentation de l'établissement L'Hermine",
+      format: "Fiche PNG",
+      competence: "Analyser",
+      description: "La fiche d'identité de l'hôtel-restaurant étudié (positionnement, cuisine, chiffres clés) sur laquelle s'appuie tout le diagnostic.",
+      files: ["preuves/hotel-restaurant/presentation-etablissement.png"]
+    }
+  ],
+  "bons-plans": [
+    {
+      name: "Les tableaux Excel avant restructuration",
+      format: "2 captures Excel",
+      competence: "Analyser",
+      description: "Les bases de données d'origine : des chiffres dispersés sur plusieurs onglets, difficilement exploitables pour décider.",
+      files: ["preuves/bons-plans/avant-global.png", "preuves/bons-plans/avant-par-bon-plan.png"]
+    },
+    {
+      name: "Le nouveau système de suivi",
+      format: "2 captures Excel",
+      competence: "Décider · Développer",
+      description: "Le tableau de bord automatisé et le suivi des actions que j'ai conçus : indicateurs, graphiques et filtres pour piloter les bons plans par performance.",
+      files: ["preuves/bons-plans/apres-tableau-bord.png", "preuves/bons-plans/apres-suivi-actions.png"]
+    }
+  ],
+  "transfo-numerique": [
+    {
+      name: "Le tableau de bord de pilotage Notion",
+      format: "2 captures Notion",
+      competence: "Décider · Piloter",
+      description: "L'outil de pilotage que j'ai construit sur Notion pour suivre les chantiers de transformation et les irritants terrain à l'aide de KPI.",
+      files: ["preuves/transfo-numerique/tableau-bord-1.png", "preuves/transfo-numerique/tableau-bord-2.png"]
+    }
+  ],
+  "breathe-go": [
+    {
+      name: "Le livret investisseur",
+      format: "PDF",
+      competence: "Entreprendre",
+      description: "Le document de présentation du business model, conçu pour convaincre des investisseurs potentiels.",
+      files: ["preuves/breathe-go/livret-investisseur.pdf"]
+    },
+    {
+      name: "Le dépliant commercial",
+      format: "2 visuels",
+      competence: "Développer",
+      description: "Le dépliant recto-verso présentant le produit Breathe&Go et sa proposition de valeur.",
+      files: ["preuves/breathe-go/depliant-exterieur.png", "preuves/breathe-go/depliant-interieur.png"]
+    },
+    {
+      name: "Le dossier de projet (SAÉ)",
+      format: "PDF",
+      competence: "Entreprendre · Développer",
+      description: "Le dossier complet du projet : étude de marché, business model et business plan.",
+      files: ["preuves/breathe-go/dossier-sae.pdf"]
+    },
+    {
+      name: "L'espace Notion de l'équipe",
+      format: "3 captures Notion",
+      competence: "Piloter",
+      description: "L'espace partagé pour coordonner l'équipe — to-do list, calendrier et archives — preuve d'un pilotage collaboratif.",
+      files: ["preuves/breathe-go/notion-todo.png", "preuves/breathe-go/notion-calendrier.png", "preuves/breathe-go/notion-archive.png"]
+    },
+    {
+      name: "Le poster de synthèse",
+      format: "PDF",
+      competence: "Entreprendre",
+      description: "Le poster récapitulatif présentant le projet et ce qu'il m'a apporté.",
+      files: ["preuves/breathe-go/poster-recap.pdf"]
+    }
+  ],
+  "tables-rondes": [
+    {
+      name: "L'e-mail teasing",
+      format: "Visuel e-mail",
+      competence: "Développer",
+      description: "Le mail d'accroche visuel conçu pour remplacer un simple texte et susciter l'intérêt des invités.",
+      files: ["preuves/tables-rondes/email-teasing.png"]
+    },
+    {
+      name: "L'invitation — version améliorée (V2)",
+      format: "3 pages",
+      competence: "Développer",
+      description: "La deuxième version de l'invitation à la table ronde de Strasbourg, retravaillée sur le fond et la forme.",
+      files: ["preuves/tables-rondes/invitation-v2-1.png", "preuves/tables-rondes/invitation-v2-2.png", "preuves/tables-rondes/invitation-v2-3.png"]
+    },
+    {
+      name: "L'invitation — version finale (VF)",
+      format: "3 pages",
+      competence: "Décider · Développer",
+      description: "La version finale envoyée, aboutissement des itérations successives sur le support d'invitation.",
+      files: ["preuves/tables-rondes/invitation-vf-1.png", "preuves/tables-rondes/invitation-vf-2.png", "preuves/tables-rondes/invitation-vf-3.png"]
+    },
+    {
+      name: "Le bon cadeau — avant / après",
+      format: "2 visuels",
+      competence: "Développer",
+      description: "La refonte visuelle du bon cadeau, de la première version (Grenoble) à la version finale au format A6.",
+      files: ["preuves/tables-rondes/bon-cadeau-v1.png", "preuves/tables-rondes/bon-cadeau-v2.png"]
+    }
+  ],
+  "fashion-day": [
+    {
+      name: "L'identité visuelle (direction artistique)",
+      format: "4 visuels",
+      competence: "Développer",
+      description: "La direction artistique créée pour l'événement : logos, flyer/affiche et template de story Instagram.",
+      files: ["preuves/fashion-day/logo-1.png", "preuves/fashion-day/logo-2.png", "preuves/fashion-day/flyer-affiche.png", "preuves/fashion-day/template-story.png"]
+    },
+    {
+      name: "L'espace Notion de coordination",
+      format: "2 captures Notion",
+      competence: "Piloter",
+      description: "Le calendrier et la to-do list partagés pour organiser l'événement par sprints et coordonner l'équipe.",
+      files: ["preuves/fashion-day/notion-calendrier.png", "preuves/fashion-day/notion-todo.png"]
+    },
+    {
+      name: "Le dossier d'avancement",
+      format: "PDF",
+      competence: "Piloter · Entreprendre",
+      description: "Le dossier de suivi documentant l'organisation et l'avancement du projet événementiel.",
+      files: ["preuves/fashion-day/dossier-avancement.pdf"]
+    },
+    {
+      name: "Le diaporama de présentation",
+      format: "PDF",
+      competence: "Développer",
+      description: "Le support projeté présentant le concept et l'organisation du Fashion Day.",
+      files: ["preuves/fashion-day/diaporama.pdf"]
+    },
+    {
+      name: "Le dossier final (19 mai)",
+      format: "PDF",
+      competence: "Entreprendre · Développer",
+      description: "Le dossier complet finalisé du projet événementiel.",
+      files: ["preuves/fashion-day/dossier-19mai.pdf"]
+    }
+  ]
+};

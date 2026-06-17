@@ -176,10 +176,11 @@ function buildS1HTML(theme, num, cards) {
         </div>
         <p>${fc.card.description}</p>
         <div class="proj-tags">${fc.tagsHTML}</div>
+        ${fc.preuvesChip}
       </a>
     </div>`;
 
-  const subHTML = sc.map(({ card, tagsHTML }) => `
+  const subHTML = sc.map(({ card, tagsHTML, preuvesChip }) => `
     <div class="proj-card-wrap">
       <a class="proj-card reveal" href="${card.link}">
         <div class="proj-card-top">
@@ -188,6 +189,7 @@ function buildS1HTML(theme, num, cards) {
         </div>
         <p>${card.description}</p>
         <div class="proj-tags">${tagsHTML}</div>
+        ${preuvesChip}
       </a>
     </div>`).join('');
 
@@ -213,7 +215,7 @@ function buildS1HTML(theme, num, cards) {
 function buildS2HTML(theme, num, cards) {
   const sideTagsHTML = theme.tags.map(t => `<span class="ts-tag">${t}</span>`).join('');
 
-  const cardsHTML = cards.map(({ card, tagsHTML }) => `
+  const cardsHTML = cards.map(({ card, tagsHTML, preuvesChip }) => `
     <div class="proj-card-wrap">
       <a class="proj-card-featured reveal" href="${card.link}">
         <div class="pcf-badge">Projet central</div>
@@ -223,6 +225,7 @@ function buildS2HTML(theme, num, cards) {
         </div>
         <p>${card.description}</p>
         <div class="proj-tags">${tagsHTML}</div>
+        ${preuvesChip}
       </a>
     </div>`).join('');
 
@@ -265,6 +268,7 @@ function buildS3HTML(theme, num, cards) {
           </div>
           <p>${fc.card.description}</p>
           <div class="proj-tags">${fc.tagsHTML}</div>
+          ${fc.preuvesChip}
         </div>
       </a>
     </div>` : `
@@ -277,10 +281,11 @@ function buildS3HTML(theme, num, cards) {
         </div>
         <p>${fc.card.description}</p>
         <div class="proj-tags">${fc.tagsHTML}</div>
+        ${fc.preuvesChip}
       </a>
     </div>`;
 
-  const secHTML = sc.map(({ card, tagsHTML }) => `
+  const secHTML = sc.map(({ card, tagsHTML, preuvesChip }) => `
     <div class="proj-card-wrap">
       <a class="proj-card reveal-r" href="${card.link}">
         <div class="proj-card-top">
@@ -289,6 +294,7 @@ function buildS3HTML(theme, num, cards) {
         </div>
         <p>${card.description}</p>
         <div class="proj-tags">${tagsHTML}</div>
+        ${preuvesChip}
       </a>
     </div>`).join('');
 
@@ -326,7 +332,9 @@ function buildThematiques(container) {
           ? `<button type="button" class="proj-tag proj-tag-clickable" data-reg="${regIndex}">${t}</button>`
           : `<span class="proj-tag">${t}</span>`
       ).join('');
-      return { card, tagsHTML };
+      const slug = (card.link || '').replace(/\.html$/, '');
+      const preuvesChip = preuvesChipHTML(slug);
+      return { card, tagsHTML, preuvesChip };
     });
 
     if (themeIdx === 0)      section.innerHTML = buildS1HTML(theme, num, cards);
@@ -337,12 +345,27 @@ function buildThematiques(container) {
   });
 
   container.addEventListener('click', e => {
+    const chip = e.target.closest('.proj-preuves');
+    if (chip) {
+      e.preventDefault();
+      e.stopPropagation();
+      openPreuvesModal(chip.dataset.preuvesSlug);
+      return;
+    }
     const tag = e.target.closest('.proj-tag-clickable');
     if (!tag) return;
     e.preventDefault();
     e.stopPropagation();
     const project = projectsRegistry[+tag.dataset.reg];
     if (project) openCompetencyModal(project);
+  });
+
+  // Accessibilité clavier pour la puce « preuves » (span role=button)
+  container.addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('proj-preuves')) {
+      e.preventDefault();
+      openPreuvesModal(e.target.dataset.preuvesSlug);
+    }
   });
 }
 
@@ -806,6 +829,186 @@ function initScrollWords() {
 }
 
 // ============================================
+// PREUVES — puce cartes (index) + section pages projet + visionneuse
+// ============================================
+
+// Nom affichable d'un projet à partir de son slug (recherche dans thematiquesData)
+function getProjectName(slug) {
+  if (typeof thematiquesData === 'undefined') return '';
+  for (const t of thematiquesData) {
+    for (const c of t.cards) {
+      if ((c.link || '').replace(/\.html$/, '') === slug) return c.popupName || c.title;
+    }
+  }
+  return '';
+}
+
+// Puce discrète affichée en bas des cartes projet (index)
+function preuvesChipHTML(slug) {
+  const list = (typeof preuvesData !== 'undefined') ? preuvesData[slug] : null;
+  if (!list || !list.length) return '';
+  const n = list.length;
+  return `<span class="proj-preuves" data-preuves-slug="${slug}" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Voir les ${n} preuves de ce projet">
+      <svg class="proj-preuves-ico" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h4"/>
+      </svg>
+      <span>${n} preuve${n > 1 ? 's' : ''}</span>
+    </span>`;
+}
+
+// Carte d'une preuve — réutilisée dans la modale (index) et la section (pages projet)
+function renderPreuveCard(p, slug, idx) {
+  const isPdf = /\.pdf$/i.test(p.files[0]);
+  const count = p.files.length;
+  const action = isPdf
+    ? `<a class="preuve-btn" href="${p.files[0]}" target="_blank" rel="noopener noreferrer">Ouvrir le PDF <span class="preuve-btn-ico" aria-hidden="true">↗</span></a>`
+    : `<button type="button" class="preuve-btn" data-slug="${slug}" data-pidx="${idx}">Consulter${count > 1 ? ` <span class="preuve-btn-count">${count}</span>` : ''}</button>`;
+  return `
+    <article class="preuve-card">
+      <div class="preuve-card-body">
+        <div class="preuve-card-meta">
+          <span class="preuve-format">${p.format}</span>
+          <span class="preuve-comp">${p.competence}</span>
+        </div>
+        <h4 class="preuve-name">${p.name}</h4>
+        <p class="preuve-desc">${p.description}</p>
+      </div>
+      ${action}
+    </article>`;
+}
+
+// Section « Preuves associées » injectée dans les pages projet
+function buildPreuvesSection(slug, mount) {
+  const list = (typeof preuvesData !== 'undefined') ? (preuvesData[slug] || []) : [];
+  if (!list.length) { mount.remove(); return; }
+  const n = list.length;
+  mount.innerHTML = `
+    <div class="section-label">Preuves associées</div>
+    <h2 class="section-title">${n} preuve${n > 1 ? 's' : ''} à l'appui de ce projet</h2>
+    <p class="prose" style="margin-bottom:1.75rem">Le récit ci-dessus s'appuie sur des réalisations concrètes : consultez-les directement ci-dessous.</p>
+    <div class="preuve-list">
+      ${list.map((p, i) => renderPreuveCard(p, slug, i)).join('')}
+    </div>`;
+}
+
+// Modale « liste des preuves » (déclenchée par la puce des cartes index)
+function getPreuvesModal() {
+  let overlay = document.getElementById('preuves-modal');
+  if (overlay) return overlay;
+
+  overlay = document.createElement('div');
+  overlay.className = 'comp-modal-overlay preuves-modal-overlay';
+  overlay.id = 'preuves-modal';
+  overlay.innerHTML = `
+    <div class="comp-modal preuves-modal" role="dialog" aria-modal="true" aria-labelledby="preuves-modal-title">
+      <button class="comp-modal-close" aria-label="Fermer la fenêtre">&times;</button>
+      <div class="comp-modal-header">
+        <span class="comp-modal-eyebrow">Preuves du projet</span>
+        <h3 class="comp-modal-project" id="preuves-modal-title"></h3>
+      </div>
+      <div class="comp-modal-body preuves-modal-body"></div>
+    </div>`;
+  document.body.appendChild(overlay);
+
+  const close = () => {
+    overlay.classList.remove('open');
+    if (!document.querySelector('#preuve-lightbox.open')) document.body.style.overflow = '';
+  };
+  overlay.querySelector('.comp-modal-close').addEventListener('click', close);
+  overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && overlay.classList.contains('open') && !document.querySelector('#preuve-lightbox.open')) close();
+  });
+
+  return overlay;
+}
+
+function openPreuvesModal(slug) {
+  const list = (typeof preuvesData !== 'undefined') ? (preuvesData[slug] || []) : [];
+  if (!list.length) return;
+  const overlay = getPreuvesModal();
+  overlay.querySelector('.comp-modal-project').textContent = getProjectName(slug) || 'Preuves';
+  overlay.querySelector('.preuves-modal-body').innerHTML = list.map((p, i) => renderPreuveCard(p, slug, i)).join('');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// Visionneuse plein écran (lightbox) pour les preuves images
+let lightboxState = { files: [], idx: 0, caption: '' };
+
+function getLightbox() {
+  let lb = document.getElementById('preuve-lightbox');
+  if (lb) return lb;
+
+  lb = document.createElement('div');
+  lb.id = 'preuve-lightbox';
+  lb.className = 'preuve-lightbox';
+  lb.innerHTML = `
+    <button class="plb-close" aria-label="Fermer la visionneuse">&times;</button>
+    <button class="plb-nav plb-prev" aria-label="Visuel précédent">‹</button>
+    <figure class="plb-figure">
+      <img class="plb-img" alt="">
+      <figcaption class="plb-caption"></figcaption>
+    </figure>
+    <button class="plb-nav plb-next" aria-label="Visuel suivant">›</button>`;
+  document.body.appendChild(lb);
+
+  const close = () => {
+    lb.classList.remove('open');
+    if (!document.querySelector('#preuves-modal.open')) document.body.style.overflow = '';
+  };
+  lb.querySelector('.plb-close').addEventListener('click', close);
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  lb.querySelector('.plb-prev').addEventListener('click', () => showLightbox(lightboxState.idx - 1));
+  lb.querySelector('.plb-next').addEventListener('click', () => showLightbox(lightboxState.idx + 1));
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') showLightbox(lightboxState.idx - 1);
+    else if (e.key === 'ArrowRight') showLightbox(lightboxState.idx + 1);
+  });
+
+  return lb;
+}
+
+function showLightbox(i) {
+  const lb = getLightbox();
+  const { files, caption } = lightboxState;
+  const n = files.length;
+  if (!n) return;
+  lightboxState.idx = (i + n) % n; // navigation circulaire
+  const img = lb.querySelector('.plb-img');
+  img.src = files[lightboxState.idx];
+  img.alt = `${caption} — visuel ${lightboxState.idx + 1}`;
+  lb.querySelector('.plb-caption').textContent = n > 1
+    ? `${caption} · ${lightboxState.idx + 1} / ${n}`
+    : caption;
+  lb.querySelectorAll('.plb-nav').forEach(b => { b.style.display = n > 1 ? '' : 'none'; });
+}
+
+function openLightbox(files, startIndex, caption) {
+  lightboxState = { files: files.slice(), idx: startIndex || 0, caption: caption || '' };
+  const lb = getLightbox();
+  showLightbox(lightboxState.idx);
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// Délégation globale : ouvre la visionneuse depuis n'importe quel bouton « Consulter »
+function initPreuvesGlobal() {
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.preuve-btn[data-slug]');
+    if (!btn) return;
+    e.preventDefault();
+    const slug = btn.dataset.slug;
+    const idx = +btn.dataset.pidx;
+    const p = (typeof preuvesData !== 'undefined') ? (preuvesData[slug] || [])[idx] : null;
+    if (p && p.files && p.files.length) openLightbox(p.files, 0, p.name);
+  });
+}
+
+// ============================================
 // INIT
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -836,6 +1039,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Compétences
   const compContainer = document.getElementById('comp-grid');
   if (compContainer) buildCompetences(compContainer);
+
+  // Pages projet — section « Preuves associées »
+  const preuvesMount = document.getElementById('preuves-mount');
+  if (preuvesMount) buildPreuvesSection(preuvesMount.dataset.slug || '', preuvesMount);
+  initPreuvesGlobal(); // visionneuse (délégation) — sans effet si aucune preuve sur la page
 
   // Reveal (après injection du contenu dynamique)
   setTimeout(initReveal, 50);
