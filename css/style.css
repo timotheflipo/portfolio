@@ -937,10 +937,10 @@ ul { list-style: none; }
   inset: 0;
   background-size: cover;
   background-position: center 18%;
-  opacity: 0.3;
+  opacity: 0.5;
   transition: transform 0.8s ease, opacity 0.4s ease;
 }
-.proj-card-featured.img-card:hover .pcf-bg { transform: scale(1.04); opacity: 0.36; }
+.proj-card-featured.img-card:hover .pcf-bg { transform: scale(1.04); opacity: 0.58; }
 .pcf-overlay {
   position: absolute;
   inset: 0;
