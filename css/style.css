@@ -911,6 +911,10 @@ ul { list-style: none; }
   justify-content: space-between;
   gap: 1.25rem;
 }
+/* La carte image (Breathe&Go) remplit toute la hauteur de la rangée
+   pour que son bas s'aligne avec le bas de la colonne de droite */
+.ts3-grid > .proj-card-wrap { display: flex; }
+.ts3-grid > .proj-card-wrap > .proj-card-featured.img-card { flex: 1; }
 
 /* Carte featured avec image (Breathe&Go) */
 /* Carte image (Breathe&Go) : fond sombre, hérite du ::before glowing */
