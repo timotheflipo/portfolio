@@ -857,15 +857,40 @@ function preuvesChipHTML(slug) {
     </span>`;
 }
 
-// Carte d'une preuve — réutilisée dans la modale (index) et la section (pages projet)
+// Aperçu d'un PDF : même chemin que le .pdf, suffixe -preview.png (généré via qlmanage)
+function preuvePdfPreview(file) { return file.replace(/\.pdf$/i, '-preview.png'); }
+
+// Carte d'une preuve — visuel + explications côte à côte (modale index + section pages projet)
 function renderPreuveCard(p, slug, idx) {
   const isPdf = /\.pdf$/i.test(p.files[0]);
-  const count = p.files.length;
-  const action = isPdf
-    ? `<a class="preuve-btn" href="${p.files[0]}" target="_blank" rel="noopener noreferrer">Ouvrir le PDF <span class="preuve-btn-ico" aria-hidden="true">↗</span></a>`
-    : `<button type="button" class="preuve-btn" data-slug="${slug}" data-pidx="${idx}">Consulter${count > 1 ? ` <span class="preuve-btn-count">${count}</span>` : ''}</button>`;
+  let visual, action;
+
+  if (isPdf) {
+    visual = `
+      <div class="preuve-visual preuve-visual--single">
+        <button type="button" class="preuve-thumb preuve-thumb--pdf" data-pdf="${p.files[0]}" aria-label="Ouvrir le PDF : ${p.name}">
+          <img src="${preuvePdfPreview(p.files[0])}" alt="Aperçu de ${p.name}" loading="lazy">
+          <span class="preuve-thumb-badge">PDF</span>
+          <span class="preuve-thumb-hint" aria-hidden="true">Ouvrir ↗</span>
+        </button>
+      </div>`;
+    action = `<a class="preuve-link" href="${p.files[0]}" target="_blank" rel="noopener noreferrer">Ouvrir le PDF <span aria-hidden="true">↗</span></a>`;
+  } else {
+    const multi = p.files.length > 1;
+    visual = `
+      <div class="preuve-visual preuve-visual--${multi ? 'multi' : 'single'}">
+        ${p.files.map((f, i) => `
+          <button type="button" class="preuve-thumb" data-slug="${slug}" data-pidx="${idx}" data-img="${i}" aria-label="Agrandir : ${p.name} (${i + 1} sur ${p.files.length})">
+            <img src="${f}" alt="${p.name} — visuel ${i + 1}" loading="lazy">
+            <span class="preuve-thumb-hint" aria-hidden="true">Agrandir ⤢</span>
+          </button>`).join('')}
+      </div>`;
+    action = `<span class="preuve-link preuve-link--muted">${multi ? 'Cliquer une image pour l\'agrandir' : 'Cliquer pour agrandir'}</span>`;
+  }
+
   return `
     <article class="preuve-card">
+      ${visual}
       <div class="preuve-card-body">
         <div class="preuve-card-meta">
           <span class="preuve-format">${p.format}</span>
@@ -873,8 +898,8 @@ function renderPreuveCard(p, slug, idx) {
         </div>
         <h4 class="preuve-name">${p.name}</h4>
         <p class="preuve-desc">${p.description}</p>
+        ${action}
       </div>
-      ${action}
     </article>`;
 }
 
@@ -886,7 +911,7 @@ function buildPreuvesSection(slug, mount) {
   mount.innerHTML = `
     <div class="section-label">Preuves associées</div>
     <h2 class="section-title">${n} preuve${n > 1 ? 's' : ''} à l'appui de ce projet</h2>
-    <p class="prose" style="margin-bottom:1.75rem">Le récit ci-dessus s'appuie sur des réalisations concrètes : consultez-les directement ci-dessous.</p>
+    <p class="prose" style="margin-bottom:1.75rem">Le récit ci-dessus s'appuie sur des réalisations concrètes, visibles directement ci-dessous — cliquez sur un visuel pour l'agrandir.</p>
     <div class="preuve-list">
       ${list.map((p, i) => renderPreuveCard(p, slug, i)).join('')}
     </div>`;
@@ -995,16 +1020,23 @@ function openLightbox(files, startIndex, caption) {
   document.body.style.overflow = 'hidden';
 }
 
-// Délégation globale : ouvre la visionneuse depuis n'importe quel bouton « Consulter »
+// Délégation globale : clic sur une miniature → zoom (image) ou ouverture (PDF)
 function initPreuvesGlobal() {
   document.addEventListener('click', e => {
-    const btn = e.target.closest('.preuve-btn[data-slug]');
-    if (!btn) return;
+    const pdfThumb = e.target.closest('.preuve-thumb--pdf[data-pdf]');
+    if (pdfThumb) {
+      e.preventDefault();
+      window.open(pdfThumb.dataset.pdf, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    const thumb = e.target.closest('.preuve-thumb[data-slug]');
+    if (!thumb) return;
     e.preventDefault();
-    const slug = btn.dataset.slug;
-    const idx = +btn.dataset.pidx;
-    const p = (typeof preuvesData !== 'undefined') ? (preuvesData[slug] || [])[idx] : null;
-    if (p && p.files && p.files.length) openLightbox(p.files, 0, p.name);
+    const slug = thumb.dataset.slug;
+    const pidx = +thumb.dataset.pidx;
+    const img = +thumb.dataset.img || 0;
+    const p = (typeof preuvesData !== 'undefined') ? (preuvesData[slug] || [])[pidx] : null;
+    if (p && p.files && p.files.length) openLightbox(p.files, img, p.name);
   });
 }
 
