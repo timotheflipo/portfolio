@@ -324,7 +324,7 @@ const competencesData = [
         title: "Conseiller pour l'amélioration des processus",
         items: [
           // AC31.01
-          { text: "Intégrer l'impact des enjeux sur l'organisation", example: "Impact des ressaisies et de l'appropriation des outils", tags: ["Roole"] },
+          { text: "Intégrer l'impact des enjeux sur l'organisation", example: "Impact des ressaisies et de l'appropriation des outils", tags: ["Roole"], acquisition: "en-cours" },
           // AC31.02
           { text: "Conseiller un type d'organisation", example: "Accompagnement au changement pour un réseau de crèches", tags: ["Maia Village"] },
           // AC31.03
@@ -369,7 +369,7 @@ const competencesData = [
           // AC22.04
           { text: "Analyser les contraintes et leur impact sur la performance", example: "Hétérogénéité des pratiques dans les concessions", tags: ["Transfo numérique"] },
           // AC22.05
-          { text: "Évaluer les risques", example: "Freins à l'adoption d'un outil numérique", tags: ["Maia Village"] }
+          { text: "Évaluer les risques", example: "Freins à l'adoption d'un outil numérique", tags: ["Maia Village"], acquisition: "en-cours" }
         ]
       },
       {
@@ -383,7 +383,7 @@ const competencesData = [
           // AC32.03
           { text: "Participer à la prise de décision selon les contraintes identifiées", example: "Matrice des bons plans à maintenir, pousser ou optimiser", tags: ["Bons plans"] },
           // AC32.04
-          { text: "Élaborer des mesures préventives de minimisation des risques", example: "Accompagnement au changement et plan de redressement", tags: ["Maia Village", "Hôtel-restaurant"] }
+          { text: "Élaborer des mesures préventives de minimisation des risques", example: "Accompagnement au changement et plan de redressement", tags: ["Maia Village", "Hôtel-restaurant"], acquisition: "en-cours" }
         ]
       }
     ]
@@ -430,7 +430,7 @@ const competencesData = [
         title: "Améliorer les relations entre les parties prenantes",
         items: [
           // AC33.01
-          { text: "Animer une équipe", example: "Sprints, répartition des tâches et suivi de l'avancement", tags: ["Fashion Day"] },
+          { text: "Animer une équipe", example: "Sprints, répartition des tâches et suivi de l'avancement", tags: ["Fashion Day"], acquisition: "en-cours" },
           // AC33.02
           { text: "Mener un projet collaboratif", example: "Coordination d'équipe de bout en bout", tags: ["Breathe&Go", "Fashion Day", "Tables rondes"] },
           // AC33.03
@@ -467,9 +467,9 @@ const competencesData = [
         title: "Sécuriser la proposition de valeur",
         items: [
           // AC24.01
-          { text: "Tester la viabilité financière d'un business model", example: "Business plan complet avec seuil de rentabilité", tags: ["Breathe&Go"] },
+          { text: "Tester la viabilité financière d'un business model", example: "Business plan complet avec seuil de rentabilité", tags: ["Breathe&Go"], acquisition: "en-cours" },
           // AC24.02
-          { text: "Apprécier les risques financiers, fiscaux et juridiques", example: "Analyse de faisabilité et des risques du produit", tags: ["Breathe&Go"] },
+          { text: "Apprécier les risques financiers, fiscaux et juridiques", example: "Analyse de faisabilité et des risques du produit", tags: ["Breathe&Go"], acquisition: "a-renforcer" },
           // AC24.03
           { text: "Préconiser des mesures de protection contre les risques", example: "Solution préventive face au risque d'alcool au volant", tags: ["Breathe&Go"] },
           // AC24.04
@@ -502,7 +502,7 @@ const competencesData = [
           // AC15.04
           { text: "Évaluer une démarche de marketing opérationnel digital", example: "Suivi des bons plans régionaux et campagnes d'animation", tags: ["Bons plans"] },
           // AC15.05
-          { text: "Évaluer le risque de trésorerie", example: "Prévisions financières et seuil de rentabilité", tags: ["Breathe&Go"] },
+          { text: "Évaluer le risque de trésorerie", example: "Prévisions financières et seuil de rentabilité", tags: ["Breathe&Go"], acquisition: "a-renforcer" },
           // AC15.06
           { text: "Contribuer à la gestion opérationnelle des ressources humaines", example: "Plan d'action RH dans le cas de l'hôtel-restaurant", tags: ["Hôtel-restaurant"] }
         ]
@@ -518,9 +518,9 @@ const competencesData = [
           // AC25.03
           { text: "Concevoir une démarche de marketing opérationnel adaptée", example: "Priorisation des bons plans selon leur performance terrain", tags: ["Bons plans"] },
           // AC25.04
-          { text: "Prévenir les risques de défaillance avec les outils adaptés", example: "Plan de redressement complet pour l'hôtel-restaurant", tags: ["Hôtel-restaurant"] },
+          { text: "Prévenir les risques de défaillance avec les outils adaptés", example: "Plan de redressement complet pour l'hôtel-restaurant", tags: ["Hôtel-restaurant"], acquisition: "en-cours" },
           // AC25.05
-          { text: "Déterminer les axes principaux d'une politique RH", example: "Bien-être au travail, climat social et coordination des équipes", tags: ["Hôtel-restaurant"] }
+          { text: "Déterminer les axes principaux d'une politique RH", example: "Bien-être au travail, climat social et coordination des équipes", tags: ["Hôtel-restaurant"], acquisition: "en-cours" }
         ]
       }
     ]

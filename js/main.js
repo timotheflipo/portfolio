@@ -573,6 +573,13 @@ function buildSoftwareSkills(container) {
 // ============================================
 // COMPÉTENCES (competences.html)
 // ============================================
+// Pastilles de niveau d'acquisition (par sous-compétence ; défaut = acquis)
+const PASTILLES = {
+  'acquis':      { cls: 'acquis',      label: 'Acquis' },
+  'en-cours':    { cls: 'en-cours',    label: 'En cours' },
+  'a-renforcer': { cls: 'a-renforcer', label: 'À renforcer' }
+};
+
 function buildCompetences(container) {
   if (!container || typeof competencesData === 'undefined') return;
 
@@ -588,16 +595,21 @@ function buildCompetences(container) {
           <span class="comp-niveau-title">${n.title}</span>
         </div>
         <ul class="comp-items">
-          ${n.items.map(item => `
+          ${n.items.map(item => {
+            const p = PASTILLES[item.acquisition] || PASTILLES.acquis;
+            return `
             <li class="comp-item">
+              <span class="comp-pastille comp-pastille--${p.cls}" title="Niveau d'acquisition : ${p.label}">
+                <span class="comp-pastille-dot"></span>${p.label}
+              </span>
               <div class="comp-item-body">
                 <span class="comp-item-text">${item.text}</span>
                 <span class="comp-item-example">
                   ${item.example}${item.tags && item.tags.length ? ' — ' + item.tags.map(t => `<span class="comp-item-badge">${t}</span>`).join('') : ''}
                 </span>
               </div>
-            </li>
-          `).join('')}
+            </li>`;
+          }).join('')}
         </ul>
       </div>
     `).join('');
