@@ -747,53 +747,6 @@ function initPageTransition() {
 // ============================================
 // NOTION SCROLL ROTATION — rotation Y pilotée par le scroll
 // ============================================
-function initNotionFloat() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const wrap = document.querySelector('.laptop-wrap');
-  const img  = wrap?.querySelector('.notion-mockup-img');
-  const section = document.querySelector('.notion-section');
-  if (!wrap || !img || !section) return;
-
-  // Perspective sur le parent pour le rendu 3D
-  wrap.style.perspective       = '1400px';
-  wrap.style.perspectiveOrigin = 'center center';
-
-  let ticking = false;
-
-  function update() {
-    const rect = section.getBoundingClientRect();
-    const vh   = window.innerHeight;
-
-    // progress : 0 quand la section entre par le bas, 1 quand elle sort par le haut
-    const raw      = (vh - rect.top) / (rect.height + vh);
-    const progress = Math.min(Math.max(raw, 0), 1);
-
-    // Rotation Y : 0° face au visiteur → −22° (tourne vers la gauche) au fil du scroll
-    // On centre sur 0.3 pour que l'ordi soit de face quand la section est visible
-    const rotY = (progress - 0.3) * -28;
-
-    // Ombre qui se décale légèrement avec la rotation (effet de profondeur)
-    const shadowX   = rotY * 1.0;
-    const shadowBlur= 55;
-
-    img.style.transform = `rotateY(${rotY}deg)`;
-    img.style.filter    = `drop-shadow(${shadowX}px 28px ${shadowBlur}px rgba(0,0,0,0.14))`;
-
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) { requestAnimationFrame(update); ticking = true; }
-  }, { passive: true });
-
-  window.addEventListener('resize', () => {
-    if (!ticking) { requestAnimationFrame(update); ticking = true; }
-  }, { passive: true });
-
-  update(); // état initial
-}
-
 // ============================================
 // SCROLL WORDS — titre section Notion mot par mot
 // ============================================
@@ -1147,7 +1100,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const notionContainer = document.getElementById('notion-blocks');
   if (notionContainer) buildNotionBlocks(notionContainer);
   initScrollWords();   // mot par mot au scroll sur le titre Notion
-  initNotionFloat();   // flottement + tilt 3D + parallax sur le MacBook
 
   const faqContainer = document.getElementById('faq-list');
   if (faqContainer) buildFAQ(faqContainer);
