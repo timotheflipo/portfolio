@@ -1952,28 +1952,26 @@ ul { list-style: none; }
   transition: transform var(--t-med), box-shadow var(--t-med);
   background: var(--white);
   border: 1px solid #e8e8e8;
+  border-left: 5px solid #ccc; /* couleur surchargée inline par JS */
 }
 .comp-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 16px 40px rgba(0,0,0,0.10);
-  border-color: transparent;
+  border-color: #e8e8e8;
+  border-left-color: inherit;
 }
 
 .comp-card-bg { display: none; }
 
-/* Barre colorée gauche — reprend le gradient de la compétence */
+/* Fond teinté — pleine largeur, opacity seule change (pas de flash) */
 .comp-card-gradient {
   position: absolute;
-  inset: 0 auto 0 0;
-  width: 5px;
-  opacity: 1;
-  transition: width var(--t-med), opacity var(--t-med);
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--t-med);
 }
-/* Sur hover : légère teinte en fond */
-.comp-card:hover .comp-card-gradient {
-  width: 100%;
-  opacity: 0.06;
-}
+.comp-card:hover .comp-card-gradient { opacity: 0.07; }
+.comp-card-wrap.expanded .comp-card .comp-card-gradient { opacity: 0.07; }
 
 .comp-card-overlay { display: none; }
 

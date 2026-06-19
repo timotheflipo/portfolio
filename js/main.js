@@ -614,8 +614,9 @@ function buildCompetences(container) {
       </div>
     `).join('');
 
+    const barColor = (comp.gradient.match(/#[0-9A-Fa-f]{6}/) || ['#888'])[0];
     wrap.innerHTML = `
-      <div class="comp-card reveal" data-id="${comp.id}">
+      <div class="comp-card reveal" data-id="${comp.id}" style="border-left-color: ${barColor}">
         <div class="comp-card-bg"></div>
         <div class="comp-card-gradient" style="background: ${comp.gradient}"></div>
         <div class="comp-card-overlay"></div>
