@@ -2774,24 +2774,22 @@ ul { list-style: none; }
   align-items: center;
   gap: 7px;
   margin-top: 16px;
-  padding: 8px 14px;
+  padding: 7px 13px;
   border-radius: 50px;
   font-family: var(--font-body);
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.01em;
-  color: #fff;
-  background-color: var(--accent);
-  border: 1px solid transparent;
+  color: var(--accent);
+  background-color: transparent;
+  border: 1.5px solid var(--accent);
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(255,111,60,0.30);
-  transition: background-color .2s ease, box-shadow .2s ease,
-              transform .2s cubic-bezier(.34,1.56,.64,1);
+  box-shadow: none;
+  transition: background-color .2s ease, color .2s ease, transform .2s cubic-bezier(.34,1.56,.64,1);
 }
 .proj-preuves:hover {
-  background-color: var(--accent-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255,111,60,0.40);
+  background-color: rgba(255,111,60,0.08);
+  transform: translateY(-1px);
 }
 .proj-preuves:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; }
 .proj-preuves-ico {
@@ -2802,8 +2800,9 @@ ul { list-style: none; }
 }
 .proj-preuves-arrow { font-size: 1.05em; line-height: 1; opacity: 0.9; transition: transform .2s ease; }
 .proj-preuves:hover .proj-preuves-arrow { transform: translateX(3px); }
-/* Sur la carte image sombre (Breathe&Go) : bouton accent conservé, ombre renforcée */
-.proj-card-featured.img-card .proj-preuves { box-shadow: 0 4px 14px rgba(0,0,0,0.38); }
+/* Sur la carte image sombre (Breathe&Go) : contour blanc pour contraste */
+.proj-card-featured.img-card .proj-preuves { color: #fff; border-color: rgba(255,255,255,0.7); }
+.proj-card-featured.img-card .proj-preuves:hover { background-color: rgba(255,255,255,0.15); }
 
 /* --- Modale liste des preuves (réutilise .comp-modal) --- */
 .preuves-modal { width: min(860px, 100%); }
