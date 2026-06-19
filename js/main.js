@@ -15,10 +15,13 @@ function buildNav() {
       <div class="logo-mark">TF</div>
       <span class="logo-name">Timothé Flipo</span>
     </a>
-    <button class="burger-btn" id="burger" aria-label="Menu" aria-expanded="false">
-      <span class="burger-line"></span>
-      <span class="burger-line"></span>
-      <span class="burger-line"></span>
+    <button class="burger-btn" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span class="burger-label">Menu</span>
+      <span class="burger-box">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </span>
     </button>
   `;
 
@@ -342,6 +345,13 @@ function buildThematiques(container) {
     else                     section.innerHTML = buildS3HTML(theme, num, cards);
 
     container.appendChild(section);
+  });
+
+  // Ancre de retour : chaque carte reçoit un id "proj-<slug>" (dérivé de son lien)
+  // pour que le bouton « Retour au portfolio » des pages projet ramène à sa position.
+  container.querySelectorAll('.proj-card-wrap').forEach(wrap => {
+    const a = wrap.querySelector('a[href$=".html"]');
+    if (a) wrap.id = 'proj-' + a.getAttribute('href').replace(/\.html$/, '');
   });
 
   container.addEventListener('click', e => {
@@ -853,7 +863,8 @@ function preuvesChipHTML(slug) {
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
         <path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h4"/>
       </svg>
-      <span>${n} preuve${n > 1 ? 's' : ''}</span>
+      <span>Voir les ${n} preuve${n > 1 ? 's' : ''}</span>
+      <span class="proj-preuves-arrow" aria-hidden="true">›</span>
     </span>`;
 }
 
@@ -1041,6 +1052,68 @@ function initPreuvesGlobal() {
 }
 
 // ============================================
+// RETOUR AU NIVEAU DU PROJET (#proj-<slug> sur l'accueil)
+// ============================================
+function initHashScroll() {
+  const hash = window.location.hash;
+  if (!hash || hash.indexOf('#proj-') !== 0) return;
+  const target = document.getElementById(hash.slice(1));
+  if (!target) return;
+  // Révèle immédiatement la cible et ses enfants (sinon masqués par l'animation reveal)
+  target.classList.add('visible');
+  target.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => el.classList.add('visible'));
+  requestAnimationFrame(() => target.scrollIntoView({ block: 'center', behavior: 'auto' }));
+}
+
+// ============================================
+// FORMULAIRE CONTACT (Web3Forms — envoi sans rechargement)
+// ============================================
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  const status = form.querySelector('.form-status');
+  const btn = form.querySelector('.btn-submit');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const key = (form.querySelector('[name="access_key"]') || {}).value || '';
+    if (key.indexOf('VOTRE_CLE') === 0 || !key) {
+      status.textContent = "⚠ Formulaire pas encore activé (clé Web3Forms manquante).";
+      status.className = 'form-status form-status--error';
+      return;
+    }
+    const original = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Envoi…';
+    status.textContent = '';
+    status.className = 'form-status';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      });
+      const json = await res.json();
+      if (json.success) {
+        status.textContent = '✓ Merci ! Votre message a bien été envoyé.';
+        status.className = 'form-status form-status--ok';
+        form.reset();
+      } else {
+        status.textContent = '✗ ' + (json.message || 'Une erreur est survenue, réessayez plus tard.');
+        status.className = 'form-status form-status--error';
+      }
+    } catch (err) {
+      status.textContent = "✗ Impossible d'envoyer le message. Vérifiez votre connexion et réessayez.";
+      status.className = 'form-status form-status--error';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = original;
+    }
+  });
+}
+
+// ============================================
 // INIT
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -1050,7 +1123,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Index
   const themeContainer = document.getElementById('themes-container');
-  if (themeContainer) buildThematiques(themeContainer);
+  if (themeContainer) {
+    buildThematiques(themeContainer);
+    setTimeout(initHashScroll, 80); // retour au niveau du projet via #proj-<slug>
+  }
+
+  // Contact — formulaire Web3Forms
+  initContactForm();
 
   const notionContainer = document.getElementById('notion-blocks');
   if (notionContainer) buildNotionBlocks(notionContainer);

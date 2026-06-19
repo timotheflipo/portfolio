@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=108">
+  <link rel="stylesheet" href="css/style.css?v=109">
 </head>
 <body>
 
@@ -69,12 +69,6 @@
               </div>
             </div>
           </div>
-
-          <div class="contact-avail">
-            <strong>Disponibilité géographique</strong>
-            Paris et périphérie — Disponible à partir de septembre 2026
-            dans le cadre d'un master en alternance (rythme 2 semaines entreprise / 1 semaine formation).
-          </div>
         </div>
 
         <!-- Colonne droite : formulaire -->
@@ -83,11 +77,17 @@
           <p class="form-sub">Je vous répondrai par email dans les meilleurs délais.</p>
 
           <!--
-            FORMULAIRE — Pour connecter un backend (Formspree, EmailJS, etc.) :
-            Remplacer action="#" par l'URL de votre service.
-            Ex. avec Formspree : action="https://formspree.io/f/VOTRE_ID" method="POST"
+            FORMULAIRE — Connecté à Web3Forms (envoi vers timothe.flipo6@gmail.com).
+            ⚠️ Remplacer la valeur access_key ci-dessous par la clé reçue sur web3forms.com.
+            L'envoi est géré sans rechargement par initContactForm() dans js/main.js.
           -->
-          <form action="mailto:timothe.flipo6@gmail.com" method="GET" enctype="text/plain" id="contact-form">
+          <form id="contact-form">
+            <input type="hidden" name="access_key" value="VOTRE_CLE_WEB3FORMS">
+            <input type="hidden" name="subject" value="Nouveau message depuis le portfolio">
+            <input type="hidden" name="from_name" value="Portfolio — Timothé Flipo">
+            <!-- anti-spam (honeypot) : ne pas remplir -->
+            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important">
+
             <div class="form-group">
               <label for="name">Nom</label>
               <input type="text" id="name" name="name" placeholder="Votre nom" required autocomplete="name">
@@ -100,12 +100,13 @@
 
             <div class="form-group">
               <label for="message">Message</label>
-              <textarea id="message" name="body" placeholder="Votre message..." required></textarea>
+              <textarea id="message" name="message" placeholder="Votre message..." required></textarea>
             </div>
 
             <button type="submit" class="btn-submit">
               Envoyer le message →
             </button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
 
@@ -127,7 +128,7 @@
     </div>
   </footer>
 
-  <script src="js/data.js?v=108"></script>
-  <script src="js/main.js?v=108"></script>
+  <script src="js/data.js?v=109"></script>
+  <script src="js/main.js?v=109"></script>
 </body>
 </html>
