@@ -776,18 +776,25 @@ const preuvesData = {
       files: ["preuves/tables-rondes/email-teasing.png"]
     },
     {
-      name: "L'invitation — version améliorée (V2)",
-      format: "3 pages",
+      name: "L'invitation — version originale (V1)",
+      format: "PDF",
       competence: "Développer",
-      description: "La deuxième version de l'invitation à la table ronde de Strasbourg, retravaillée sur le fond et la forme.",
-      files: ["preuves/tables-rondes/invitation-v2-1.png", "preuves/tables-rondes/invitation-v2-2.png", "preuves/tables-rondes/invitation-v2-3.png"]
+      description: "Le document d'invitation existant avant mon arrivée — point de départ de ma démarche d'amélioration.",
+      files: ["preuves/tables-rondes/invitation-v1.pdf"]
+    },
+    {
+      name: "L'invitation — première amélioration (V2)",
+      format: "PDF",
+      competence: "Développer",
+      description: "Ma première refonte du document d'invitation, travaillée sur le fond et la forme pour la table ronde de Nantes.",
+      files: ["preuves/tables-rondes/invitation-v2.pdf"]
     },
     {
       name: "L'invitation — version finale (VF)",
-      format: "3 pages",
+      format: "PDF",
       competence: "Décider · Développer",
-      description: "La version finale envoyée, aboutissement des itérations successives sur le support d'invitation.",
-      files: ["preuves/tables-rondes/invitation-vf-1.png", "preuves/tables-rondes/invitation-vf-2.png", "preuves/tables-rondes/invitation-vf-3.png"]
+      description: "La version finale envoyée pour la table ronde de Strasbourg, aboutissement des itérations successives.",
+      files: ["preuves/tables-rondes/invitation-vf.pdf"]
     },
     {
       name: "Le bon cadeau — avant / après",
